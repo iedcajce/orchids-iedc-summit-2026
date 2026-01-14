@@ -181,16 +181,15 @@ export function Hero() {
                       <span className="text-[8px] uppercase tracking-widest opacity-60">Sec</span>
                     </div>
                   </div>
-                  <p className="text-[10px] font-medium opacity-60 mt-2">7th March 2026 • Amal Jyothi College</p>
                 </div>
-                <motion.div
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <Button className="bg-[#4A7C59] hover:bg-[#3D6649] text-white rounded-3xl px-12 py-8 h-auto text-xl font-bold shadow-[0_10px_20px_rgba(74,124,89,0.3)] transition-all">
-                    Register Now
-                  </Button>
-                </motion.div>
+
+                <div className="hidden md:block w-[1px] h-12 bg-[#4A7C59]/10" />
+
+                <div className="text-center md:text-right text-[#4A7C59]">
+                  <p className="text-[10px] uppercase tracking-[0.3em] font-black opacity-40 mb-2">Venue & Time</p>
+                  <p className="text-xl font-bold tracking-tight">Amal Jyothi College, Kerala</p>
+                  <p className="text-[10px] font-medium opacity-60 mt-1">7th March 2026 • 09:00 AM Onwards</p>
+                </div>
               </div>
           </div>
         </motion.div>

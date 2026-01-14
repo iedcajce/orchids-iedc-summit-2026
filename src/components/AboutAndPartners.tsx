@@ -156,7 +156,19 @@ export function About() {
 
   return (
     <section className="relative py-20 px-6 overflow-hidden bg-white flex flex-col items-center gap-12">
-      <div className="w-full bg-brand-dark py-2 overflow-hidden whitespace-nowrap">
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <Image 
+          src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/ed3e4ef3-254e-4a25-9f8f-ed422d28efcf/6780a29c-208d-4208-8c74-c0c7ae2eeff6-1-1768413742875.png?width=8000&height=8000&resize=contain"
+          alt="About Background"
+          fill
+          className="object-cover opacity-40 scale-110"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-white/40 to-white" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white" />
+      </div>
+
+      <div className="relative z-10 w-full bg-brand-dark py-2 overflow-hidden whitespace-nowrap shadow-xl">
         <div className="inline-block animate-marquee-slow">
             {Array(20).fill("ABOUT IEDC SUMMIT 2025").map((text, i) => (
             <span key={i} className="text-white/40 text-[10px] font-black uppercase tracking-[0.4em] mx-10">
@@ -171,7 +183,7 @@ export function About() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative z-10 mx-auto rounded-[3rem] border border-white/40 shadow-[0_30px_60px_rgba(0,0,0,0.05)] flex flex-col md:flex-row gap-8 py-12 md:py-20 bg-gradient-to-br from-white/90 to-white/60 backdrop-blur-xl max-w-[1400px]"
+          className="relative z-10 mx-auto rounded-[3rem] border border-white/40 shadow-[0_40px_80px_rgba(0,0,0,0.1)] flex flex-col md:flex-row gap-8 py-12 md:py-20 bg-white/60 backdrop-blur-2xl max-w-[1400px]"
         >
           <div className="flex-1 px-8 md:px-16">
             <motion.h2 
