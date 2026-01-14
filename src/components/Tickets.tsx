@@ -48,10 +48,10 @@ export function Tickets() {
             LIMITED SLOTS AVAILABLE
           </motion.div>
           <h2 
-            className="text-4xl md:text-6xl font-bold text-[#2D4A35] tracking-tight mb-4"
+            className="text-4xl md:text-6xl font-black italic tracking-tighter uppercase leading-none text-brand-dark mb-4"
             style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}
           >
-            Grab Your Access
+            Grab Your <span className="text-brand">Access</span>
           </h2>
           <p className="text-[#4A7C59]/70 text-lg md:text-xl max-w-2xl">
             Join the most innovative startup summit of 2025. Secure your spot now with our exclusive early bird offer.

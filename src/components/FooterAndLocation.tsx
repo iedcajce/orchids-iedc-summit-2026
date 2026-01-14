@@ -28,59 +28,62 @@ export function Location() {
               LOCATION
             </motion.h2>
             
-            <div className="space-y-10">
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-              >
-                <p className="text-[10px] uppercase font-black text-brand/40 tracking-[0.3em] mb-3">Venue</p>
-                <p className="text-2xl font-black text-brand-dark leading-tight">
-                  Amal Jyothi College of Engineering,<br />Koovappally
-                </p>
-              </motion.div>
+              <div className="space-y-10">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <p className="text-[10px] uppercase font-black text-brand/40 tracking-[0.3em] mb-3">Venue</p>
+                  <p className="text-2xl font-black text-brand-dark leading-tight" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
+                    India Exposition Mart Limited,<br />Greater Noida
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  <p className="text-[10px] uppercase font-black text-brand/40 tracking-[0.3em] mb-3">Event Date</p>
+                  <p className="text-2xl font-black text-brand-dark" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
+                    07th March 2026
+                  </p>
+                </motion.div>
+              </div>
 
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.6 }}
               >
-                <p className="text-[10px] uppercase font-black text-brand/40 tracking-[0.3em] mb-3">Event Date</p>
-                <p className="text-2xl font-black text-brand-dark">
-                  12th December 2026
-                </p>
+                <Button 
+                  onClick={() => window.parent.postMessage({ type: "OPEN_EXTERNAL_URL", data: { url: "https://maps.app.goo.gl/pbCNVuuzmZut78847" } }, "*")}
+                  className="bg-brand hover:bg-brand-dark text-white rounded-full px-10 py-6 h-auto font-bold uppercase tracking-widest text-xs shadow-lg"
+                >
+                  Get Directions
+                </Button>
               </motion.div>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.6 }}
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="flex-1 relative aspect-square md:aspect-[4/3] w-full rounded-[2.5rem] overflow-hidden border-[12px] border-white shadow-2xl group"
             >
-              <Button className="bg-brand hover:bg-brand-dark text-white rounded-full px-10 py-6 h-auto font-bold uppercase tracking-widest text-xs shadow-lg">
-                Get Directions
-              </Button>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.6657926107!2d77.5146747150808!3d28.46014498248554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cc00000000001%3A0xc3c9a6358c2f822!2sIndia%20Exposition%20Mart%20Limited!5e0!3m2!1sen!2sin!4v1741168142468!5m2!1sen!2sin"
+                className="w-full h-full grayscale brightness-90 contrast-125 sepia saturate-[2] hue-rotate-[90deg] transition-all duration-700 group-hover:grayscale-0 group-hover:brightness-100 group-hover:contrast-100 group-hover:sepia-0 group-hover:saturate-100 group-hover:hue-rotate-0"
+                allowFullScreen
+                loading="lazy"
+              ></iframe>
+              <div className="absolute inset-0 bg-brand/20 pointer-events-none mix-blend-multiply group-hover:opacity-0 transition-opacity duration-700" />
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="w-6 h-6 bg-brand rounded-full animate-ping opacity-40" />
+                <div className="w-4 h-4 bg-brand rounded-full absolute shadow-[0_0_20px_rgba(67,145,98,0.8)]" />
+              </div>
             </motion.div>
-          </div>
-
-          <motion.div 
-            initial={{ scale: 0.9, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="flex-1 relative aspect-square md:aspect-[4/3] w-full rounded-[2.5rem] overflow-hidden border-[12px] border-white shadow-2xl group"
-          >
-            <Image
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/image-1768278756787.png?width=1000&height=1000&resize=contain"
-              alt="Map Location"
-              fill
-              className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-            />
-            <div className="absolute inset-0 bg-brand/10 group-hover:bg-transparent transition-colors" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-6 h-6 bg-brand rounded-full animate-ping opacity-40" />
-              <div className="w-4 h-4 bg-brand rounded-full absolute shadow-[0_0_20px_rgba(95,180,124,0.8)]" />
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>

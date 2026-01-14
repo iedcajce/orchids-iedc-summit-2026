@@ -109,87 +109,107 @@ export function Speakers() {
   const speakers = [
     {
       name: "NIVIN PAULY",
-      role: "ACTOR",
+      role: "Global Tech Visionary",
+      company: "Pauly Innovations",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop",
     },
     {
       name: "FAHAD FAZIL",
-      role: "ACTOR",
+      role: "Deep Tech Architect",
+      company: "Fazil Dynamics",
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop",
     },
     {
       name: "DULQUER SALMAAN",
-      role: "ACTOR",
+      role: "Strategic Growth Lead",
+      company: "Salmaan Ventures",
       image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=400&auto=format&fit=crop",
     },
     {
       name: "TOVINO THOMAS",
-      role: "ACTOR",
+      role: "AI Ethics Specialist",
+      company: "Thomas Research",
       image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop",
     },
     {
       name: "NAZRIYA NAZIM",
-      role: "ACTRESS",
+      role: "UX Strategy Director",
+      company: "Nazim Labs",
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop",
     },
     {
       name: "PRITHVIRAJ",
-      role: "ACTOR",
+      role: "Quantum Computing Lead",
+      company: "Prithvi Systems",
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop",
     },
     {
       name: "PARVATHY",
-      role: "ACTRESS",
+      role: "Sustainability Advisor",
+      company: "Parvathy Global",
       image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop",
     },
     {
       name: "MANJU WARRIER",
-      role: "ACTRESS",
+      role: "FinTech Innovation Head",
+      company: "Warrier Group",
       image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=400&auto=format&fit=crop",
     }
   ];
 
   return (
-    <section id="speakers" className="py-24 px-6 md:px-12 bg-[#f8faf9]">
+    <section id="speakers" className="py-24 px-6 md:px-12 bg-white">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
+          className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-black text-brand-dark mb-16 text-center italic tracking-tight uppercase">
-            SPEAKERS
+          <span className="text-brand font-black tracking-[0.3em] uppercase text-[10px] mb-2 block">Global Experts</span>
+          <h2 className="text-4xl md:text-5xl font-black italic tracking-tighter uppercase leading-none text-brand-dark" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
+            KEYNOTE <span className="text-brand">SPEAKERS</span>
           </h2>
         </motion.div>
         
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {speakers.map((speaker, i) => (
             <motion.div 
               key={i}
-              initial={{ opacity: 0, scale: 0.8, y: 30 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ 
-                duration: 0.6, 
-                delay: (i % 4) * 0.1,
-                ease: [0.22, 1, 0.36, 1]
+                duration: 0.5, 
+                delay: i * 0.05,
               }}
-              className="group relative aspect-[3/4] rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 bg-white border border-black/5"
+              className="group cursor-pointer"
             >
-              <Image
-                src={speaker.image}
-                alt={speaker.name}
-                fill
-                className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                <p className="text-white font-black text-xl tracking-tighter uppercase leading-none mb-1">{speaker.name}</p>
-                <p className="text-brand text-[10px] font-bold tracking-[0.2em]">{speaker.role}</p>
+              <div className="relative aspect-[4/5] overflow-hidden mb-4 bg-[#f8faf9] border border-black/5">
+                <Image
+                  src={speaker.image}
+                  alt={speaker.name}
+                  fill
+                  className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                />
+                <div className="absolute inset-0 bg-brand/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute top-4 right-4 translate-x-10 group-hover:translate-x-0 transition-transform duration-500">
+                  <div className="w-10 h-10 bg-brand text-white flex items-center justify-center">
+                    <ArrowUpRight className="w-5 h-5" />
+                  </div>
+                </div>
               </div>
-              <div className="absolute bottom-6 left-6 group-hover:opacity-0 transition-opacity duration-300">
-                <p className="text-brand-dark font-bold text-[10px] tracking-widest uppercase bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-black/5 shadow-sm">
-                  {speaker.name.split(' ')[0]}
+              
+              <div className="space-y-1">
+                <h3 className="text-xl font-black text-brand-dark uppercase tracking-tighter leading-none group-hover:text-brand transition-colors" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
+                  {speaker.name}
+                </h3>
+                <p className="text-[11px] font-bold text-brand uppercase tracking-widest leading-none">
+                  {speaker.role}
+                </p>
+                <p className="text-[10px] text-brand-dark/50 font-medium tracking-tight">
+                  {speaker.company}
                 </p>
               </div>
             </motion.div>
@@ -200,10 +220,10 @@ export function Speakers() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="flex justify-center"
+          className="mt-16 flex justify-center"
         >
-          <Button className="bg-brand hover:bg-brand-dark text-black hover:text-white rounded-full px-12 py-6 h-auto uppercase text-xs font-bold tracking-widest shadow-lg border-none transition-all">
-            View All Speakers
+          <Button variant="outline" className="border-brand-dark/10 hover:bg-brand-dark hover:text-white rounded-none text-[10px] font-black uppercase tracking-widest px-12 py-6 h-auto transition-all">
+            Explore All Speakers
           </Button>
         </motion.div>
       </div>
