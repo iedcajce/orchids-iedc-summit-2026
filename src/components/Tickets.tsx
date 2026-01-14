@@ -42,20 +42,19 @@ export function Tickets() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center gap-2 bg-[#DDF7E8] text-[#4A7C59] px-4 py-1.5 rounded-full text-sm font-bold mb-6"
+            className="flex items-center gap-2 bg-[#DDF7E8] text-[#4A7C59] px-4 py-1.5 rounded-full text-sm font-bold mb-4"
           >
             <Star className="w-4 h-4 fill-current" />
             LIMITED SLOTS AVAILABLE
           </motion.div>
           <h2 
-            className="text-5xl md:text-7xl font-bold text-[#2D4A35] tracking-tight mb-6 italic uppercase"
+            className="text-4xl md:text-6xl font-bold text-[#2D4A35] tracking-tight mb-4"
             style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}
           >
             Grab Your Access
           </h2>
-          <div className="h-1.5 w-24 bg-[#4A7C59] mb-8 rounded-full" />
-          <p className="text-[#4A7C59]/70 text-lg md:text-xl max-w-2xl font-medium">
-            Join the most innovative startup summit of 2026. <br className="hidden md:block" /> Secure your spot now with our exclusive early bird offer.
+          <p className="text-[#4A7C59]/70 text-lg md:text-xl max-w-2xl">
+            Join the most innovative startup summit of 2025. Secure your spot now with our exclusive early bird offer.
           </p>
         </div>
 
