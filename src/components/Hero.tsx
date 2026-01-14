@@ -138,15 +138,15 @@ export function Hero() {
           transition={{ duration: 1, delay: 1, ease: [0.22, 1, 0.36, 1] }}
           className="relative z-20 px-6 md:px-12 pb-10"
         >
-          <div className="bg-white/40 backdrop-blur-2xl border border-white/40 rounded-[2.5rem] px-10 py-8 flex flex-col md:flex-row items-center justify-between gap-8 shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
-            <div className="flex items-center gap-10">
+          <div className="bg-white/40 backdrop-blur-2xl border border-white/40 rounded-[2.5rem] px-10 py-8 grid grid-cols-1 md:grid-cols-3 items-center gap-8 shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
+            <div className="flex items-center gap-6 justify-center md:justify-start">
               <motion.div 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.5 }}
-                className="hidden md:block"
+                className="hidden lg:block"
               >
-                <p className="text-[#4A7C59]/80 font-light text-2xl leading-tight max-w-[200px]">
+                <p className="text-[#4A7C59]/80 font-light text-xl leading-tight max-w-[180px]">
                   Where ideas take <br /><span className="font-medium italic text-[#4A7C59]">root and grow</span>
                 </p>
               </motion.div>
@@ -154,44 +154,45 @@ export function Hero() {
               <motion.div 
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                className="w-14 h-14 rounded-full border border-[#4A7C59]/20 flex items-center justify-center cursor-pointer hover:bg-white/30 transition-all group"
+                className="w-12 h-12 rounded-full border border-[#4A7C59]/20 flex items-center justify-center cursor-pointer hover:bg-white/30 transition-all group"
               >
-                <ChevronDown className="w-6 h-6 text-[#4A7C59] group-hover:scale-110 transition-transform" />
+                <ChevronDown className="w-5 h-5 text-[#4A7C59] group-hover:scale-110 transition-transform" />
               </motion.div>
             </div>
 
-              <div className="flex flex-col md:flex-row items-center gap-12">
-                <div className="text-center md:text-right text-[#4A7C59]">
-                  <p className="text-[10px] uppercase tracking-[0.3em] font-black opacity-40 mb-2">Countdown to Summit</p>
-                  <div className="flex gap-4 md:gap-6 font-bold tracking-tight">
-                    <div className="flex flex-col items-center md:items-end">
-                      <span className="text-2xl">{timeLeft.days}</span>
-                      <span className="text-[8px] uppercase tracking-widest opacity-60">Days</span>
-                    </div>
-                    <div className="flex flex-col items-center md:items-end">
-                      <span className="text-2xl">{timeLeft.hours}</span>
-                      <span className="text-[8px] uppercase tracking-widest opacity-60">Hrs</span>
-                    </div>
-                    <div className="flex flex-col items-center md:items-end">
-                      <span className="text-2xl">{timeLeft.minutes}</span>
-                      <span className="text-[8px] uppercase tracking-widest opacity-60">Min</span>
-                    </div>
-                    <div className="flex flex-col items-center md:items-end">
-                      <span className="text-2xl">{timeLeft.seconds}</span>
-                      <span className="text-[8px] uppercase tracking-widest opacity-60">Sec</span>
-                    </div>
-                  </div>
-                  <p className="text-[10px] font-medium opacity-60 mt-2">7th March 2026 • Amal Jyothi College</p>
+            <div className="flex flex-col items-center justify-center text-[#4A7C59]">
+              <p className="text-[10px] uppercase tracking-[0.3em] font-black opacity-40 mb-2">Countdown to Summit</p>
+              <div className="flex gap-4 md:gap-8 font-bold tracking-tight">
+                <div className="flex flex-col items-center">
+                  <span className="text-3xl md:text-4xl">{timeLeft.days}</span>
+                  <span className="text-[8px] uppercase tracking-widest opacity-60">Days</span>
                 </div>
-                <motion.div
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <Button className="bg-[#4A7C59] hover:bg-[#3D6649] text-white rounded-3xl px-12 py-8 h-auto text-xl font-bold shadow-[0_10px_20px_rgba(74,124,89,0.3)] transition-all">
-                    Register Now
-                  </Button>
-                </motion.div>
+                <div className="flex flex-col items-center">
+                  <span className="text-3xl md:text-4xl">{timeLeft.hours}</span>
+                  <span className="text-[8px] uppercase tracking-widest opacity-60">Hrs</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <span className="text-3xl md:text-4xl">{timeLeft.minutes}</span>
+                  <span className="text-[8px] uppercase tracking-widest opacity-60">Min</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <span className="text-3xl md:text-4xl">{timeLeft.seconds}</span>
+                  <span className="text-[8px] uppercase tracking-widest opacity-60">Sec</span>
+                </div>
               </div>
+              <p className="text-[10px] font-bold opacity-60 mt-2 tracking-wider">MARCH 7, 2026 • AMAL JYOTHI COLLEGE</p>
+            </div>
+
+            <div className="flex justify-center md:justify-end">
+              <motion.div
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Button className="bg-[#4A7C59] hover:bg-[#3D6649] text-white rounded-3xl px-10 py-7 h-auto text-lg font-bold shadow-[0_10px_20px_rgba(74,124,89,0.3)] transition-all">
+                  Register Now
+                </Button>
+              </motion.div>
+            </div>
           </div>
         </motion.div>
     </section>

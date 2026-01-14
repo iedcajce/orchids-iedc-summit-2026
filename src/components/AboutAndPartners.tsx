@@ -3,60 +3,122 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { TrendingUp, Briefcase, Cpu, Users, Globe, ArrowUpRight } from "lucide-react";
 
 export function SummitHighlights() {
+  const highlights = [
+    {
+      title: "Investment Track",
+      description: "Unlock capital for your startup. Connect with VCs, angel investors, and funding opportunities.",
+      icon: <TrendingUp className="w-8 h-8 text-brand" />,
+      className: "md:col-span-2 md:row-span-1 bg-white",
+      tag: "FUNDING",
+      image: "/highlights/investment.jpg" // Placeholder for potential future use
+    },
+    {
+      title: "Business Track",
+      description: "Scale your operations. Learn from industry veterans about market entry and growth hacking.",
+      icon: <Briefcase className="w-8 h-8 text-brand" />,
+      className: "md:col-span-2 md:row-span-1 bg-brand-dark text-white",
+      tag: "SCALING",
+    },
+    {
+      title: "Technology Track",
+      description: "Master the future with deep dives into AI, Blockchain, and disruptive tech.",
+      icon: <Cpu className="w-8 h-8 text-brand" />,
+      className: "md:col-span-1 md:row-span-1 bg-white",
+      tag: "INNOVATION",
+    },
+    {
+      title: "Networking",
+      description: "Build your tribe. 5000+ attendees and 500+ startups collaborating in one space.",
+      icon: <Users className="w-8 h-8 text-brand" />,
+      className: "md:col-span-2 md:row-span-1 bg-[#f0f4f1]",
+      tag: "COMMUNITY",
+    },
+    {
+      title: "Kerala Tech Growth",
+      description: "Witness the revolution. See how Kerala is becoming India's next big tech hub.",
+      icon: <Globe className="w-8 h-8 text-brand" />,
+      className: "md:col-span-1 md:row-span-1 bg-brand text-white",
+      tag: "IMPACT",
+    }
+  ];
+
   return (
-    <section className="py-32 px-6 md:px-12 bg-[#f8faf9] overflow-hidden">
-      <div className="max-w-7xl mx-auto text-center">
+    <section id="highlights" className="py-24 px-6 md:px-12 bg-[#f8faf9] overflow-hidden">
+      <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-brand-dark mb-6 italic tracking-tight">
+          <h2 className="text-4xl md:text-6xl font-black text-brand-dark mb-4 italic tracking-tighter uppercase">
             SUMMIT HIGHLIGHTS
           </h2>
-          <p className="text-brand-dark/60 text-sm max-w-2xl mx-auto mb-16 uppercase tracking-[0.2em] leading-relaxed font-bold">
-            Experience Kerala's largest student entrepreneurship platform with world-class speakers, hands-on workshops, and unparalleled networking opportunities.
-          </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <p className="text-brand-dark/60 text-sm max-w-xl uppercase tracking-[0.2em] leading-relaxed font-bold">
+              Experience Kerala's largest student entrepreneurship platform with world-class tracks and networking.
+            </p>
+            <Button variant="outline" className="border-brand/20 text-brand hover:bg-brand hover:text-white rounded-full px-8 py-6 h-auto text-xs font-black tracking-widest uppercase transition-all duration-300">
+              EXPLORE ALL TRACKS <ArrowUpRight className="ml-2 w-4 h-4" />
+            </Button>
+          </div>
         </motion.div>
 
-          <div className="flex justify-center">
-            <motion.div 
-                initial={{ opacity: 0, y: 100 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                animate={{ 
-                  y: [0, -15, 0],
-                }}
-                transition={{ 
-                  y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
-                  opacity: { duration: 1 },
-                  type: "spring", 
-                  bounce: 0.3
-                }}
-              className="bg-brand-dark p-16 md:p-24 rounded-[4rem] text-left max-w-2xl shadow-[0_50px_100px_rgba(0,0,0,0.4)] relative overflow-hidden group border border-white/5"
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[300px]">
+          {highlights.map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              whileHover={{ y: -5 }}
+              className={`group relative rounded-[2.5rem] p-8 overflow-hidden border border-black/5 shadow-sm flex flex-col justify-between ${item.className}`}
             >
-              <div className="absolute top-0 right-0 w-80 h-80 bg-brand rounded-full -translate-y-1/2 translate-x-1/2 blur-[120px] opacity-20 group-hover:opacity-40 transition-opacity duration-1000" />
-              <motion.h3 
-                initial={{ x: -20, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="text-5xl md:text-7xl font-black text-white mb-8 uppercase tracking-tighter leading-none"
-              >
-                Engineering <br /><span className="text-brand">Future</span>
-              </motion.h3>
-              <motion.p 
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.7 }}
-                className="text-white/80 text-xl md:text-2xl leading-relaxed italic font-light"
-              >
-                Where innovation meets impact through technology, design, and real-world problem-solving. We're building the next generation of thinkers.
-              </motion.p>
+              {/* Abstract Background Decoration */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-brand/5 rounded-full translate-x-16 -translate-y-16 blur-2xl group-hover:scale-150 transition-transform duration-700" />
+              
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-8">
+                  <div className="p-3 bg-brand/10 rounded-2xl group-hover:bg-brand/20 transition-colors duration-300">
+                    {item.icon}
+                  </div>
+                  <span className={`text-[10px] font-black tracking-[0.2em] px-4 py-1.5 rounded-full border ${
+                    item.className.includes('bg-brand-dark') || item.className.includes('bg-brand') 
+                    ? 'border-white/20 text-white/60' 
+                    : 'border-black/10 text-brand-dark/40'
+                  }`}>
+                    {item.tag}
+                  </span>
+                </div>
+                
+                <h3 className={`text-2xl md:text-3xl font-black mb-4 tracking-tight leading-none ${
+                  item.className.includes('bg-brand-dark') || item.className.includes('bg-brand') ? 'text-white' : 'text-brand-dark'
+                }`}>
+                  {item.title}
+                </h3>
+              </div>
+
+              <div className="relative z-10">
+                <p className={`text-sm leading-relaxed mb-6 italic ${
+                  item.className.includes('bg-brand-dark') || item.className.includes('bg-brand') ? 'text-white/70' : 'text-brand-dark/60'
+                }`}>
+                  {item.description}
+                </p>
+                <motion.div 
+                  initial={{ opacity: 0, x: -10 }}
+                  whileHover={{ opacity: 1, x: 0 }}
+                  className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest cursor-pointer"
+                >
+                  Learn More <ArrowUpRight className="w-3 h-3" />
+                </motion.div>
+              </div>
             </motion.div>
-          </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -92,21 +154,22 @@ export function About() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           style={{
             display: 'flex',
-            width: '1442px',
+            width: '100%',
+            maxWidth: '1442px',
             minHeight: '521px',
-            padding: '19px 20px',
+            padding: '40px 20px',
             justifyContent: 'space-between',
             alignItems: 'center',
             background: 'linear-gradient(251deg, rgba(255, 255, 255, 0.85) -12.2%, rgba(255, 255, 255, 0.60) 112.36%)',
             backdropFilter: 'blur(7.5px)',
           }}
-          className="relative z-10 mx-auto rounded-[3rem] border border-white/40 shadow-[0_30px_60px_rgba(0,0,0,0.05)] flex-col md:flex-row gap-8"
+          className="relative z-10 mx-auto rounded-[3rem] border border-white/40 shadow-[0_30px_60px_rgba(0,0,0,0.05)] flex-col lg:flex-row gap-8"
         >
-          <div className="flex-1 px-10">
+          <div className="flex-1 px-4 md:px-10">
             <motion.h2 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              className="text-5xl md:text-7xl font-black text-brand-dark mb-6 italic tracking-tighter"
+              className="text-5xl md:text-7xl font-black text-brand-dark mb-6 italic tracking-tighter uppercase"
             >
               About
             </motion.h2>
@@ -119,7 +182,7 @@ export function About() {
             </motion.p>
           </div>
 
-          <div className="px-10 grid grid-cols-2 gap-8 md:gap-x-16 md:gap-y-10">
+          <div className="px-4 md:px-10 grid grid-cols-2 gap-8 md:gap-x-16 md:gap-y-10">
             {stats.slice(0, 4).map((stat, i) => (
               <div key={i} className="text-left">
                 <p className="text-3xl md:text-5xl font-black text-brand-dark mb-1">
