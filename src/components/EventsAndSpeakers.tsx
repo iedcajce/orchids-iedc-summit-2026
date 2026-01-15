@@ -9,7 +9,7 @@ export function FeaturedEvents() {
   const events = [
     {
       title: "Idea Pitch",
-      image: "https://images.unsplash.com/photo-1540575861501-7ce0e1d1aa99?q=80&w=800&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1475721027767-f42402781200?q=80&w=800&auto=format&fit=crop",
       desc: "Pitch your revolutionary ideas to top-tier investors.",
       badge: "EXPANDED",
     },
@@ -54,16 +54,16 @@ export function FeaturedEvents() {
             View Schedule
           </Button>
         </motion.div>
-        
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
           {events.map((event, i) => (
-            <motion.div 
+            <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ 
-                duration: 0.5, 
+              transition={{
+                duration: 0.5,
                 delay: i * 0.1,
               }}
               whileHover={{ y: -5 }}
@@ -75,11 +75,10 @@ export function FeaturedEvents() {
                 fill
                 className="object-cover opacity-80 transition-all duration-700 group-hover:scale-110 group-hover:opacity-100"
               />
-              
+
               <div className="absolute top-4 left-4 z-20">
-                <span className={`text-[9px] font-black px-3 py-1 rounded-full tracking-widest uppercase shadow-sm ${
-                  event.badge === 'NEW' ? 'bg-brand text-white' : 'bg-brand-dark text-white'
-                }`}>
+                <span className={`text-[9px] font-black px-3 py-1 rounded-full tracking-widest uppercase shadow-sm ${event.badge === 'NEW' ? 'bg-brand text-white' : 'bg-brand-dark text-white'
+                  }`}>
                   {event.badge}
                 </span>
               </div>
@@ -172,16 +171,16 @@ export function Speakers() {
             KEYNOTE <span className="text-brand">SPEAKERS</span>
           </h2>
         </motion.div>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {speakers.map((speaker, i) => (
-            <motion.div 
+            <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ 
-                duration: 0.5, 
+              transition={{
+                duration: 0.5,
                 delay: i * 0.05,
               }}
               className="group cursor-pointer"
@@ -200,7 +199,7 @@ export function Speakers() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="space-y-1">
                 <h3 className="text-xl font-black text-brand-dark uppercase tracking-tighter leading-none group-hover:text-brand transition-colors" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
                   {speaker.name}
@@ -216,7 +215,7 @@ export function Speakers() {
           ))}
         </div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

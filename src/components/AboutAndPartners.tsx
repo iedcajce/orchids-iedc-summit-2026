@@ -3,21 +3,21 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { 
+import {
   ArrowUpRight
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
-function BentoCard({ 
-  title, 
-  description, 
-  className, 
+function BentoCard({
+  title,
+  description,
+  className,
   tag,
-  delay = 0 
-}: { 
-  title: string; 
-  description: string; 
-  className: string; 
+  delay = 0
+}: {
+  title: string;
+  description: string;
+  className: string;
   tag: string;
   delay?: number;
 }) {
@@ -41,48 +41,57 @@ function BentoCard({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onMouseMove={handleMouseMove}
-      className={`relative overflow-hidden rounded-[2.5rem] p-8 md:p-10 flex flex-col justify-between group cursor-pointer transition-all duration-500 border border-brand/5 shadow-sm hover:shadow-2xl hover:border-brand/20 ${className}`}
+      className={`relative overflow-hidden rounded-[2.5rem] p-6 md:p-8 flex flex-col justify-end items-start group cursor-pointer transition-all duration-500 border border-brand/5 shadow-sm hover:shadow-2xl hover:border-brand/20 ${className}`}
     >
-      <div 
+      <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
         style={{
           background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(95, 180, 124, 0.2), transparent 40%)`,
         }}
       />
-      
-      <div className="relative z-10 h-full flex flex-col">
-        <div className="flex justify-between items-start mb-8">
-          <span className={`text-[10px] font-black tracking-[0.2em] px-4 py-1.5 rounded-full ${className.includes('bg-brand-dark') ? 'bg-white/10 text-white/60' : 'bg-brand/10 text-brand'}`}>
-            {tag}
-          </span>
-          <motion.div
-            animate={{ rotate: isHovered ? 45 : 0 }}
-            className={`p-2.5 rounded-full ${className.includes('bg-brand-dark') ? 'bg-brand text-white' : 'bg-brand-dark text-white'}`}
-          >
-            <ArrowUpRight size={20} />
-          </motion.div>
-        </div>
-        
-        <div className="mt-auto">
-          <h3 className={`text-3xl md:text-5xl font-black mb-4 italic tracking-tighter leading-[0.9] ${className.includes('bg-brand-dark') ? 'text-white' : 'text-brand-dark'}`}>
+
+      {/* Arrow Top Right - Removed */}
+      {/* <div className="absolute top-6 right-6 md:top-8 md:right-8 z-20">
+        <motion.div
+          animate={{ rotate: isHovered ? 45 : 0 }}
+          className={`p-2.5 rounded-full ${className.includes('bg-brand-dark') ? 'bg-brand text-white' : 'bg-brand-dark text-white'}`}
+        >
+          <ArrowUpRight size={20} />
+        </motion.div>
+      </div> */}
+
+      <div className="relative z-10 w-full flex flex-col items-start gap-4">
+        <span className={`text-[10px] font-black tracking-[0.2em] px-3 py-1 rounded-full ${className.includes('bg-brand-dark') ? 'bg-white/10 text-white/60' : 'bg-brand/10 text-brand'}`}>
+          {tag}
+        </span>
+
+        <div>
+          {/* Responsive text sizing to prevent overflow */}
+          <h3 className={`text-2xl md:text-3xl lg:text-4xl font-black mb-2 italic tracking-tighter leading-[0.9] ${className.includes('bg-brand-dark') ? 'text-white' : 'text-brand-dark'}`}>
             {title}
           </h3>
-          <p className={`text-base md:text-lg leading-relaxed italic font-medium max-w-md ${className.includes('bg-brand-dark') ? 'text-white/60' : 'text-brand-dark/60'}`}>
+          <p className={`text-xs md:text-sm leading-relaxed italic font-medium max-w-xs ${className.includes('bg-brand-dark') ? 'text-white/60' : 'text-brand-dark/60'}`}>
             {description}
           </p>
         </div>
       </div>
 
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity pointer-events-none select-none">
-         <div className="text-[20rem] font-black italic tracking-tighter leading-none">
-            {tag.slice(0, 1)}
-         </div>
+        <div className="text-[12rem] md:text-[20rem] font-black italic tracking-tighter leading-none">
+          {tag.slice(0, 1)}
+        </div>
       </div>
     </motion.div>
   );
 }
 
 export function SummitHighlights() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  /* const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  }); */
+
   const highlights = [
     {
       title: "Investment Track",
@@ -116,27 +125,50 @@ export function SummitHighlights() {
     }
   ];
 
+  // Auto-scroll effect
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
+            entry.target.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        });
+      },
+      { threshold: 0.2 } // Trigger when 20% visible
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="py-32 px-6 md:px-12 bg-[#f8faf9] overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section
+      ref={containerRef}
+      className="h-screen w-full bg-[#f8faf9] overflow-hidden flex flex-col justify-center snap-start relative py-2 lg:py-4"
+    >
+      <div className="max-w-7xl mx-auto w-full h-full flex flex-col px-4 md:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-2 lg:mb-4 shrink-0"
         >
-          <h2 className="text-5xl md:text-8xl font-black text-brand-dark mb-6 italic tracking-tighter uppercase leading-none">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-brand-dark mb-1 lg:mb-2 italic tracking-tighter uppercase leading-none">
             SUMMIT <span className="text-brand">HIGHLIGHTS</span>
           </h2>
-          <p className="text-brand-dark/60 text-[10px] md:text-xs max-w-2xl mx-auto uppercase tracking-[0.4em] font-black leading-relaxed">
+          <p className="text-brand-dark/60 text-[8px] md:text-[9px] lg:text-[10px] max-w-2xl mx-auto uppercase tracking-[0.4em] font-black leading-relaxed">
             Kerala's largest student entrepreneurship platform with world-class tracks, hands-on workshops, and unparalleled opportunities.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:auto-rows-[320px]">
+        <div className="flex-1 grid grid-cols-1 md:grid-cols-4 grid-rows-4 md:grid-rows-3 gap-2 md:gap-3 lg:gap-4 min-h-0 pb-2">
           {highlights.map((item, idx) => (
-            <BentoCard key={idx} {...item} delay={idx * 0.1} />
+            <BentoCard key={idx} {...item} delay={idx * 0.1} className={`${item.className} h-full w-full`} />
           ))}
         </div>
       </div>
@@ -155,9 +187,9 @@ export function About() {
   ];
 
   return (
-    <section className="relative py-20 px-6 overflow-hidden bg-white flex flex-col items-center gap-12">
+    <section className="relative pb-20 overflow-hidden bg-white flex flex-col items-center">
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <Image 
+        <Image
           src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/ed3e4ef3-254e-4a25-9f8f-ed422d28efcf/6780a29c-208d-4208-8c74-c0c7ae2eeff6-1-1768413742875.png?width=8000&height=8000&resize=contain"
           alt="About Background"
           fill
@@ -170,7 +202,7 @@ export function About() {
 
       <div className="relative z-10 w-full bg-brand-dark py-2 overflow-hidden whitespace-nowrap shadow-xl">
         <div className="inline-block animate-marquee-slow">
-            {Array(20).fill("ABOUT IEDC SUMMIT 2025").map((text, i) => (
+          {Array(20).fill("ABOUT IEDC SUMMIT 2025").map((text, i) => (
             <span key={i} className="text-white/40 text-[10px] font-black uppercase tracking-[0.4em] mx-10">
               {text}
             </span>
@@ -178,7 +210,8 @@ export function About() {
         </div>
       </div>
 
-        <motion.div 
+      <div className="w-full px-6 flex flex-col items-center gap-12 mt-12">
+        <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -186,14 +219,14 @@ export function About() {
           className="relative z-10 mx-auto rounded-[3rem] border border-white/40 shadow-[0_40px_80px_rgba(0,0,0,0.1)] flex flex-col md:flex-row gap-8 py-12 md:py-20 bg-white/60 backdrop-blur-2xl max-w-[1400px]"
         >
           <div className="flex-1 px-8 md:px-16">
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               className="text-6xl md:text-8xl font-black text-brand-dark mb-8 italic tracking-tighter"
             >
               About
             </motion.h2>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               className="text-brand-dark/80 text-xl md:text-2xl italic font-medium leading-relaxed max-w-2xl"
@@ -215,6 +248,7 @@ export function About() {
             ))}
           </div>
         </motion.div>
+      </div>
 
       <style jsx>{`
         @keyframes marquee {
@@ -246,7 +280,7 @@ export function Partners() {
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -256,7 +290,7 @@ export function Partners() {
           <div className="relative">
             <p className="text-left text-brand-dark/40 font-black uppercase tracking-[0.2em] text-[10px] mb-12 border-l-4 border-brand pl-6">Title Sponsor</p>
             <div className="flex justify-center">
-              <motion.div 
+              <motion.div
                 whileHover={{ scale: 1.05 }}
                 className="w-80 h-32 bg-white rounded-3xl shadow-2xl flex items-center justify-center cursor-pointer border border-brand/5"
               >
@@ -269,7 +303,7 @@ export function Partners() {
             <p className="text-left text-brand-dark/40 font-black uppercase tracking-[0.2em] text-[10px] mb-12 border-l-4 border-brand pl-6">Startup Enablers</p>
             <div className="flex flex-wrap justify-center gap-12 md:gap-24">
               {[1, 2, 3, 4].map((i) => (
-                <motion.div 
+                <motion.div
                   key={i}
                   whileHover={{ y: -10 }}
                   className="w-56 h-20 bg-white rounded-2xl shadow-xl flex items-center justify-center cursor-pointer border border-brand/5"
@@ -280,7 +314,7 @@ export function Partners() {
             </div>
           </div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
