@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Bell } from "lucide-react";
 
 export function CountdownSection() {
     const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -29,6 +30,17 @@ export function CountdownSection() {
         return () => clearInterval(interval);
     }, []);
 
+    const addToCalendar = () => {
+        const title = encodeURIComponent("IEDC Summit 2026");
+        const details = encodeURIComponent("Join us for the innovation journey");
+        const location = encodeURIComponent("Amal Jyothi College of Engineering, Koovappally, Kerala");
+        const startDate = "20260307T033000Z"; // 09:00 IST (UTC+5:30)
+        const endDate = "20260307T123000Z"; // 18:00 IST (approx 9 hours)
+
+        const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${startDate}/${endDate}`;
+        window.open(url, '_blank');
+    };
+
     return (
         <section className="relative z-30 px-6 py-12 bg-white">
             <div className="max-w-5xl mx-auto relative pt-8">
@@ -49,15 +61,26 @@ export function CountdownSection() {
                     initial={{ y: 50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="relative bg-white/90 backdrop-blur-xl border border-white/50 shadow-2xl rounded-xl overflow-hidden"
+                    className="relative bg-white/90 backdrop-blur-xl border border-white/50 shadow-2xl rounded-xl overflow-hidden group"
                 >
                     {/* Calendar Top Strip */}
-                    <div className="h-16 bg-[#4A7C59] border-b border-[#3d664a] flex items-center justify-center">
+                    {/* Calendar Top Strip */}
+                    <div className="h-16 bg-[#4A7C59] border-b border-[#3d664a] flex items-center justify-center relative">
                         <div className="w-full h-[1px] bg-white/20 mt-8"></div>
+
+                        <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={addToCalendar}
+                            className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-white/20 transition-colors shadow-lg z-20"
+                            title="Set Reminder"
+                        >
+                            <Bell className="w-4 h-4 md:w-5 md:h-5" />
+                        </motion.button>
                     </div>
 
                     <div className="p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 bg-gradient-to-b from-white/50 to-transparent">
-                        <div className="text-center md:text-left">
+                        <div className="text-center md:text-left relative z-10">
                             <h2 className="text-2xl md:text-3xl font-black italic mb-1 tracking-tighter uppercase text-[#2d4f38] leading-none" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>Countdown to Summit</h2>
                             <p className="text-[#4A7C59] text-base font-medium">Join us for the innovation journey</p>
                         </div>
