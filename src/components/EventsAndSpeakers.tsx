@@ -190,10 +190,10 @@ export function Speakers() {
                   src={speaker.image}
                   alt={speaker.name}
                   fill
-                  className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                  className="object-cover grayscale-0 md:grayscale md:group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
                 />
-                <div className="absolute inset-0 bg-brand/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute inset-x-0 bottom-4 flex justify-start px-4 gap-4 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 z-20">
+                <div className="absolute inset-0 bg-brand/10 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-x-0 bottom-4 flex justify-start px-4 gap-4 translate-x-0 md:-translate-x-full md:group-hover:translate-x-0 transition-transform duration-500 z-20">
                   <div className="w-8 h-8 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-brand transition-all duration-300">
                     <Linkedin className="w-4 h-4" />
                   </div>
