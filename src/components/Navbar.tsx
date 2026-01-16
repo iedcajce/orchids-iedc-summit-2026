@@ -52,7 +52,7 @@ export function Navbar() {
           <div className="hidden md:block">
             <Link href="#tickets">
               <Button className="bg-[#4A7C59] hover:bg-[#3D6649] text-white rounded-full px-8 py-4 h-auto text-sm font-bold tracking-tight shadow-md transition-all hover:scale-105 active:scale-95">
-                Register Now
+                Buy Ticket
               </Button>
             </Link>
           </div>
@@ -113,7 +113,7 @@ export function Navbar() {
             >
               <Link href="#tickets" onClick={() => setIsOpen(false)}>
                 <Button className="bg-[#448C56] hover:bg-[#3A7649] text-white rounded-full px-12 py-6 h-auto text-lg font-bold shadow-xl">
-                  Register Now
+                  Buy Ticket
                 </Button>
               </Link>
             </motion.div>

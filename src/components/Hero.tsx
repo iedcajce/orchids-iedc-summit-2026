@@ -11,17 +11,6 @@ export function Hero() {
     <section className="relative flex-1 flex flex-col bg-white overflow-hidden min-h-0">
       {/* Background with split slant */}
       <div className="absolute inset-0 z-0 flex">
-        {/* Left white part - angled overlay */}
-        <motion.div
-          initial={{ x: -100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute inset-y-0 left-0 w-full bg-white z-10 hidden md:block"
-          style={{
-            clipPath: "polygon(0 0, 45% 0, 15% 100%, 0 100%)",
-          }}
-        />
-
         {/* Right image part */}
         <div className="absolute inset-0 w-full h-full z-0">
           <motion.div
@@ -37,12 +26,9 @@ export function Hero() {
               className="object-cover object-center"
               priority
             />
-            <div className="absolute inset-0 bg-white/10" />
+            <div className="absolute inset-0 bg-black/20" />
           </motion.div>
         </div>
-
-        {/* Mobile white background overlay */}
-        <div className="absolute inset-0 bg-white/70 md:hidden z-10 backdrop-blur-[2px]" />
       </div>
 
       {/* Content Container */}
@@ -61,7 +47,7 @@ export function Hero() {
                 transition={{ delay: 0.5 }}
                 className="block whitespace-nowrap"
                 style={{
-                  color: "#4EBFB0",
+                  color: "#FFFFFF",
                   fontFamily: '"Cooper Hewitt", sans-serif',
                   fontWeight: 703,
                 }}
@@ -75,7 +61,7 @@ export function Hero() {
                 transition={{ delay: 0.6 }}
                 className="block whitespace-nowrap"
                 style={{
-                  color: "#4EBFB0",
+                  color: "#FFFFFF",
                   fontFamily: '"Cooper Hewitt", sans-serif',
                   fontWeight: 703,
                 }}
@@ -89,13 +75,13 @@ export function Hero() {
                 transition={{ delay: 0.7 }}
                 className="block whitespace-nowrap"
                 style={{
-                  color: "#4EBFB0",
+                  color: "#FFFFFF",
                   fontFamily: '"Cooper Hewitt", sans-serif',
                   fontWeight: 703,
                 }}
               >
                 SUMMIT <span style={{
-                  color: "#82D38B",
+                  color: "#FFFFFF",
                   fontStyle: "italic",
                   fontWeight: 710,
                 }}>2026</span>
@@ -106,46 +92,19 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Bottom Info Bar - Floating Glassmorphism */}
+      {/* Bottom Info - Aligned Right */}
       <motion.div
-        initial={{ y: 50, opacity: 0 }}
+        initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, delay: 1, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-20 px-6 md:px-12 pb-10 flex justify-end"
+        transition={{ duration: 1, delay: 1 }}
+        className="absolute bottom-10 right-6 md:right-12 z-20 flex flex-col items-end text-right"
       >
-        <div className="bg-white/60 backdrop-blur-2xl border border-white/40 rounded-[2.5rem] px-10 py-8 flex flex-col md:flex-row items-center justify-between gap-8 shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
-          <div className="flex items-center gap-10">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.5 }}
-              className="hidden md:block"
-            >
-              <div className="text-[#1a2e23] font-light text-2xl leading-tight max-w-[200px]">
-                <TextReveal>
-                  Where ideas take <br />
-                </TextReveal>
-                <TextReveal delay={0.2}>
-                  <span className="font-medium italic text-[#2d6644]">root and grow</span>
-                </TextReveal>
-              </div>
-            </motion.div>
-          </div>
-
-          <div className="flex flex-col md:flex-row items-center gap-12">
-            <div className="text-center md:text-right text-[#1a2e23] flex flex-col items-center md:items-end">
-              <TextReveal delay={0.4}>
-                <p className="text-[10px] uppercase tracking-[0.3em] font-black opacity-60 mb-2 text-[#2d6644]">Venue & Time</p>
-              </TextReveal>
-              <TextReveal delay={0.5}>
-                <p className="text-xl font-bold tracking-tight text-[#1a2e23]">Amal Jyothi College, Kerala</p>
-              </TextReveal>
-              <TextReveal delay={0.6}>
-                <p className="text-[10px] font-medium opacity-80 mt-1 text-[#2d6644]">7th March 2026 • 09:00 AM Onwards</p>
-              </TextReveal>
-            </div>
-          </div>
-        </div>
+        <p className="text-xl md:text-3xl font-black tracking-tight text-white drop-shadow-md leading-tight max-w-lg" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
+          Amal Jyothi College of Engineering Autonomous, Kerala
+        </p>
+        <p className="text-sm md:text-base font-black text-white/90 drop-shadow-md mt-2">
+          7th March 2026
+        </p>
       </motion.div>
     </section>
   );

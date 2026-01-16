@@ -15,8 +15,14 @@ export function Location() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-[#d1e9e0] rounded-[3.5rem] p-10 md:p-16 flex flex-col md:flex-row gap-16 items-center border border-brand/20 shadow-2xl relative"
+          className="bg-[#d1e9e0] rounded-[3.5rem] p-10 md:p-16 flex flex-col md:flex-row gap-16 items-center border border-brand/20 shadow-2xl relative overflow-hidden"
         >
+          {/* Background Pattern with reduced opacity */}
+          <div
+            className="absolute inset-0 opacity-20 pointer-events-none mix-blend-multiply"
+            style={{ backgroundImage: "url('/topography-pattern.png')", backgroundSize: "cover" }}
+          />
+
           <div className="absolute top-10 left-10 w-20 h-20 bg-brand/5 rounded-full blur-3xl" />
 
           <div className="flex-1 space-y-12 relative z-10">
@@ -71,7 +77,7 @@ export function Location() {
             initial={{ scale: 0.9, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="flex-1 relative aspect-square md:aspect-[4/3] w-full rounded-[2.5rem] overflow-hidden border-[12px] border-white shadow-2xl group"
+            className="hidden md:block flex-1 relative aspect-square md:aspect-[4/3] w-full rounded-[2.5rem] overflow-hidden border-[12px] border-white shadow-2xl group"
           >
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15739.204109742124!2d76.8144186!3d9.5260093!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b063626ed32c771%3A0xff305e1affdbb4b4!2sAmal%20Jyothi%20College%20of%20Engineering%20Autonomous!5e0!3m2!1sen!2sin!4v1768413063598!5m2!1sen!2sin"

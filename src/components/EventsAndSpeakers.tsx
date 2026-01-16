@@ -67,7 +67,7 @@ export function FeaturedEvents() {
                 delay: i * 0.1,
               }}
               whileHover={{ y: -5 }}
-              className="relative group overflow-hidden rounded-[2rem] aspect-[10/12] cursor-pointer bg-[#f8faf9] border border-black/5"
+              className="relative group overflow-hidden rounded-[2rem] aspect-[2.5/1] md:aspect-[10/12] cursor-pointer bg-[#f8faf9] border border-black/5"
             >
               <Image
                 src={event.image}
@@ -185,7 +185,7 @@ export function Speakers() {
               }}
               className="group cursor-pointer"
             >
-              <div className="relative aspect-[4/5] overflow-hidden mb-4 bg-[#f8faf9] border border-black/5">
+              <div className="relative aspect-[4/5] overflow-hidden mb-4 bg-[#f8faf9] border border-black/5 rounded-[2rem]">
                 <Image
                   src={speaker.image}
                   alt={speaker.name}

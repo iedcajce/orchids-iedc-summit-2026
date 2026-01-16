@@ -18,6 +18,8 @@ export function Tickets() {
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-15deg", "15deg"]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (typeof window !== "undefined" && window.innerWidth < 768) return;
+
     const rect = e.currentTarget.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
@@ -72,7 +74,7 @@ export function Tickets() {
             className="relative w-full max-w-[950px] h-auto md:h-[520px] cursor-grab active:cursor-grabbing group"
           >
             {/* Ticket Shadow */}
-            <div className="absolute inset-4 bg-black/10 blur-3xl rounded-[40px] transition-all group-hover:bg-black/20" />
+            <div className="absolute inset-4 bg-black/10 blur-3xl rounded-[40px] transition-all md:group-hover:bg-black/20" />
 
             {/* Physical Ticket Body */}
             <div className="relative md:absolute md:inset-0 bg-white border border-[#E0E7E1] rounded-[32px] overflow-hidden flex flex-col md:flex-row shadow-2xl">
@@ -154,7 +156,7 @@ export function Tickets() {
                       className="text-5xl font-black text-[#2D4A35]"
                       style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}
                     >
-                      ₹747
+                      ₹749
                     </motion.span>
                   </div>
                 </div>
@@ -195,7 +197,7 @@ export function Tickets() {
             </div>
 
             {/* Glossy Overlay */}
-            <div className="absolute inset-0 rounded-[32px] pointer-events-none bg-gradient-to-br from-white/40 via-transparent to-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 rounded-[32px] pointer-events-none bg-gradient-to-br from-white/40 via-transparent to-black/5 opacity-0 md:group-hover:opacity-100 transition-opacity duration-500" />
           </motion.div>
         </div>
 
