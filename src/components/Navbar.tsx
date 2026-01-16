@@ -30,7 +30,7 @@ export function Navbar() {
             alt="IEDC Startup Summit 2025 Logo"
             width={160}
             height={100}
-            className="w-full h-auto object-contain"
+            className="w-full h-auto object-contain drop-shadow-lg"
           />
         </div>
 

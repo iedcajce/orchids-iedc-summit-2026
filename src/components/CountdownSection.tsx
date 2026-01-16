@@ -44,18 +44,7 @@ export function CountdownSection() {
     return (
         <section className="relative z-30 px-6 py-12 bg-white">
             <div className="max-w-5xl mx-auto relative pt-8">
-                {/* Spiral Binder Rings */}
-                <div className="absolute top-4 left-0 right-0 flex justify-evenly z-20 px-4 md:px-20 pointer-events-none">
-                    {[...Array(6)].map((_, i) => (
-                        <motion.div
-                            key={i}
-                            initial={{ y: -20, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ delay: 0.5 + (i * 0.1) }}
-                            className="w-4 h-12 bg-gradient-to-b from-gray-300 via-gray-100 to-gray-300 rounded-full shadow-lg border border-gray-400"
-                        />
-                    ))}
-                </div>
+
 
                 <motion.div
                     initial={{ y: 50, opacity: 0 }}
@@ -63,21 +52,7 @@ export function CountdownSection() {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="relative bg-white/90 backdrop-blur-xl border border-white/50 shadow-2xl rounded-xl overflow-hidden group"
                 >
-                    {/* Calendar Top Strip */}
-                    {/* Calendar Top Strip */}
-                    <div className="h-16 bg-[#4A7C59] border-b border-[#3d664a] flex items-center justify-center relative">
-                        <div className="w-full h-[1px] bg-white/20 mt-8"></div>
 
-                        <motion.button
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={addToCalendar}
-                            className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-white/20 transition-colors shadow-lg z-20"
-                            title="Set Reminder"
-                        >
-                            <Bell className="w-4 h-4 md:w-5 md:h-5" />
-                        </motion.button>
-                    </div>
 
                     <div className="p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 bg-gradient-to-b from-white/50 to-transparent">
                         <div className="text-center md:text-left relative z-10">
@@ -123,9 +98,18 @@ export function CountdownSection() {
                             })}
                         </div>
 
-                        <div className="text-center md:text-right hidden md:block">
+                        <div className="hidden md:flex flex-col items-end text-right">
+                            <motion.button
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={addToCalendar}
+                                className="mb-2 p-2 bg-[#4A7C59] rounded-full text-white hover:bg-[#3d664a] transition-colors shadow-lg"
+                                title="Set Reminder"
+                            >
+                                <Bell className="w-4 h-4 md:w-5 md:h-5" />
+                            </motion.button>
                             <p className="font-black italic text-xl text-[#2d4f38] uppercase tracking-tighter" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>March 7, 2026</p>
-                            <p className="text-[#4A7C59] text-sm">Amal Jyothi College, Kerala</p>
+                            <p className="text-[#4A7C59] text-sm">Amal Jyothi College of Engineering</p>
                         </div>
                     </div>
                 </motion.div>
