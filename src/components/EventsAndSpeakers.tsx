@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Linkedin, Youtube, Instagram } from "lucide-react";
 
 export function FeaturedEvents() {
   const events = [
@@ -193,9 +193,15 @@ export function Speakers() {
                   className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
                 />
                 <div className="absolute inset-0 bg-brand/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute top-4 right-4 translate-x-10 group-hover:translate-x-0 transition-transform duration-500">
-                  <div className="w-10 h-10 bg-brand text-white flex items-center justify-center">
-                    <ArrowUpRight className="w-5 h-5" />
+                <div className="absolute inset-x-0 bottom-4 flex justify-start px-4 gap-4 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 z-20">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-brand transition-all duration-300">
+                    <Linkedin className="w-4 h-4" />
+                  </div>
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-brand transition-all duration-300">
+                    <Youtube className="w-4 h-4" />
+                  </div>
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-brand transition-all duration-300">
+                    <Instagram className="w-4 h-4" />
                   </div>
                 </div>
               </div>

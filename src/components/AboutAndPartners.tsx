@@ -238,7 +238,7 @@ export function About() {
           <div className="px-8 md:px-16 grid grid-cols-2 gap-8 md:gap-x-20 md:gap-y-12">
             {stats.slice(0, 4).map((stat, i) => (
               <div key={i} className="text-left">
-                <p className="text-4xl md:text-6xl font-black text-brand-dark mb-2 tracking-tighter">
+                <p className="text-4xl md:text-6xl font-black text-brand-dark mb-2 tracking-tighter whitespace-nowrap">
                   {stat.value}
                 </p>
                 <p className="text-[10px] uppercase font-bold text-brand-dark/40 tracking-[0.2em]">
