@@ -58,7 +58,7 @@ export function Tickets() {
             Grab Your <span className="text-brand">Access</span>
           </h2>
           <p className="text-[#4A7C59]/70 text-lg md:text-xl max-w-2xl">
-            Join the most innovative startup summit of 2025. Secure your spot now with our exclusive early bird offer.
+            Join the most innovative startup summit of 2026. Secure your spot now with our exclusive early bird offer.
           </p>
         </div>
 
@@ -166,7 +166,7 @@ export function Tickets() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Button className="w-full bg-[#4A7C59] hover:bg-[#3D6649] text-white rounded-2xl py-7 h-auto text-base font-bold shadow-xl shadow-[#4A7C59]/20 transition-all">
+                    <Button className="w-full bg-[#4A7C59] hover:bg-[#386144] text-white rounded-full py-6 h-auto text-sm font-bold uppercase tracking-widest shadow-xl shadow-[#4A7C59]/20 transition-all hover:-translate-y-0.5 active:scale-95">
                       Get Your Ticket
                       <ArrowRight className="ml-2 w-5 h-5" />
                     </Button>
@@ -201,12 +201,7 @@ export function Tickets() {
           </motion.div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center gap-4">
-          <div className="flex items-center gap-2 text-[#4A7C59]/60 text-sm">
-            <div className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
-            24 people are looking at this right now
-          </div>
-        </div>
+
       </div>
 
       <style jsx>{`

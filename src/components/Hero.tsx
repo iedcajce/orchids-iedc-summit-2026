@@ -6,6 +6,13 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { TextReveal } from "@/components/ui/text-reveal";
 
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
 export function Hero() {
   return (
     <section className="relative flex-1 flex flex-col bg-white overflow-hidden min-h-0">
@@ -80,11 +87,7 @@ export function Hero() {
                   fontWeight: 703,
                 }}
               >
-                SUMMIT <span style={{
-                  color: "#FFFFFF",
-                  fontStyle: "italic",
-                  fontWeight: 710,
-                }}>2026</span>
+                SUMMIT 2026
               </motion.span>
 
             </h1>
@@ -99,11 +102,11 @@ export function Hero() {
         transition={{ duration: 1, delay: 1 }}
         className="absolute bottom-10 right-6 md:right-12 z-20 flex flex-col items-end text-right"
       >
-        <p className="text-xl md:text-3xl font-black tracking-tight text-white drop-shadow-md leading-tight max-w-lg" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
+        <p className={`text-xl md:text-3xl font-bold tracking-normal text-white drop-shadow-md leading-tight max-w-lg uppercase ${poppins.className}`}>
           Amal Jyothi College of Engineering Autonomous, Kerala
         </p>
-        <p className="text-sm md:text-base font-black text-white/90 drop-shadow-md mt-2">
-          7th March 2026
+        <p className={`text-lg md:text-xl font-bold text-white/90 drop-shadow-md mt-2 uppercase tracking-widest ${poppins.className}`}>
+          07 March 2026
         </p>
       </motion.div>
     </section>

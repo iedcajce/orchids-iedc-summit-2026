@@ -98,15 +98,15 @@ export function CountdownSection() {
                             })}
                         </div>
 
-                        <div className="hidden md:flex flex-col items-end text-right">
+                        <div className="flex flex-col items-center text-center md:items-end md:text-right mt-6 md:mt-0 w-full md:w-auto">
                             <motion.button
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={addToCalendar}
-                                className="mb-2 p-2 bg-[#4A7C59] rounded-full text-white hover:bg-[#3d664a] transition-colors shadow-lg"
+                                className="mb-3 md:mb-2 p-3 md:p-2 bg-[#4A7C59] rounded-full text-white hover:bg-[#3d664a] transition-colors shadow-lg"
                                 title="Set Reminder"
                             >
-                                <Bell className="w-4 h-4 md:w-5 md:h-5" />
+                                <Bell className="w-5 h-5 md:w-5 md:h-5" />
                             </motion.button>
                             <p className="font-black italic text-xl text-[#2d4f38] uppercase tracking-tighter" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>March 7, 2026</p>
                             <p className="text-[#4A7C59] text-sm">Amal Jyothi College of Engineering</p>

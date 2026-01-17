@@ -66,7 +66,7 @@ export function Location() {
             >
               <Button
                 onClick={() => window.parent.postMessage({ type: "OPEN_EXTERNAL_URL", data: { url: "https://maps.app.goo.gl/sEDfSLhWoJCtdLqu5" } }, "*")}
-                className="bg-brand hover:bg-brand-dark text-white rounded-full px-10 py-6 h-auto font-bold uppercase tracking-widest text-xs shadow-lg"
+                className="bg-[#4A7C59] hover:bg-[#386144] text-white rounded-full px-10 py-6 h-auto font-bold uppercase tracking-widest text-xs shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 active:scale-95"
               >
                 Get Directions
               </Button>
@@ -201,7 +201,7 @@ export function PreviousSummits() {
             whileHover={{ x: 10 }}
             className="cursor-pointer"
           >
-            <Button size="icon" className="rounded-full bg-brand hover:bg-brand-dark w-16 h-16 shrink-0 shadow-xl">
+            <Button size="icon" className="rounded-full bg-[#4A7C59] hover:bg-[#386144] w-16 h-16 shrink-0 shadow-xl transition-all hover:scale-105 active:scale-95">
               <ArrowRight className="w-8 h-8" />
             </Button>
           </motion.div>
