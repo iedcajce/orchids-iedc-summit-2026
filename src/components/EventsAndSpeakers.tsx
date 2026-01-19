@@ -3,13 +3,13 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Linkedin, Youtube, Instagram } from "lucide-react";
 
 export function FeaturedEvents() {
   const events = [
     {
       title: "Idea Pitch",
-      image: "https://images.unsplash.com/photo-1540575861501-7ce0e1d1aa99?q=80&w=800&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1475721027767-f42402781200?q=80&w=800&auto=format&fit=crop",
       desc: "Pitch your revolutionary ideas to top-tier investors.",
       badge: "EXPANDED",
     },
@@ -54,20 +54,20 @@ export function FeaturedEvents() {
             View Schedule
           </Button>
         </motion.div>
-        
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
           {events.map((event, i) => (
-            <motion.div 
+            <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ 
-                duration: 0.5, 
+              transition={{
+                duration: 0.5,
                 delay: i * 0.1,
               }}
               whileHover={{ y: -5 }}
-              className="relative group overflow-hidden rounded-[2rem] aspect-[10/12] cursor-pointer bg-[#f8faf9] border border-black/5"
+              className="relative group overflow-hidden rounded-[2rem] aspect-[2.5/1] md:aspect-[10/12] cursor-pointer bg-[#f8faf9] border border-black/5"
             >
               <Image
                 src={event.image}
@@ -75,11 +75,10 @@ export function FeaturedEvents() {
                 fill
                 className="object-cover opacity-80 transition-all duration-700 group-hover:scale-110 group-hover:opacity-100"
               />
-              
+
               <div className="absolute top-4 left-4 z-20">
-                <span className={`text-[9px] font-black px-3 py-1 rounded-full tracking-widest uppercase shadow-sm ${
-                  event.badge === 'NEW' ? 'bg-brand text-white' : 'bg-brand-dark text-white'
-                }`}>
+                <span className={`text-[9px] font-black px-3 py-1 rounded-full tracking-widest uppercase shadow-sm ${event.badge === 'NEW' ? 'bg-brand text-white' : 'bg-brand-dark text-white'
+                  }`}>
                   {event.badge}
                 </span>
               </div>
@@ -172,35 +171,41 @@ export function Speakers() {
             KEYNOTE <span className="text-brand">SPEAKERS</span>
           </h2>
         </motion.div>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {speakers.map((speaker, i) => (
-            <motion.div 
+            <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ 
-                duration: 0.5, 
+              transition={{
+                duration: 0.5,
                 delay: i * 0.05,
               }}
               className="group cursor-pointer"
             >
-              <div className="relative aspect-[4/5] overflow-hidden mb-4 bg-[#f8faf9] border border-black/5">
+              <div className="relative aspect-[4/5] overflow-hidden mb-4 bg-[#f8faf9] border border-black/5 rounded-[2rem]">
                 <Image
                   src={speaker.image}
                   alt={speaker.name}
                   fill
-                  className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                  className="object-cover grayscale-0 md:grayscale md:group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
                 />
-                <div className="absolute inset-0 bg-brand/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute top-4 right-4 translate-x-10 group-hover:translate-x-0 transition-transform duration-500">
-                  <div className="w-10 h-10 bg-brand text-white flex items-center justify-center">
-                    <ArrowUpRight className="w-5 h-5" />
+                <div className="absolute inset-0 bg-brand/10 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-x-0 bottom-4 flex justify-start px-4 gap-4 translate-x-0 md:-translate-x-full md:group-hover:translate-x-0 transition-transform duration-500 z-20">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-brand transition-all duration-300">
+                    <Linkedin className="w-4 h-4" />
+                  </div>
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-brand transition-all duration-300">
+                    <Youtube className="w-4 h-4" />
+                  </div>
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-brand transition-all duration-300">
+                    <Instagram className="w-4 h-4" />
                   </div>
                 </div>
               </div>
-              
+
               <div className="space-y-1">
                 <h3 className="text-xl font-black text-brand-dark uppercase tracking-tighter leading-none group-hover:text-brand transition-colors" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
                   {speaker.name}
@@ -216,7 +221,7 @@ export function Speakers() {
           ))}
         </div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
