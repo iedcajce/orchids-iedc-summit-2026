@@ -77,7 +77,7 @@ export function Hero() {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h1 className="text-[36px] md:text-[64px] lg:text-[80px] leading-[1.1] tracking-tight flex flex-col items-start font-bold text-white drop-shadow-lg">
+            <h1 className="text-[36px] md:text-[64px] lg:text-[80px] leading-[1.1] tracking-tight flex flex-col items-start font-black text-white drop-shadow-lg" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
               <motion.span
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -95,6 +95,17 @@ export function Hero() {
                 SUMMIT <span className="text-brand">2026</span>
               </motion.span>
             </h1>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.5 }}
+            className="mt-4"
+          >
+            <p className="text-white/80 text-sm md:text-xl font-medium tracking-wider uppercase leading-relaxed" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>
+              Your Nomination. Your Innovation Passport. <br className="md:hidden" /> Your One-Year Journey.
+            </p>
           </motion.div>
 
           <motion.div

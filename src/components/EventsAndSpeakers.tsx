@@ -231,56 +231,11 @@ export function FeaturedEvents() {
 }
 
 export function Speakers() {
-  const speakers = [
-    {
-      name: "NIVIN PAULY",
-      role: "Global Tech Visionary",
-      company: "Pauly Innovations",
-      image: "/images/speaker_nivin_pauly.jpg",
-    },
-    {
-      name: "FAHAD FAZIL",
-      role: "Deep Tech Architect",
-      company: "Fazil Dynamics",
-      image: "/images/speaker_fahad_fazil.jpg",
-    },
-    {
-      name: "DULQUER SALMAAN",
-      role: "Strategic Growth Lead",
-      company: "Salmaan Ventures",
-      image: "/images/speaker_dulquer_salmaan.jpg",
-    },
-    {
-      name: "TOVINO THOMAS",
-      role: "AI Ethics Specialist",
-      company: "Thomas Research",
-      image: "/images/speaker_tovino_thomas.jpg",
-    },
-    {
-      name: "NAZRIYA NAZIM",
-      role: "UX Strategy Director",
-      company: "Nazim Labs",
-      image: "/images/speaker_nazriya_nazim.jpg",
-    },
-    {
-      name: "PRITHVIRAJ",
-      role: "Quantum Computing Lead",
-      company: "Prithvi Systems",
-      image: "/images/speaker_prithviraj.jpg",
-    },
-    {
-      name: "PARVATHY",
-      role: "Sustainability Advisor",
-      company: "Parvathy Global",
-      image: "/images/speaker_parvathy.jpg",
-    },
-    {
-      name: "MANJU WARRIER",
-      role: "FinTech Innovation Head",
-      company: "Warrier Group",
-      image: "/images/speaker_manju_warrier.jpg",
-    }
-  ];
+  const mysterySpeakers = Array(4).fill({
+    name: "REVEALING SOON",
+    role: "Industry Titan",
+    company: "Global Tech Giant",
+  });
 
   return (
     <section id="speakers" className="py-24 px-6 md:px-12 bg-white">
@@ -298,8 +253,8 @@ export function Speakers() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {speakers.map((speaker, i) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {mysterySpeakers.map((speaker, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
@@ -307,40 +262,38 @@ export function Speakers() {
               viewport={{ once: true }}
               transition={{
                 duration: 0.5,
-                delay: i * 0.05,
+                delay: i * 0.1,
               }}
-              className="group cursor-pointer"
+              className="group cursor-default relative"
             >
-              <div className="relative aspect-[4/5] overflow-hidden mb-4 bg-[#f8faf9] border border-black/5 rounded-[2rem]">
-                <Image
-                  src={speaker.image}
-                  alt={speaker.name}
-                  fill
-                  className="object-cover grayscale-0 md:grayscale md:group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
-                />
-                <div className="absolute inset-0 bg-brand/10 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute inset-x-0 bottom-4 flex justify-start px-4 gap-4 translate-x-0 md:-translate-x-full md:group-hover:translate-x-0 transition-transform duration-500 z-20">
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-brand transition-all duration-300">
-                    <Linkedin className="w-4 h-4" />
-                  </div>
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-brand transition-all duration-300">
-                    <Youtube className="w-4 h-4" />
-                  </div>
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-brand transition-all duration-300">
-                    <Instagram className="w-4 h-4" />
-                  </div>
+              <div className="relative aspect-[4/5] overflow-hidden mb-4 bg-[#f8faf9] border border-black/5 rounded-[2rem] flex items-center justify-center">
+                {/* Silhouette / Mystery Placeholder */}
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-dark/5 to-brand-dark/20" />
+                <div className="relative z-10 opacity-20 group-hover:opacity-40 transition-opacity duration-500">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                    className="w-32 h-32 text-brand-dark"
+                  >
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                </div>
+
+                {/* Question Mark Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-6xl font-black text-brand-dark/10 group-hover:text-brand-dark/20 transition-colors duration-500" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>?</span>
                 </div>
               </div>
 
-              <div className="space-y-1">
-                <h3 className="text-xl font-black text-brand-dark uppercase tracking-tighter leading-none group-hover:text-brand transition-colors" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
+              <div className="space-y-1 text-center">
+                <h3 className="text-xl font-black text-brand-dark/40 uppercase tracking-tighter leading-none" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
                   {speaker.name}
                 </h3>
-                <p className="text-[11px] font-bold text-brand uppercase tracking-widest leading-none">
+                <p className="text-[10px] font-bold text-brand/40 uppercase tracking-widest leading-none">
                   {speaker.role}
-                </p>
-                <p className="text-[10px] text-brand-dark/50 font-medium tracking-tight">
-                  {speaker.company}
                 </p>
               </div>
             </motion.div>
@@ -351,10 +304,13 @@ export function Speakers() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-16 flex justify-center"
+          className="mt-16 flex flex-col items-center justify-center text-center max-w-2xl mx-auto"
         >
-          <Button variant="outline" className="border-brand-dark/10 hover:bg-brand-dark hover:text-white rounded-none text-[10px] font-black uppercase tracking-widest px-12 py-6 h-auto transition-all">
-            Explore All Speakers
+          <p className="text-brand-dark/60 font-medium text-sm md:text-base mb-8">
+            We are curating a lineup of visionaries, innovators, and industry leaders who are shaping the future. Stay tuned for the big reveal.
+          </p>
+          <Button variant="outline" className="border-brand-dark/10 hover:bg-brand-dark hover:text-white rounded-full text-[10px] font-black uppercase tracking-widest px-8 py-4 h-auto transition-all" disabled>
+            Lineup Dropping Soon
           </Button>
         </motion.div>
       </div>
