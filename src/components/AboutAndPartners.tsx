@@ -41,43 +41,52 @@ function BentoCard({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onMouseMove={handleMouseMove}
-      className={`relative overflow-hidden rounded-[2.5rem] p-6 md:p-8 flex flex-col justify-end items-start group cursor-pointer transition-all duration-500 border border-brand/5 shadow-sm hover:shadow-2xl hover:border-brand/20 ${className}`}
+      className={`relative overflow-hidden rounded-[2.5rem] p-8 md:p-10 flex flex-col justify-start items-start group cursor-pointer transition-all duration-500 border border-brand/5 shadow-sm hover:shadow-2xl hover:border-brand/20 ${className}`}
     >
+      {/* Dynamic Background Noise/Pattern */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+
       <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
         style={{
-          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(95, 180, 124, 0.2), transparent 40%)`,
+          background: `radial-gradient(800px circle at ${mousePos.x}px ${mousePos.y}px, rgba(95, 180, 124, 0.15), transparent 40%)`,
         }}
       />
 
-      {/* Arrow Top Right - Removed */}
-      {/* <div className="absolute top-6 right-6 md:top-8 md:right-8 z-20">
-        <motion.div
-          animate={{ rotate: isHovered ? 45 : 0 }}
-          className={`p-2.5 rounded-full ${className.includes('bg-brand-dark') ? 'bg-brand text-white' : 'bg-brand-dark text-white'}`}
-        >
-          <ArrowUpRight size={20} />
-        </motion.div>
-      </div> */}
-
-      <div className="relative z-10 w-full flex flex-col items-start gap-4">
-        <span className={`text-[10px] font-black tracking-[0.2em] px-3 py-1 rounded-full ${className.includes('bg-brand-dark') ? 'bg-white/10 text-white/60' : 'bg-brand/10 text-brand'}`}>
+      <div className="relative z-10 w-full flex flex-col items-start h-full">
+        <span className={`text-[10px] font-black tracking-[0.25em] px-4 py-1.5 rounded-full uppercase mb-6 ${className.includes('bg-brand-dark') ? 'bg-white/10 text-white/80' : 'bg-brand/10 text-brand'}`}>
           {tag}
         </span>
 
-        <div>
-          {/* Responsive text sizing to prevent overflow */}
-          <h3 className={`text-2xl md:text-3xl lg:text-4xl font-black mb-2 italic tracking-tighter leading-[0.9] uppercase ${className.includes('bg-brand-dark') ? 'text-white' : 'text-brand-dark'}`} style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
+        <div className="flex-1 flex flex-col justify-start w-full">
+          <h3 className={`font-black mb-3 italic tracking-tighter leading-[0.85] uppercase transition-all duration-500 group-hover:translate-x-1 
+            ${className.includes('md:row-span-2') ? 'text-4xl md:text-6xl lg:text-7xl' :
+              className.includes('md:col-span-2') ? 'text-3xl md:text-5xl lg:text-5xl' : 'text-xl md:text-2xl lg:text-3xl'} 
+            ${className.includes('bg-brand-dark') ? 'text-white' : 'text-brand-dark'}`} style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
             {title}
           </h3>
-          <p className={`text-xs md:text-sm leading-relaxed italic font-medium max-w-xs ${className.includes('bg-brand-dark') ? 'text-white/60' : 'text-brand-dark/60'}`}>
+          <p className={`leading-relaxed italic font-medium transition-all duration-500 
+            ${className.includes('md:row-span-2') ? 'text-base md:text-lg lg:text-xl max-w-sm' : 'text-xs md:text-sm lg:text-base max-w-md'}
+            ${className.includes('bg-brand-dark') ? 'text-white/60 group-hover:text-white/90' : 'text-brand-dark/60 group-hover:text-brand-dark/90'}`}>
             {description}
           </p>
         </div>
+
+        {/* Action Button on Hover */}
+        <div className="mt-6 overflow-hidden">
+          <div className="flex items-center gap-2 text-[10px] font-black tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+            <span className={className.includes('bg-brand-dark') ? 'text-brand' : 'text-[#4A7C59]'}>DISCOVER MORE</span>
+            <div className={`p-1 rounded-full ${className.includes('bg-brand-dark') ? 'bg-brand text-brand-dark' : 'bg-brand-dark text-white'}`}>
+              <ArrowUpRight size={12} />
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity pointer-events-none select-none">
-        <div className="text-[12rem] md:text-[20rem] font-black italic tracking-tighter leading-none">
+      {/* Background Identifier Letter */}
+      <div className="absolute -bottom-10 -right-10 opacity-[0.03] group-hover:opacity-[0.07] transition-all duration-700 group-hover:scale-110 pointer-events-none select-none">
+        <div className={`font-black italic tracking-tighter leading-none 
+          ${className.includes('md:col-span-2') ? 'text-[20rem] md:text-[30rem]' : 'text-[12rem] md:text-[18rem]'}`}>
           {tag.slice(0, 1)}
         </div>
       </div>
@@ -166,9 +175,9 @@ export function SummitHighlights() {
           </p>
         </motion.div>
 
-        <div className="flex-1 grid grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-3 md:gap-3 lg:gap-4 md:min-h-0 pb-2 h-auto md:h-full">
+        <div className="flex-1 grid grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-5 md:gap-6 lg:gap-8 md:min-h-0 pb-8 h-auto md:h-full">
           {highlights.map((item, idx) => (
-            <BentoCard key={idx} {...item} delay={idx * 0.1} className={`${item.className} min-h-[240px] md:min-h-0 h-full w-full`} />
+            <BentoCard key={idx} {...item} delay={idx * 0.1} className={`${item.className} min-h-[320px] md:min-h-0 h-full w-full`} />
           ))}
         </div>
       </div>
@@ -250,17 +259,20 @@ export function About() {
           <div className="w-full max-w-7xl mx-auto rounded-[2rem] md:rounded-[3.5rem] border border-white/50 shadow-[0_20px_60px_rgba(0,0,0,0.05)] bg-white/70 backdrop-blur-xl flex flex-col md:flex-row overflow-hidden transition-all duration-700 max-h-full">
 
             {/* Left Content Column */}
-            <div className="flex-1 p-6 md:p-16 flex flex-col justify-center relative shrink-0">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
+            <div className="flex-1 p-6 md:p-14 lg:p-16 flex flex-col justify-center relative shrink-0">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-4xl md:text-7xl lg:text-8xl font-black text-brand-dark mb-4 md:mb-10 italic tracking-tighter"
+                className="mb-4 md:mb-6"
               >
-                About
-              </motion.h2>
+                <span className="text-brand font-black tracking-[0.5em] text-[8px] md:text-[10px] uppercase mb-2 block">Our Vision</span>
+                <h2 className="text-4xl md:text-7xl lg:text-8xl font-black text-brand-dark italic tracking-tighter leading-none">
+                  About
+                </h2>
+              </motion.div>
 
-              <div className="flex gap-6 md:gap-8 h-full min-h-[120px] md:min-h-[200px]">
+              <div className="flex gap-6 md:gap-8 h-full min-h-[140px] md:min-h-[180px] mb-8 lg:mb-12">
                 {/* Visual Progress Bar */}
                 <div className="w-1 md:w-1.5 bg-brand/10 rounded-full h-auto relative overflow-hidden shrink-0">
                   <motion.div
@@ -292,6 +304,36 @@ export function About() {
                       </p>
                     </motion.div>
                   </AnimatePresence>
+                </div>
+              </div>
+
+              {/* Integrated "Who Can Join" Section */}
+              <div className="mt-auto pt-6 border-t border-brand/5">
+                <span className="text-brand font-black tracking-[0.4em] text-[8px] uppercase mb-4 block">Who Can Join?</span>
+                <div className="flex flex-wrap gap-x-6 gap-y-2">
+                  {[
+                    "Entrepreneurship Enthusiasts",
+                    "Innovative Project Creators",
+                    "Funding & Mentorship Seekers",
+                    "Student Startup Founders",
+                    "Executive Committee Leaders",
+                    "IEDC Members & Supporters",
+                    "Nodal Officers & Enablers"
+                  ].map((tag, i) => (
+                    <motion.div
+                      key={tag}
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.1 + i * 0.05 }}
+                      className="flex items-center gap-2 group cursor-default"
+                    >
+                      <div className="w-1 h-1 rounded-full bg-brand/30 group-hover:bg-brand transition-all duration-300" />
+                      <span className="text-[9px] md:text-[10px] font-black italic uppercase tracking-[0.1em] text-brand-dark/40 group-hover:text-brand-dark transition-colors duration-300">
+                        {tag}
+                      </span>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
             </div>
