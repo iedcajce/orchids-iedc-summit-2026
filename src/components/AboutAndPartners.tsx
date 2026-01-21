@@ -395,7 +395,7 @@ export function Partners() {
           transition={{ duration: 0.8 }}
           className="bg-[#f8faf9] rounded-[4rem] p-12 md:p-24 shadow-inner space-y-32"
         >
-          <div className="relative">
+          {/* <div className="relative">
             <p className="text-left text-brand-dark/40 font-black uppercase tracking-[0.2em] text-[10px] mb-12 border-l-4 border-brand pl-6">Title Sponsor</p>
             <div className="flex justify-center">
               <motion.div
@@ -405,12 +405,12 @@ export function Partners() {
                 <div className="w-48 h-10 bg-brand/10 rounded-full animate-pulse" />
               </motion.div>
             </div>
-          </div>
+          </div> */}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
             <div>
               <p className="text-left text-brand-dark/40 font-black uppercase tracking-[0.2em] text-[10px] mb-12 border-l-4 border-brand pl-6">Powered By</p>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <div className="flex flex-row flex-wrap gap-6 justify-center items-center">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   className="w-48 h-24 bg-white rounded-2xl shadow-xl flex items-center justify-center p-4 border border-brand/5"
@@ -423,12 +423,18 @@ export function Partners() {
                 >
                   <Image src="/images/powredby/iedc_kerala.png" alt="IEDC Kerala" width={120} height={60} className="object-contain w-full h-full" />
                 </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="w-48 h-24 bg-white rounded-2xl shadow-xl flex items-center justify-center p-4 border border-brand/5"
+                >
+                  <Image src="/images/powredby/startupvally.png" alt="Startup Valley" width={120} height={60} className="object-contain w-full h-full" />
+                </motion.div>
               </div>
             </div>
 
             <div>
               <p className="text-left text-brand-dark/40 font-black uppercase tracking-[0.2em] text-[10px] mb-12 border-l-4 border-brand pl-6">Hosted By</p>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <div className="flex flex-col gap-6 justify-center items-center">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   className="w-48 h-24 bg-white rounded-2xl shadow-xl flex items-center justify-center p-4 border border-brand/5"
@@ -443,9 +449,33 @@ export function Partners() {
                 </motion.div>
               </div>
             </div>
+
+            <div>
+              <p className="text-left text-brand-dark/40 font-black uppercase tracking-[0.2em] text-[10px] mb-12 border-l-4 border-brand pl-6">Marketing Partner</p>
+              <div className="flex justify-center flex-col gap-6 items-center">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="w-48 h-24 bg-white rounded-2xl shadow-xl flex items-center justify-center p-4 border border-brand/5"
+                >
+                  <Image src="/images/incial_logo.jpg" alt="Incial" width={120} height={60} className="object-contain w-full h-full" />
+                </motion.div>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-left text-brand-dark/40 font-black uppercase tracking-[0.2em] text-[10px] mb-12 border-l-4 border-brand pl-6">Technical Partner</p>
+              <div className="flex justify-center flex-col gap-6 items-center">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="w-48 h-24 bg-white rounded-2xl shadow-xl flex items-center justify-center p-4 border border-brand/5"
+                >
+                  <Image src="/images/agrowtein.png" alt="Agrowtein" width={120} height={60} className="object-contain w-full h-full" />
+                </motion.div>
+              </div>
+            </div>
           </div>
 
-          <div>
+          {/* <div>
             <p className="text-left text-brand-dark/40 font-black uppercase tracking-[0.2em] text-[10px] mb-12 border-l-4 border-brand pl-6">Startup Enablers</p>
             <div className="flex flex-wrap justify-center gap-12 md:gap-24">
               {[1, 2, 3, 4].map((i) => (
@@ -458,18 +488,9 @@ export function Partners() {
                 </motion.div>
               ))}
             </div>
-          </div>
+          </div> */}
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="flex justify-center pt-8"
-          >
-            <Button className="bg-[#4A7C59] hover:bg-[#386144] text-white rounded-full px-12 py-6 h-auto uppercase text-xs font-bold tracking-widest shadow-[0_20px_40px_rgba(74,124,89,0.3)] transition-all hover:shadow-xl hover:-translate-y-0.5 active:scale-95">
-              View All Partners
-            </Button>
-          </motion.div>
+
         </motion.div>
       </div>
     </section>
