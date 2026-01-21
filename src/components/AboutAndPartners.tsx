@@ -407,6 +407,44 @@ export function Partners() {
             </div>
           </div>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
+            <div>
+              <p className="text-left text-brand-dark/40 font-black uppercase tracking-[0.2em] text-[10px] mb-12 border-l-4 border-brand pl-6">Powered By</p>
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="w-48 h-24 bg-white rounded-2xl shadow-xl flex items-center justify-center p-4 border border-brand/5"
+                >
+                  <Image src="/images/powredby/ksum.svg" alt="KSUM" width={120} height={60} className="object-contain w-full h-full" />
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="w-48 h-24 bg-white rounded-2xl shadow-xl flex items-center justify-center p-4 border border-brand/5"
+                >
+                  <Image src="/images/powredby/iedc_kerala.png" alt="IEDC Kerala" width={120} height={60} className="object-contain w-full h-full" />
+                </motion.div>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-left text-brand-dark/40 font-black uppercase tracking-[0.2em] text-[10px] mb-12 border-l-4 border-brand pl-6">Hosted By</p>
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="w-48 h-24 bg-white rounded-2xl shadow-xl flex items-center justify-center p-4 border border-brand/5"
+                >
+                  <Image src="/images/hosted_by/ajce_logo.png" alt="AJCE" width={120} height={60} className="object-contain w-full h-full" />
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="w-48 h-24 bg-white rounded-2xl shadow-xl flex items-center justify-center p-4 border border-brand/5"
+                >
+                  <Image src="/images/hosted_by/iedc_ajce.png" alt="IEDC AJCE" width={120} height={60} className="object-contain w-full h-full" />
+                </motion.div>
+              </div>
+            </div>
+          </div>
+
           <div>
             <p className="text-left text-brand-dark/40 font-black uppercase tracking-[0.2em] text-[10px] mb-12 border-l-4 border-brand pl-6">Startup Enablers</p>
             <div className="flex flex-wrap justify-center gap-12 md:gap-24">

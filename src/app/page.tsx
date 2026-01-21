@@ -34,7 +34,7 @@ export default function Home() {
               <Ticker />
             </div>
             <div className="snap-start"><About /></div>
-            <div className="snap-start"><CountdownSection /></div>
+            {/* <div className="snap-start"><CountdownSection /></div> */}
             <div className="snap-start"><FeaturedEvents /></div>
             <div className="snap-start"><Speakers /></div>
             <div className="snap-start"><Tickets /></div>
