@@ -2,9 +2,13 @@
 
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { motion, useScroll, useTransform, AnimatePresence, animate } from "framer-motion";
+import { motion, AnimatePresence, animate } from "framer-motion";
 import {
-  ArrowUpRight
+  ArrowUpRight,
+  TrendingUp,
+  Users,
+  CircleDollarSign,
+  Cpu
 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
@@ -50,23 +54,12 @@ function BentoCard({
         }}
       />
 
-      {/* Arrow Top Right - Removed */}
-      {/* <div className="absolute top-6 right-6 md:top-8 md:right-8 z-20">
-        <motion.div
-          animate={{ rotate: isHovered ? 45 : 0 }}
-          className={`p-2.5 rounded-full ${className.includes('bg-brand-dark') ? 'bg-brand text-white' : 'bg-brand-dark text-white'}`}
-        >
-          <ArrowUpRight size={20} />
-        </motion.div>
-      </div> */}
-
       <div className="relative z-10 w-full flex flex-col items-start gap-4">
         <span className={`text-[10px] font-black tracking-[0.2em] px-3 py-1 rounded-full ${className.includes('bg-brand-dark') ? 'bg-white/10 text-white/60' : 'bg-brand/10 text-brand'}`}>
           {tag}
         </span>
 
         <div>
-          {/* Responsive text sizing to prevent overflow */}
           <h3 className={`text-2xl md:text-3xl lg:text-4xl font-black mb-2 italic tracking-tighter leading-[0.9] uppercase ${className.includes('bg-brand-dark') ? 'text-white' : 'text-brand-dark'}`} style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
             {title}
           </h3>
@@ -87,10 +80,6 @@ function BentoCard({
 
 export function SummitHighlights() {
   const containerRef = useRef<HTMLDivElement>(null);
-  /* const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  }); */
 
   const highlights = [
     {
@@ -125,7 +114,6 @@ export function SummitHighlights() {
     }
   ];
 
-  // Auto-scroll effect
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -135,7 +123,7 @@ export function SummitHighlights() {
           }
         });
       },
-      { threshold: 0.2 } // Trigger when 20% visible
+      { threshold: 0.2 }
     );
 
     if (containerRef.current) {
@@ -176,37 +164,36 @@ export function SummitHighlights() {
   );
 }
 
+const tracks = [
+  {
+    id: "business",
+    title: "Business Development",
+    icon: TrendingUp,
+    description: "This track helps startups identify their strengths and weaknesses, understand market requirements, and develop a clear idea-to-market pathway through networking, mentoring, and expert-led sessions."
+  },
+  {
+    id: "mentoring",
+    title: "Mentoring",
+    icon: Users,
+    description: "A dedicated mentoring track led by industry experts, successful founders, and management professionals. One-to-one mentoring opportunities will be provided for selected teams."
+  },
+  {
+    id: "investment",
+    title: "Investment",
+    icon: CircleDollarSign,
+    description: "This track focuses on when, where, and how to raise funds. Key highlights include investment pitching sessions, interactions with investors, and exclusive sessions on government grants and funding schemes."
+  },
+  {
+    id: "technology",
+    title: "Technology",
+    icon: Cpu,
+    description: "Focused on optimizing technology for market-ready product development. This track includes specialized workshops, expert interactions, and technical guidance to build commercially feasible solutions."
+  }
+];
+
 export function About() {
   const containerRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
-
-  const [activeTab, setActiveTab] = useState(0);
-
-  // Optimized scroll listener to prevent unnecessary re-renders
-  useEffect(() => {
-    return scrollYProgress.on("change", (latest) => {
-      const newTab = latest < 0.35 ? 0 : latest < 0.7 ? 1 : 2;
-      setActiveTab(prev => (prev !== newTab ? newTab : prev));
-    });
-  }, [scrollYProgress]);
-
-  const content = [
-    {
-      text: "IEDC Startup Summit 2026 is a flagship, student-focused initiative and the largest hillside student startup summit, designed to help students transform ideas, academic projects, and prototypes into market-ready, commercially viable ventures.",
-      highlightStats: ["IEDCs", "Nodal Officers", "IEDC Clusters"]
-    },
-    {
-      text: "The summit provides a structured platform combining networking, mentoring, technology enablement, and investment access, enabling participants to validate ideas, build scalable products, and connect with industry experts, investors, and the broader startup ecosystem.",
-      highlightStats: ["Investors", "Mentors", "Speakers"]
-    },
-    {
-      text: "Open to all business and startup enthusiasts, the programme supports innovation-driven student startups through focused tracks in business development, mentoring, funding, and technology.",
-      highlightStats: ["Startups", "Innovators"]
-    }
-  ];
+  const [activeTrack, setActiveTrack] = useState(0);
 
   const stats = [
     { label: "IEDCs", value: "557" },
@@ -219,112 +206,138 @@ export function About() {
     { label: "Investors", value: "10+" },
   ];
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveTrack((prev) => (prev + 1) % tracks.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section ref={containerRef} className="relative h-[250vh] bg-white">
-      <div className="sticky top-0 h-[100dvh] w-full overflow-hidden flex flex-col">
-        {/* Background Elements */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <Image
-            src="/images/about_background.png"
-            alt="About Background"
-            fill
-            className="object-cover opacity-30 scale-105"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-white via-white/60 to-white" />
-        </div>
-
-        {/* Marquee Header */}
-        <div className="relative z-10 w-full bg-brand-dark py-2 md:py-3 overflow-hidden whitespace-nowrap shadow-lg flex-shrink-0 mt-14 md:mt-24">
-          <div className="inline-block animate-marquee-slow">
-            {Array(20).fill("IEDC SUMMIT '26  •  TRANSFORMING IDEAS  •  ").map((text, i) => (
-              <span key={i} className="text-white/30 text-[10px] md:text-xs font-black uppercase tracking-[0.3em] mx-4">
-                {text}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Main Content Area */}
-        <div className="relative z-10 w-full flex-1 flex flex-col justify-center px-4 md:px-12 lg:px-24 pb-4 md:pb-0 min-h-0">
-          <div className="w-full max-w-7xl mx-auto rounded-[2rem] md:rounded-[3.5rem] border border-white/50 shadow-[0_20px_60px_rgba(0,0,0,0.05)] bg-white/70 backdrop-blur-xl flex flex-col md:flex-row overflow-hidden transition-all duration-700 max-h-full">
-
-            {/* Left Content Column */}
-            <div className="flex-1 p-6 md:p-16 flex flex-col justify-center relative shrink-0">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-4xl md:text-7xl lg:text-8xl font-black text-brand-dark mb-4 md:mb-10 italic tracking-tighter"
-              >
-                About
-              </motion.h2>
-
-              <div className="flex gap-6 md:gap-8 h-full min-h-[120px] md:min-h-[200px]">
-                {/* Visual Progress Bar */}
-                <div className="w-1 md:w-1.5 bg-brand/10 rounded-full h-auto relative overflow-hidden shrink-0">
-                  <motion.div
-                    animate={{ top: `${activeTab * 33.3}%`, height: '33.3%' }}
-                    className="absolute w-full bg-brand rounded-full transition-all duration-500 ease-in-out"
-                  />
-                </div>
-
-                {/* Text Content */}
-                <div className="flex-1 relative">
-                  {/* Ghost element to reserve height based on the longest paragraph */}
-                  <div className="invisible pointer-events-none select-none" aria-hidden="true">
-                    <p className="text-sm md:text-lg lg:text-xl italic font-medium leading-relaxed text-justify">
-                      The summit provides a structured platform combining networking, mentoring, technology enablement, and investment access, enabling participants to validate ideas, build scalable products, and connect with industry experts, investors, and the broader startup ecosystem.
-                    </p>
-                  </div>
-
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={activeTab}
-                      initial={{ opacity: 0, x: 10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -10 }}
-                      transition={{ duration: 0.4, ease: "easeOut" }}
-                      className="absolute top-0 left-0 w-full h-full"
-                    >
-                      <p className="text-brand-dark/80 text-sm md:text-lg lg:text-xl italic font-medium leading-relaxed text-justify">
-                        {content[activeTab].text}
-                      </p>
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Stats Column */}
-            <div className="bg-brand/5 p-6 md:p-14 grid grid-cols-2 lg:grid-cols-2 gap-x-4 gap-y-4 md:gap-y-8 content-center md:border-l border-brand/10 md:w-[45%] lg:w-[40%] transition-colors duration-500 overflow-y-auto">
-              {stats.map((stat, i) => {
-                const isHighlighted = content[activeTab].highlightStats.includes(stat.label);
-                return (
-                  <motion.div
-                    key={i}
-                    animate={{ opacity: isHighlighted ? 1 : 0.3, scale: isHighlighted ? 1.05 : 1 }}
-                    transition={{ duration: 0.5 }}
-                    className="text-left"
-                  >
-                    <p className={`text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter whitespace-nowrap transition-colors duration-500 ${isHighlighted ? 'text-brand-dark' : 'text-brand-dark/50'}`}>
-                      <Counter value={stat.value} isActive={isHighlighted} />
-                    </p>
-                    <p className={`text-[9px] uppercase font-bold tracking-[0.2em] transition-colors duration-500 ${isHighlighted ? 'text-brand' : 'text-brand-dark/40'}`}>
-                      {stat.label}
-                    </p>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
+    <section ref={containerRef} className="relative min-h-screen bg-white py-16 md:py-24 overflow-hidden">
+      {/* Sharper Background Pattern */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `radial-gradient(#439162 1px, transparent 1px)`,
+            backgroundSize: '32px 32px'
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white" />
       </div>
 
-      <style jsx>{`
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .animate-marquee-slow { animation: marquee 80s linear infinite; }
-      `}</style>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12 md:mb-16"
+        >
+          <div className="inline-block px-4 py-1.5 rounded-full bg-brand/5 border border-brand/10 mb-6">
+            <span className="text-brand text-[10px] md:text-xs font-black uppercase tracking-[0.2em]">The Flagship Initiative</span>
+          </div>
+          <h2 className="text-4xl md:text-6xl lg:text-8xl font-black text-brand-dark mb-6 italic tracking-tighter uppercase leading-[0.9]">
+            About <span className="text-brand">The Summit</span>
+          </h2>
+          <p className="text-brand-dark/60 text-xs md:text-sm max-w-2xl mx-auto leading-relaxed font-medium uppercase tracking-wider">
+            IEDC Startup Summit 2026 is designed to nurture deep-tech student startups, transforming academic projects into market-ready ventures.
+          </p>
+        </motion.div>
+
+        {/* <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="bg-white rounded-[2.5rem] md:rounded-[4rem] border border-brand/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)] p-8 md:p-14 mb-16 relative overflow-hidden group"
+        >
+          <div className="absolute top-0 right-0 w-64 h-64 bg-brand/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-brand/10 transition-colors duration-1000" />
+          <p className="relative z-10 text-brand-dark/80 text-base md:text-2xl leading-relaxed text-center max-w-4xl mx-auto font-medium italic tracking-tight">
+            The summit ensures effective networking to nurture and scale student startups through peer interactions, market connections, technological support, and fundraising opportunities. These objectives are delivered through <span className="font-black text-brand underline decoration-brand/20 underline-offset-8">four dedicated tracks</span>:
+          </p>
+        </motion.div> */}
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
+          <div className="space-y-4">
+            {tracks.map((track, index) => (
+              <motion.div
+                key={track.id}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                onClick={() => setActiveTrack(index)}
+                className={`group cursor-pointer p-5 md:p-6 rounded-[2rem] border transition-all duration-500 flex items-center gap-6 ${activeTrack === index
+                  ? "bg-brand-dark border-brand-dark shadow-2xl shadow-brand-dark/20 scale-[1.02]"
+                  : "bg-white border-brand/5 hover:border-brand/20 hover:bg-brand/5"
+                  }`}
+              >
+                <div className={`shrink-0 w-16 h-16 rounded-2xl transition-all duration-500 flex items-center justify-center transform-gpu ${activeTrack === index
+                  ? "bg-brand text-white shadow-xl shadow-brand/30 rotate-3"
+                  : "bg-brand/10 text-brand group-hover:scale-110"
+                  }`}>
+                  <track.icon size={32} strokeWidth={2.5} className="transition-transform duration-500" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className={`text-xl md:text-3xl font-black tracking-tighter mb-1 transition-colors duration-500 uppercase italic leading-none ${activeTrack === index ? "text-white" : "text-brand-dark"
+                    }`} style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
+                    {track.title}
+                  </h3>
+                  <AnimatePresence mode="wait">
+                    {activeTrack === index && (
+                      <motion.p
+                        initial={{ opacity: 0, height: 0, y: -5 }}
+                        animate={{ opacity: 1, height: "auto", y: 0 }}
+                        exit={{ opacity: 0, height: 0, y: -5 }}
+                        transition={{ duration: 0.3 }}
+                        className="text-white/70 text-sm leading-relaxed font-medium line-clamp-3 mt-2"
+                      >
+                        {track.description}
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-brand/5 rounded-[2rem] p-6 md:p-10 grid grid-cols-2 gap-4 md:gap-6 content-center"
+          >
+            {stats.map((stat, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="text-left"
+              >
+                <p className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter text-brand-dark">
+                  <Counter value={stat.value} isActive={true} />
+                </p>
+                <p className="text-[9px] md:text-[10px] uppercase font-bold tracking-[0.15em] text-brand">
+                  {stat.label}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-brand-dark rounded-[2rem] p-8 md:p-12 text-center"
+        >
+          <p className="text-white/90 text-sm md:text-lg leading-relaxed max-w-3xl mx-auto italic">
+            "IEDC Startup Summit 2026 will be the <span className="text-brand font-bold">largest hillside student startup summit</span>, aimed at empowering students to transform their ideas and academic projects into market-driven, commercially viable products."
+          </p>
+        </motion.div>
+      </div>
     </section>
   );
 }
@@ -332,13 +345,9 @@ export function About() {
 function Counter({ value, isActive }: { value: string; isActive: boolean }) {
   const ref = useRef<HTMLSpanElement>(null);
 
-  // Extract number and suffix (any non-numeric characters after the number)
-  // e.g., "100k+" -> num: 100, suffix: "k+"
-  // e.g., "557" -> num: 557, suffix: ""
   const match = value.match(/^([\d.,]+)(.*)$/);
   const numericValue = match ? parseFloat(match[1].replace(/,/g, '')) : 0;
   const suffix = match ? match[2] : value;
-  const prefix = ""; // Determine prefix if needed, but for now assuming suffix based on examples
 
   useEffect(() => {
     if (isActive) {
@@ -347,14 +356,12 @@ function Counter({ value, isActive }: { value: string; isActive: boolean }) {
         ease: "easeOut",
         onUpdate: (v: number) => {
           if (ref.current) {
-            // Simplify floor and locale string
             ref.current.textContent = Math.floor(v).toLocaleString() + suffix;
           }
         }
       });
       return () => controls.stop();
     } else {
-      // When not active, show the full static value (dimmed state)
       if (ref.current) {
         ref.current.textContent = value;
       }
@@ -363,7 +370,6 @@ function Counter({ value, isActive }: { value: string; isActive: boolean }) {
 
   return <span ref={ref}>{value}</span>;
 }
-
 
 export function Partners() {
   return (

@@ -33,12 +33,13 @@ export default function Home() {
               <Hero />
               <Ticker />
             </div>
+            <div className="snap-start"><About /></div>
             <div className="snap-start"><CountdownSection /></div>
             <div className="snap-start"><FeaturedEvents /></div>
             <div className="snap-start"><Speakers /></div>
             <div className="snap-start"><Tickets /></div>
             <div className="snap-start"><SummitHighlights /></div>
-            <div className="snap-start"><About /></div>
+
             <div className="snap-start"><Eligibility /></div>
             <div className="snap-start"><Partners /></div>
             <div className="snap-start"><Location /></div>
