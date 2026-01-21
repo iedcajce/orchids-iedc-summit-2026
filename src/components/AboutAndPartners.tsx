@@ -4,7 +4,14 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { motion, useScroll, useTransform, AnimatePresence, animate } from "framer-motion";
 import {
-  ArrowUpRight
+  ArrowUpRight,
+  Sparkles,
+  Rocket,
+  TrendingUp,
+  UserCheck,
+  Users,
+  Heart,
+  ShieldCheck
 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
@@ -244,10 +251,10 @@ export function About() {
         </div>
 
         {/* Marquee Header */}
-        <div className="relative z-10 w-full bg-brand-dark py-2 md:py-3 overflow-hidden whitespace-nowrap shadow-lg flex-shrink-0 mt-14 md:mt-24">
+        <div className="relative z-20 w-full bg-brand-dark py-2 md:py-3 overflow-hidden whitespace-nowrap shadow-xl flex-shrink-0 mt-16 md:mt-20">
           <div className="inline-block animate-marquee-slow">
             {Array(20).fill("IEDC SUMMIT '26  •  TRANSFORMING IDEAS  •  ").map((text, i) => (
-              <span key={i} className="text-white/30 text-[10px] md:text-xs font-black uppercase tracking-[0.3em] mx-4">
+              <span key={i} className="text-white/40 text-[10px] md:text-xs font-black uppercase tracking-[0.3em] mx-6">
                 {text}
               </span>
             ))}
@@ -259,15 +266,18 @@ export function About() {
           <div className="w-full max-w-7xl mx-auto rounded-[2rem] md:rounded-[3.5rem] border border-white/50 shadow-[0_20px_60px_rgba(0,0,0,0.05)] bg-white/70 backdrop-blur-xl flex flex-col md:flex-row overflow-hidden transition-all duration-700 max-h-full">
 
             {/* Left Content Column */}
-            <div className="flex-1 p-6 md:p-14 lg:p-16 flex flex-col justify-center relative shrink-0">
+            <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col justify-center relative shrink-0">
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="mb-4 md:mb-6"
+                className="mb-6 md:mb-8"
               >
-                <span className="text-brand font-black tracking-[0.5em] text-[8px] md:text-[10px] uppercase mb-2 block">Our Vision</span>
-                <h2 className="text-4xl md:text-7xl lg:text-8xl font-black text-brand-dark italic tracking-tighter leading-none">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-8 h-px bg-brand" />
+                  <span className="text-brand font-black tracking-[0.4em] text-[10px] uppercase opacity-70">The Mission</span>
+                </div>
+                <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-br from-brand-dark to-brand italic tracking-tighter leading-tight">
                   About
                 </h2>
               </motion.div>
@@ -308,29 +318,35 @@ export function About() {
               </div>
 
               {/* Integrated "Who Can Join" Section */}
-              <div className="mt-auto pt-6 border-t border-brand/5">
-                <span className="text-brand font-black tracking-[0.4em] text-[8px] uppercase mb-4 block">Who Can Join?</span>
-                <div className="flex flex-wrap gap-x-6 gap-y-2">
+              <div className="mt-auto pt-8 border-t border-brand/10">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="h-px w-12 bg-brand/20" />
+                  <span className="text-brand font-black tracking-[0.3em] text-[10px] md:text-[11px] uppercase whitespace-nowrap bg-white px-2">WHO CAN JOIN?</span>
+                  <div className="h-px flex-1 bg-brand/20" />
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
                   {[
-                    "Entrepreneurship Enthusiasts",
-                    "Innovative Project Creators",
-                    "Funding & Mentorship Seekers",
-                    "Student Startup Founders",
-                    "Executive Committee Leaders",
-                    "IEDC Members & Supporters",
-                    "Nodal Officers & Enablers"
-                  ].map((tag, i) => (
+                    { text: "Entrepreneurship Enthusiasts", icon: <Sparkles className="w-3.5 h-3.5" /> },
+                    { text: "Innovative Project Creators", icon: <Rocket className="w-3.5 h-3.5" /> },
+                    { text: "Funding & Mentorship Seekers", icon: <TrendingUp className="w-3.5 h-3.5" /> },
+                    { text: "Student Startup Founders", icon: <UserCheck className="w-3.5 h-3.5" /> },
+                    { text: "Executive Committee Leaders", icon: <Users className="w-3.5 h-3.5" /> },
+                    { text: "IEDC Members & Supporters", icon: <Heart className="w-3.5 h-3.5" /> },
+                    { text: "Nodal Officers & Enablers", icon: <ShieldCheck className="w-3.5 h-3.5" /> }
+                  ].map((item, i) => (
                     <motion.div
-                      key={tag}
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
+                      key={item.text}
+                      initial={{ opacity: 0, x: -5 }}
+                      whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.1 + i * 0.05 }}
-                      className="flex items-center gap-2 group cursor-default"
+                      className="flex items-center gap-3 group cursor-pointer"
                     >
-                      <div className="w-1 h-1 rounded-full bg-brand/30 group-hover:bg-brand transition-all duration-300" />
-                      <span className="text-[9px] md:text-[10px] font-black italic uppercase tracking-[0.1em] text-brand-dark/40 group-hover:text-brand-dark transition-colors duration-300">
-                        {tag}
+                      <div className="w-8 h-8 rounded-xl bg-brand/5 flex items-center justify-center text-brand/50 group-hover:bg-brand group-hover:text-white transition-all duration-300 shadow-sm">
+                        {item.icon}
+                      </div>
+                      <span className="text-[11px] md:text-[12px] font-bold tracking-normal text-brand-dark/60 group-hover:text-brand-dark transition-colors duration-300">
+                        {item.text}
                       </span>
                     </motion.div>
                   ))}
@@ -339,20 +355,23 @@ export function About() {
             </div>
 
             {/* Right Stats Column */}
-            <div className="bg-brand/5 p-6 md:p-14 grid grid-cols-2 lg:grid-cols-2 gap-x-4 gap-y-4 md:gap-y-8 content-center md:border-l border-brand/10 md:w-[45%] lg:w-[40%] transition-colors duration-500 overflow-y-auto">
+            <div className="bg-brand/5 p-6 md:p-14 grid grid-cols-2 lg:grid-cols-2 gap-x-6 gap-y-6 md:gap-y-10 content-center md:border-l border-brand/10 md:w-[45%] lg:w-[42%] transition-colors duration-500 overflow-y-auto">
               {stats.map((stat, i) => {
                 const isHighlighted = content[activeTab].highlightStats.includes(stat.label);
                 return (
                   <motion.div
                     key={i}
-                    animate={{ opacity: isHighlighted ? 1 : 0.3, scale: isHighlighted ? 1.05 : 1 }}
+                    animate={{
+                      opacity: isHighlighted ? 1 : 0.25,
+                      scale: isHighlighted ? 1.05 : 1,
+                    }}
                     transition={{ duration: 0.5 }}
-                    className="text-left"
+                    className={`text-left p-4 rounded-2xl transition-all duration-500 ${isHighlighted ? 'bg-white shadow-xl shadow-brand/5 border border-brand/10' : 'bg-transparent border border-transparent'}`}
                   >
-                    <p className={`text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter whitespace-nowrap transition-colors duration-500 ${isHighlighted ? 'text-brand-dark' : 'text-brand-dark/50'}`}>
+                    <p className={`text-3xl md:text-5xl lg:text-6xl font-black tracking-tighter whitespace-nowrap transition-colors duration-500 ${isHighlighted ? 'text-brand' : 'text-brand-dark/40'}`}>
                       <Counter value={stat.value} isActive={isHighlighted} />
                     </p>
-                    <p className={`text-[9px] uppercase font-bold tracking-[0.2em] transition-colors duration-500 ${isHighlighted ? 'text-brand' : 'text-brand-dark/40'}`}>
+                    <p className={`text-[10px] font-black uppercase tracking-[0.2em] mt-1 transition-colors duration-500 ${isHighlighted ? 'text-brand-dark' : 'text-brand-dark/30'}`}>
                       {stat.label}
                     </p>
                   </motion.div>
