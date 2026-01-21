@@ -142,10 +142,10 @@ export function Hero() {
         className="absolute bottom-6 md:bottom-10 right-6 md:right-16 z-20 flex flex-col items-end text-right"
       >
         <p className="text-sm md:text-lg font-semibold tracking-wide text-white/80 leading-tight max-w-xs md:max-w-md uppercase" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>
-          Amal Jyothi College of Engineering
+          Amal Jyothi College of Engineering(Autonomous)
         </p>
         <p className="text-xs md:text-sm font-medium text-white/60 mt-1 uppercase tracking-widest" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>
-          Kerala • 07 March 2026
+          Kanjirappally • 07 March 2026
         </p>
       </motion.div>
     </section>

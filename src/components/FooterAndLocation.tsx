@@ -213,51 +213,135 @@ export function PreviousSummits() {
 
 export function Footer() {
   return (
-    <footer className="relative pt-40 pb-16 px-6 md:px-12 overflow-hidden">
+    <footer className="relative pt-16 pb-8 px-6 md:px-12 overflow-hidden">
+      {/* Cinematic Background */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/footer_background.webp"
           alt="Footer Background"
           fill
-          className="object-cover brightness-[0.4]"
+          className="object-cover brightness-[0.25] contrast-[1.1]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
+        {/* Main Brand Card */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="bg-white/5 backdrop-blur-3xl border border-white/10 rounded-[3.5rem] p-10 md:p-16 mb-20 flex flex-col md:flex-row items-center justify-between gap-12"
+          viewport={{ once: true }}
+          className="bg-white/5 backdrop-blur-[20px] border border-white/5 rounded-[2.5rem] p-6 md:p-8 mb-10 flex flex-col md:flex-row items-center justify-between gap-8 overflow-hidden relative"
         >
-          <div className="flex items-center gap-6">
-            <motion.div
-              whileHover={{ rotate: 10 }}
-              className="w-20 h-20 bg-white rounded-[1.5rem] flex items-center justify-center text-brand font-black text-4xl shadow-2xl shadow-brand/20"
-            >
-              S
-            </motion.div>
-            <div className="text-white">
-              <p className="font-black text-3xl uppercase tracking-tighter leading-none mb-1">IEDC Summit</p>
-              <p className="text-xs uppercase font-black tracking-[0.3em] text-brand opacity-80">Kerala Startup Mission</p>
+          {/* Decorative Background Text */}
+          <div className="absolute -bottom-4 -left-4 text-white/[0.02] text-[10rem] font-black italic select-none pointer-events-none">
+            '26
+          </div>
+
+          <div className="flex flex-col md:flex-row items-center gap-6 relative z-10">
+
+            <div className="text-center md:text-left">
+              <p className="font-black text-2xl md:text-4xl text-white uppercase tracking-tighter leading-tight mb-2 italic">
+                IEDC Startup <span className="text-brand">Summit '26</span>
+              </p>
+              <div className="flex items-center justify-center md:justify-start gap-2">
+                <p className="text-[7px] md:text-[9px] uppercase font-black tracking-[0.25em] text-white/30">Kerala's Largest Innovation Hub</p>
+              </div>
             </div>
           </div>
 
-          <div className="text-center md:text-right text-white space-y-2">
-            <p className="text-[10px] uppercase font-black text-white/40 tracking-[0.4em]">For details mail to</p>
-            <p className="text-2xl font-black hover:text-brand transition-colors cursor-pointer">iedcsummit@ajce.ac.in</p>
+          <div className="flex flex-col items-center md:items-end gap-3 relative z-10">
+            <div className="text-center md:text-right">
+              <p className="text-[7px] uppercase font-black text-white/30 tracking-[0.4em] mb-1">Inquiries</p>
+              <a href="mailto:makerhubiedc@amaljyothi.ac.in" className="text-lg md:text-xl font-black text-white hover:text-brand transition-all duration-300">
+                makerhubiedc@amaljyothi.ac.in
+              </a>
+            </div>
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="px-5 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-white/50 hover:text-white font-black uppercase tracking-widest text-[7px] transition-all backdrop-blur-sm"
+            >
+              Jump to Top ↑
+            </motion.button>
           </div>
         </motion.div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 pt-12 border-t border-white/10 text-white/40 text-[10px] font-black uppercase tracking-[0.4em]">
-          <p>© 2026 KERALA STARTUP MISSION. ALL RIGHTS RESERVED.</p>
+        {/* Organization Social Hubs */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 pb-8 border-b border-white/5">
+          <SocialHubCard
+            label="Government Partner"
+            name="KSUM"
+            desc="Kerala Startup Mission"
+            linkedin="https://www.linkedin.com/company/kerala-startup-mission"
+            instagram="https://www.instagram.com/keralastartupmission/"
+          />
+          <SocialHubCard
+            label="Ecosystem Partner"
+            name="IEDC Kerala"
+            desc="Innovation & Entrepreneurship"
+            linkedin="https://www.linkedin.com/company/iedckerala/"
+            instagram="https://www.instagram.com/iedckerala/"
+          />
+          <SocialHubCard
+            label="Host Institution"
+            name="IEDC AJCE"
+            desc="Amal Jyothi College"
+            linkedin="https://www.linkedin.com/company/iedcajce/"
+            instagram="https://www.instagram.com/iedc.iic.ajce/"
+          />
+        </div>
+
+        {/* Bottom Legal Bar */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-8 text-white/20 text-[8px] font-black uppercase tracking-[0.4em]">
+          <div className="flex flex-col items-center md:items-start">
+            <p>© MAKERHUB IEDC AJCE. ALL RIGHTS RESERVED.</p>
+          </div>
           <div className="flex items-center gap-8">
-            <motion.div whileHover={{ y: -5, color: "#fff" }}><Instagram className="w-6 h-6 cursor-pointer transition-all" /></motion.div>
-            <motion.div whileHover={{ y: -5, color: "#fff" }}><Twitter className="w-6 h-6 cursor-pointer transition-all" /></motion.div>
-            <motion.div whileHover={{ y: -5, color: "#fff" }}><Linkedin className="w-6 h-6 cursor-pointer transition-all" /></motion.div>
+            <a href="#" className="hover:text-white transition-colors">Privacy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms</a>
+            <p className="text-brand/40">#IEDCSummit2026</p>
           </div>
         </div>
       </div>
     </footer>
+  );
+}
+
+function SocialHubCard({ label, name, desc, linkedin, instagram }: { label: string, name: string, desc: string, linkedin?: string, instagram?: string }) {
+  return (
+    <motion.div
+      whileHover={{ y: -3 }}
+      className="bg-white/[0.02] border border-white/5 rounded-[2rem] p-6 flex flex-col items-center md:items-start hover:bg-white/[0.05] hover:border-brand/20 transition-all duration-500 group"
+    >
+      <span className="text-[7px] uppercase font-black text-brand tracking-[0.3em] mb-2">{label}</span>
+      <h4 className="text-lg font-black text-white italic tracking-tight mb-0.5">{name}</h4>
+      <p className="text-[9px] font-medium text-white/30 italic mb-6 uppercase tracking-wider">{desc}</p>
+
+      <div className="flex items-center gap-3">
+        {linkedin && (
+          <a
+            href={linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:bg-brand/20 hover:border-brand/40 transition-all duration-500 shadow-xl"
+          >
+            <Linkedin className="w-4 h-4" />
+          </a>
+        )}
+        {instagram && (
+          <a
+            href={instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:bg-brand/20 hover:border-brand/40 transition-all duration-500 shadow-xl"
+          >
+            <Instagram className="w-4 h-4" />
+          </a>
+        )}
+      </div>
+    </motion.div>
   );
 }

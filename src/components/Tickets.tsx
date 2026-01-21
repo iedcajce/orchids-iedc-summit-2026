@@ -172,18 +172,20 @@ export function Tickets() {
                     </Button>
                   </motion.div>
 
-                  <div className="space-y-3">
-                    {/* Barcode Mock */}
-                    <div className="flex justify-center gap-0.5 h-10 w-full overflow-hidden opacity-30">
-                      {[...Array(25)].map((_, i) => (
-                        <div
-                          key={i}
-                          className="bg-[#2D4A35] h-full"
-                          style={{ width: `${Math.random() * 5 + 1}px` }}
-                        />
+                  <div className="space-y-2 w-full">
+                    <div className="flex flex-col gap-1.5 items-center justify-center bg-[#E8F3ED]/50 rounded-xl p-3 w-full">
+                      {[
+                        "All Access Pass",
+                        "Buffet Lunch",
+                        "Certificates",
+                        "Goodie Bag"
+                      ].map((benefit, i) => (
+                        <div key={i} className="flex items-center gap-2 text-[10px] md:text-[11px] font-bold text-[#4A7C59]/70 uppercase tracking-wider">
+                          <span className="w-1 h-1 rounded-full bg-[#4A7C59]" />
+                          {benefit}
+                        </div>
                       ))}
                     </div>
-                    <span className="text-[10px] font-mono text-[#4A7C59]/30 tracking-[0.3em] block font-bold">#ISS2026-EB001</span>
                   </div>
                 </div>
               </div>

@@ -1,35 +1,76 @@
 "use client";
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { ArrowUpRight, Linkedin, Youtube, Instagram } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowUpRight, Linkedin, Youtube, Instagram, X } from "lucide-react";
 
 export function FeaturedEvents() {
+  const [selectedEvent, setSelectedEvent] = useState<number | null>(null);
+
   const events = [
     {
-      title: "Idea Pitch",
+      title: "Business Dev",
+      fullTitle: "Business Development Session",
+      subtitle: "Are You Looking to Earn While You Study?",
       image: "/images/event_idea_pitch.jpg",
-      desc: "Pitch your revolutionary ideas to top-tier investors.",
-      badge: "EXPANDED",
+      desc: "Earn while you study. Connect with industries for part-time business and franchise opportunities.",
+      fullDesc: (
+        <>
+          <p className="mb-4">
+            This session provides a unique platform for doing business by connecting student startups with government and private sector industries. The programme promotes the “earn while you learn” model by creating part-time business and entrepreneurship opportunities for students.
+          </p>
+          <p>
+            Participants will gain practical exposure to the basics of customer acquisition, business operations, and revenue generation, along with clear financial benefits. The programme also aims to facilitate franchise and dealership opportunities for a significant number of interested and eligible students.
+          </p>
+        </>
+      ),
+      badge: "BUSINESS",
     },
     {
-      title: "Workshops",
+      title: "Fundraising",
+      fullTitle: "Fund Raising",
+      subtitle: "Looking for funding for your product or startup?",
       image: "/images/event_workshops.jpg",
-      desc: "Hands-on sessions with industry leaders.",
-      badge: "NEW",
+      desc: "Secure funding. Interact with investors and explore government grants and CSR support.",
+      fullDesc: (
+        <>
+          <p className="mb-4">
+            A dedicated component focused on fundraising for student startups, offering opportunities to interact directly with investors.
+          </p>
+          <p>
+            This includes the creation of institution-wise investor platforms and expert-led sessions on effectively channeling government and private funding, including CSR support, for idea-to-product development.
+          </p>
+        </>
+      ),
+      badge: "FUNDING",
     },
     {
-      title: "Tech Expo",
-      image: "/images/event_tech_expo.jpg",
-      desc: "Explore the latest innovations from emerging startups.",
-      badge: "EXPANDED",
-    },
-    {
-      title: "Night Meet",
+      title: "Experience",
+      fullTitle: "Learn from the Experience",
+      subtitle: "Looking to meet the influencing entrepreneurs?",
       image: "/images/event_night_meet.jpg",
-      desc: "Build connections that last a lifetime.",
-      badge: "NEW",
+      desc: "Meet influencing entrepreneurs and business leaders to learn creative marketing strategies.",
+      fullDesc: (
+        <p>
+          Opportunity to meet and interact with new-generation entrepreneurs and conventional business leaders who have revamped their marketing strategies through creative thinking.
+        </p>
+      ),
+      badge: "CONNECT",
+    },
+    {
+      title: "Tech Sessions",
+      fullTitle: "Hands on Technology Sessions",
+      subtitle: "Looking to fine-tune your product?",
+      image: "/images/event_tech_expo.jpg",
+      desc: "Hands-on product fine-tuning with SEM, HPLC, GCMS, and IoT. Pre-booking available.",
+      fullDesc: (
+        <p>
+          Hands-on sessions for product development, including access to Scanning Electron Microscopy (SEM), HPLC, GCMS, IoT, and more. Pre-booking facilities will be available.
+        </p>
+      ),
+      badge: "HANDS-ON",
     },
   ];
 
@@ -67,6 +108,7 @@ export function FeaturedEvents() {
                 delay: i * 0.1,
               }}
               whileHover={{ y: -5 }}
+              onClick={() => setSelectedEvent(i)}
               className="relative group overflow-hidden rounded-[2rem] aspect-[2.5/1] md:aspect-[10/12] cursor-pointer bg-[#f8faf9] border border-black/5"
             >
               <Image
@@ -83,23 +125,107 @@ export function FeaturedEvents() {
                 </span>
               </div>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent z-10 p-6 flex flex-col justify-end">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-xl font-black text-white uppercase tracking-tighter leading-none">
-                    {event.title}
-                  </h3>
-                  <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:bg-brand group-hover:border-brand transition-all duration-300">
-                    <ArrowUpRight className="w-4 h-4 text-white group-hover:text-black transition-colors" />
+              <div className="absolute inset-0 z-10 flex flex-col justify-end p-6">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+
+                <div className="relative z-10 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="text-xl font-black text-white uppercase tracking-tighter leading-none">
+                      {event.title}
+                    </h3>
+                    <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:bg-brand group-hover:border-brand transition-all duration-300">
+                      <ArrowUpRight className="w-4 h-4 text-white group-hover:text-black transition-colors" />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-out">
+                    <div className="overflow-hidden">
+                      <p className="text-white/80 text-[11px] font-medium leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 pb-2">
+                        {event.desc}
+                      </p>
+                    </div>
                   </div>
                 </div>
-                <p className="text-white/70 text-[10px] font-medium leading-tight opacity-0 group-hover:opacity-100 transition-all duration-500 max-h-0 group-hover:max-h-20 overflow-hidden">
-                  {event.desc}
-                </p>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
+
+      {/* Event Details Modal */}
+      <AnimatePresence>
+        {selectedEvent !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center px-4 sm:px-6"
+          >
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedEvent(null)}
+              className="absolute inset-0 bg-brand-dark/60 backdrop-blur-md cursor-pointer"
+            />
+
+            {/* Modal Card */}
+            <motion.div
+              layoutId={`event-card-${selectedEvent}`}
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="relative w-full max-w-2xl bg-white rounded-[2.5rem] overflow-hidden shadow-2xl z-10 max-h-[85vh] flex flex-col"
+            >
+              {/* Image Header */}
+              <div className="relative h-48 sm:h-64 w-full shrink-0">
+                <Image
+                  src={events[selectedEvent].image}
+                  alt={events[selectedEvent].title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+
+                <button
+                  onClick={() => setSelectedEvent(null)}
+                  className="absolute top-4 right-4 w-10 h-10 bg-black/20 hover:bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all active:scale-95"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+
+                <div className="absolute bottom-6 left-6 md:left-8 right-6">
+                  <span className="bg-brand text-white text-[9px] font-black px-3 py-1 rounded-full tracking-widest uppercase shadow-sm mb-3 inline-block">
+                    {events[selectedEvent].badge}
+                  </span>
+                  <h3 className="text-2xl md:text-4xl font-black text-white italic tracking-tighter uppercase leading-none" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
+                    {events[selectedEvent].fullTitle}
+                  </h3>
+                </div>
+              </div>
+
+              {/* Content Body */}
+              <div className="p-6 md:p-8 overflow-y-auto">
+                <p className="text-brand font-bold text-xs md:text-sm uppercase tracking-widest mb-6">
+                  {events[selectedEvent].subtitle}
+                </p>
+
+                <div className="prose prose-sm md:prose-base text-brand-dark/80 font-medium leading-relaxed">
+                  {events[selectedEvent].fullDesc}
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-brand/10 flex justify-center">
+                  <Button className="bg-brand-dark hover:bg-brand text-white rounded-full px-8 py-6 h-auto text-xs font-bold uppercase tracking-widest transition-all">
+                    Register Interest
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
