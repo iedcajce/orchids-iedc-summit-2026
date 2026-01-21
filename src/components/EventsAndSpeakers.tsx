@@ -9,25 +9,25 @@ export function FeaturedEvents() {
   const events = [
     {
       title: "Idea Pitch",
-      image: "https://images.unsplash.com/photo-1475721027767-f42402781200?q=80&w=800&auto=format&fit=crop",
+      image: "/images/event_idea_pitch.jpg",
       desc: "Pitch your revolutionary ideas to top-tier investors.",
       badge: "EXPANDED",
     },
     {
       title: "Workshops",
-      image: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop",
+      image: "/images/event_workshops.jpg",
       desc: "Hands-on sessions with industry leaders.",
       badge: "NEW",
     },
     {
       title: "Tech Expo",
-      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop",
+      image: "/images/event_tech_expo.jpg",
       desc: "Explore the latest innovations from emerging startups.",
       badge: "EXPANDED",
     },
     {
       title: "Night Meet",
-      image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=800&auto=format&fit=crop",
+      image: "/images/event_night_meet.jpg",
       desc: "Build connections that last a lifetime.",
       badge: "NEW",
     },
@@ -110,49 +110,49 @@ export function Speakers() {
       name: "NIVIN PAULY",
       role: "Global Tech Visionary",
       company: "Pauly Innovations",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop",
+      image: "/images/speaker_nivin_pauly.jpg",
     },
     {
       name: "FAHAD FAZIL",
       role: "Deep Tech Architect",
       company: "Fazil Dynamics",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop",
+      image: "/images/speaker_fahad_fazil.jpg",
     },
     {
       name: "DULQUER SALMAAN",
       role: "Strategic Growth Lead",
       company: "Salmaan Ventures",
-      image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=400&auto=format&fit=crop",
+      image: "/images/speaker_dulquer_salmaan.jpg",
     },
     {
       name: "TOVINO THOMAS",
       role: "AI Ethics Specialist",
       company: "Thomas Research",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop",
+      image: "/images/speaker_tovino_thomas.jpg",
     },
     {
       name: "NAZRIYA NAZIM",
       role: "UX Strategy Director",
       company: "Nazim Labs",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop",
+      image: "/images/speaker_nazriya_nazim.jpg",
     },
     {
       name: "PRITHVIRAJ",
       role: "Quantum Computing Lead",
       company: "Prithvi Systems",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop",
+      image: "/images/speaker_prithviraj.jpg",
     },
     {
       name: "PARVATHY",
       role: "Sustainability Advisor",
       company: "Parvathy Global",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop",
+      image: "/images/speaker_parvathy.jpg",
     },
     {
       name: "MANJU WARRIER",
       role: "FinTech Innovation Head",
       company: "Warrier Group",
-      image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=400&auto=format&fit=crop",
+      image: "/images/speaker_manju_warrier.jpg",
     }
   ];
 

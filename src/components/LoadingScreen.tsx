@@ -129,7 +129,7 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
             className="absolute inset-0 flex items-center justify-center p-8"
           >
             <Image
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/ed3e4ef3-254e-4a25-9f8f-ed422d28efcf/IEDC-Startup-Summit-Logo-2026-Transparent-1768301636507.png?width=8000&height=8000&resize=contain"
+              src="/images/iedc_summit_logo_2026.png"
               alt="Logo"
               fill
               priority

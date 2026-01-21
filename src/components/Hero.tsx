@@ -27,7 +27,7 @@ export function Hero() {
             className="relative w-full h-full"
           >
             <Image
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/ed3e4ef3-254e-4a25-9f8f-ed422d28efcf/99a4454c5dbd52c982eb12ae1946b62f358fa562-resized-1768301717096.webp?width=8000&height=8000&resize=contain"
+              src="/images/hero_image.webp"
               alt="IEDC Startup Summit Innovation"
               fill
               className="object-cover object-center"

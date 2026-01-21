@@ -225,7 +225,7 @@ export function About() {
         {/* Background Elements */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
           <Image
-            src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/ed3e4ef3-254e-4a25-9f8f-ed422d28efcf/6780a29c-208d-4208-8c74-c0c7ae2eeff6-1-1768413742875.png?width=8000&height=8000&resize=contain"
+            src="/images/about_background.png"
             alt="About Background"
             fill
             className="object-cover opacity-30 scale-105"

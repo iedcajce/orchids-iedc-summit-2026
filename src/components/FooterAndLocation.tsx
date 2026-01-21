@@ -100,9 +100,9 @@ export function Location() {
 
 export function PreviousSummits() {
   const summits = [
-    { year: "2024", image: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800" },
-    { year: "2023", image: "https://images.unsplash.com/photo-1475721027767-f42402781200?q=80&w=800" },
-    { year: "2022", image: "https://images.unsplash.com/photo-1505373633513-333182859942?q=80&w=800" },
+    { year: "2024", image: "/images/summit_2024.jpg" },
+    { year: "2023", image: "/images/summit_2023.jpg" },
+    { year: "2022", image: "/images/summit_2022.jpg" },
   ];
 
   /* Carousel State */
@@ -216,7 +216,7 @@ export function Footer() {
     <footer className="relative pt-40 pb-16 px-6 md:px-12 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/1f736307cd4ccb4b2032fb2b866ba61c6fde5cc7-resized-1768279000064.webp?width=2000&height=800&resize=contain"
+          src="/images/footer_background.webp"
           alt="Footer Background"
           fill
           className="object-cover brightness-[0.4]"
