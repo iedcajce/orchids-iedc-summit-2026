@@ -45,13 +45,27 @@ export function Hero() {
           transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
           className="relative w-full h-full"
         >
-          <Image
-            src="/images/hero_image.webp"
-            alt="IEDC Startup Summit Innovation"
-            fill
-            className="object-cover object-center"
-            priority
-          />
+          {/* Desktop Image */}
+          <div className="hidden md:block absolute inset-0">
+            <Image
+              src="/images/hero_desk.jpg"
+              alt="IEDC Startup Summit Innovation"
+              fill
+              className="object-cover object-center"
+              priority
+            />
+          </div>
+
+          {/* Mobile Image */}
+          <div className="block md:hidden absolute inset-0">
+            <Image
+              src="/images/hero_mob.jpg"
+              alt="IEDC Startup Summit Innovation"
+              fill
+              className="object-cover object-center"
+              priority
+            />
+          </div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/10" />
         </motion.div>
       </div>

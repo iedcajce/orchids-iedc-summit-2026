@@ -8,7 +8,9 @@ import { CountdownSection } from "@/components/CountdownSection";
 import { Ticker } from "@/components/Ticker";
 import { FeaturedEvents, Speakers } from "@/components/EventsAndSpeakers";
 import { Eligibility } from "@/components/Eligibility";
-import { SummitHighlights, About, Partners } from "@/components/AboutAndPartners";
+import { SummitHighlights } from "@/components/SummitHighlights";
+import { About } from "@/components/About";
+import { Partners } from "@/components/Partners";
 import { Tickets } from "@/components/Tickets";
 import { Location, PreviousSummits, Footer } from "@/components/FooterAndLocation";
 import { LoadingScreen } from "@/components/LoadingScreen";
@@ -40,10 +42,10 @@ export default function Home() {
             <div className="snap-start"><Tickets /></div>
             <div className="snap-start"><SummitHighlights /></div>
 
-            <div className="snap-start"><Eligibility /></div>
+            {/* <div className="snap-start"><Eligibility /></div> */}
             <div className="snap-start"><Partners /></div>
             <div className="snap-start"><Location /></div>
-            <div className="snap-start"><PreviousSummits /></div>
+            {/* <div className="snap-start"><PreviousSummits /></div> */}
             <div className="snap-start"><Footer /></div>
           </motion.div>
         )}
