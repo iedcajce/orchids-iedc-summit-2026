@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -91,9 +92,12 @@ export function FeaturedEvents() {
               <span className="text-brand-dark/20">FOR 2026</span>
             </h2>
           </div>
-          <Button variant="outline" className="border-brand-dark/10 hover:bg-brand-dark hover:text-white rounded-full text-[10px] font-black uppercase tracking-widest px-8 transition-all">
-            View Schedule
-          </Button>
+
+          <Link href="/schedules">
+            <Button variant="outline" className="border-brand-dark/10 hover:bg-brand-dark hover:text-white rounded-full text-[10px] font-black uppercase tracking-widest px-8 transition-all">
+              View Schedule
+            </Button>
+          </Link>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
@@ -150,83 +154,85 @@ export function FeaturedEvents() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </div >
 
       {/* Event Details Modal */}
       <AnimatePresence>
-        {selectedEvent !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center px-4 sm:px-6"
-          >
-            {/* Backdrop */}
+        {
+          selectedEvent !== null && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setSelectedEvent(null)}
-              className="absolute inset-0 bg-brand-dark/60 backdrop-blur-md cursor-pointer"
-            />
-
-            {/* Modal Card */}
-            <motion.div
-              layoutId={`event-card-${selectedEvent}`}
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="relative w-full max-w-2xl bg-white rounded-[2.5rem] overflow-hidden shadow-2xl z-10 max-h-[85vh] flex flex-col"
+              className="fixed inset-0 z-[100] flex items-center justify-center px-4 sm:px-6"
             >
-              {/* Image Header */}
-              <div className="relative h-48 sm:h-64 w-full shrink-0">
-                <Image
-                  src={events[selectedEvent].image}
-                  alt={events[selectedEvent].title}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+              {/* Backdrop */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setSelectedEvent(null)}
+                className="absolute inset-0 bg-brand-dark/60 backdrop-blur-md cursor-pointer"
+              />
 
-                <button
-                  onClick={() => setSelectedEvent(null)}
-                  className="absolute top-4 right-4 w-10 h-10 bg-black/20 hover:bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all active:scale-95"
-                >
-                  <X className="w-5 h-5" />
-                </button>
+              {/* Modal Card */}
+              <motion.div
+                layoutId={`event-card-${selectedEvent}`}
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                className="relative w-full max-w-2xl bg-white rounded-[2.5rem] overflow-hidden shadow-2xl z-10 max-h-[85vh] flex flex-col"
+              >
+                {/* Image Header */}
+                <div className="relative h-48 sm:h-64 w-full shrink-0">
+                  <Image
+                    src={events[selectedEvent].image}
+                    alt={events[selectedEvent].title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
 
-                <div className="absolute bottom-6 left-6 md:left-8 right-6">
-                  <span className="bg-brand text-white text-[9px] font-black px-3 py-1 rounded-full tracking-widest uppercase shadow-sm mb-3 inline-block">
-                    {events[selectedEvent].badge}
-                  </span>
-                  <h3 className="text-2xl md:text-4xl font-black text-white italic tracking-tighter uppercase leading-none" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
-                    {events[selectedEvent].fullTitle}
-                  </h3>
+                  <button
+                    onClick={() => setSelectedEvent(null)}
+                    className="absolute top-4 right-4 w-10 h-10 bg-black/20 hover:bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-all active:scale-95"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+
+                  <div className="absolute bottom-6 left-6 md:left-8 right-6">
+                    <span className="bg-brand text-white text-[9px] font-black px-3 py-1 rounded-full tracking-widest uppercase shadow-sm mb-3 inline-block">
+                      {events[selectedEvent].badge}
+                    </span>
+                    <h3 className="text-2xl md:text-4xl font-black text-white italic tracking-tighter uppercase leading-none" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
+                      {events[selectedEvent].fullTitle}
+                    </h3>
+                  </div>
                 </div>
-              </div>
 
-              {/* Content Body */}
-              <div className="p-6 md:p-8 overflow-y-auto">
-                <p className="text-brand font-bold text-xs md:text-sm uppercase tracking-widest mb-6">
-                  {events[selectedEvent].subtitle}
-                </p>
+                {/* Content Body */}
+                <div className="p-6 md:p-8 overflow-y-auto">
+                  <p className="text-brand font-bold text-xs md:text-sm uppercase tracking-widest mb-6">
+                    {events[selectedEvent].subtitle}
+                  </p>
 
-                <div className="prose prose-sm md:prose-base text-brand-dark/80 font-medium leading-relaxed">
-                  {events[selectedEvent].fullDesc}
+                  <div className="prose prose-sm md:prose-base text-brand-dark/80 font-medium leading-relaxed">
+                    {events[selectedEvent].fullDesc}
+                  </div>
+
+                  <div className="mt-8 pt-6 border-t border-brand/10 flex justify-center">
+                    <Button className="bg-brand-dark hover:bg-brand text-white rounded-full px-8 py-6 h-auto text-xs font-bold uppercase tracking-widest transition-all">
+                      Register Interest
+                    </Button>
+                  </div>
                 </div>
-
-                <div className="mt-8 pt-6 border-t border-brand/10 flex justify-center">
-                  <Button className="bg-brand-dark hover:bg-brand text-white rounded-full px-8 py-6 h-auto text-xs font-bold uppercase tracking-widest transition-all">
-                    Register Interest
-                  </Button>
-                </div>
-              </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </section>
+          )
+        }
+      </AnimatePresence >
+    </section >
   );
 }
 
@@ -264,7 +270,7 @@ export function Speakers() {
                 duration: 0.5,
                 delay: i * 0.1,
               }}
-              className="group cursor-default relative"
+              className={`group cursor-default relative ${i > 0 ? 'hidden md:block' : ''}`}
             >
               <div className="relative aspect-[4/5] overflow-hidden mb-4 bg-[#f8faf9] border border-black/5 rounded-[2rem] flex items-center justify-center">
                 {/* Silhouette / Mystery Placeholder */}
