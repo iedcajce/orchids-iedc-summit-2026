@@ -107,53 +107,33 @@ export function FeaturedEvents() {
 export function Speakers() {
   const speakers = [
     {
-      name: "NIVIN PAULY",
-      role: "Global Tech Visionary",
-      company: "Pauly Innovations",
-      image: "/images/speaker_nivin_pauly.jpg",
+      name: "D.S. Prashant",
+      role: "CEO",
+      company: "Startup & IT Promotion Cell (SITPC)",
+      image: "/images/speaker_d_s_prashant.jpeg",
+      linkedin: "https://www.linkedin.com/in/dsprashant?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
     },
     {
-      name: "FAHAD FAZIL",
-      role: "Deep Tech Architect",
-      company: "Fazil Dynamics",
-      image: "/images/speaker_fahad_fazil.jpg",
+      name: "Anoop Ambika",
+      role: "CEO",
+      company: "Kerala Startup Mission",
+      image: "/images/speaker_anoop_ambika_.jpeg",
+      linkedin: "https://www.linkedin.com/in/anoopambika?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
     },
     {
-      name: "DULQUER SALMAAN",
-      role: "Strategic Growth Lead",
-      company: "Salmaan Ventures",
-      image: "/images/speaker_dulquer_salmaan.jpg",
+      name: "K Suresh Kumar",
+      role: "Executive Director",
+      company: "PSG-STEP Coimbatore",
+      image: "/images/speaker_suresh_kumar.png",
+      linkedin: "https://www.linkedin.com/in/k-suresh-kumar-0b3ab29?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
     },
     {
-      name: "TOVINO THOMAS",
-      role: "AI Ethics Specialist",
-      company: "Thomas Research",
-      image: "/images/speaker_tovino_thomas.jpg",
+      name: "Ashok Kurian Panjikkaran",
+      role: "Senior Manager",
+      company: "Kerala Startup Mission",
+      image: "/images/speaker_ashok_kurian_panjikkaran.jpeg",
+      linkedin: "https://www.linkedin.com/in/ashok-kurian-panjikaran-akp-50b8b526?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
     },
-    {
-      name: "NAZRIYA NAZIM",
-      role: "UX Strategy Director",
-      company: "Nazim Labs",
-      image: "/images/speaker_nazriya_nazim.jpg",
-    },
-    {
-      name: "PRITHVIRAJ",
-      role: "Quantum Computing Lead",
-      company: "Prithvi Systems",
-      image: "/images/speaker_prithviraj.jpg",
-    },
-    {
-      name: "PARVATHY",
-      role: "Sustainability Advisor",
-      company: "Parvathy Global",
-      image: "/images/speaker_parvathy.jpg",
-    },
-    {
-      name: "MANJU WARRIER",
-      role: "FinTech Innovation Head",
-      company: "Warrier Group",
-      image: "/images/speaker_manju_warrier.jpg",
-    }
   ];
 
   return (
@@ -185,7 +165,7 @@ export function Speakers() {
               }}
               className="group cursor-pointer"
             >
-              <div className="relative aspect-[4/5] overflow-hidden mb-4 bg-[#f8faf9] border border-black/5 rounded-[2rem]">
+              <div className="relative aspect-[4/5] overflow-hidden mb-4 bg-[#f8faf9] rounded-[2rem]">
                 <Image
                   src={speaker.image}
                   alt={speaker.name}
@@ -194,15 +174,14 @@ export function Speakers() {
                 />
                 <div className="absolute inset-0 bg-brand/10 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute inset-x-0 bottom-4 flex justify-start px-4 gap-4 translate-x-0 md:-translate-x-full md:group-hover:translate-x-0 transition-transform duration-500 z-20">
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-brand transition-all duration-300">
+                  <a
+                    href={speaker.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-brand transition-all duration-300"
+                  >
                     <Linkedin className="w-4 h-4" />
-                  </div>
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-brand transition-all duration-300">
-                    <Youtube className="w-4 h-4" />
-                  </div>
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-brand transition-all duration-300">
-                    <Instagram className="w-4 h-4" />
-                  </div>
+                  </a>
                 </div>
               </div>
 
@@ -220,17 +199,6 @@ export function Speakers() {
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-16 flex justify-center"
-        >
-          <Button variant="outline" className="border-brand-dark/10 hover:bg-brand-dark hover:text-white rounded-none text-[10px] font-black uppercase tracking-widest px-12 py-6 h-auto transition-all">
-            Explore All Speakers
-          </Button>
-        </motion.div>
       </div>
     </section>
   );
