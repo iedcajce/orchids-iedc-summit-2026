@@ -48,7 +48,7 @@ export function Hero() {
           {/* Desktop Image */}
           <div className="hidden md:block absolute inset-0">
             <Image
-              src="/images/hero_desk.jpg"
+              src="/images/boy_and_planes.jpeg"/*hero image*/
               alt="IEDC Startup Summit Innovation"
               fill
               className="object-cover object-center"
@@ -141,6 +141,17 @@ export function Hero() {
         transition={{ duration: 0.8, delay: 1 }}
         className="absolute bottom-6 md:bottom-10 right-6 md:right-16 z-20 flex flex-col items-end text-right"
       >
+        <p className="text-[10px] md:text-xs font-bold text-brand uppercase tracking-widest mb-2">
+          Powered By
+        </p>
+        <div className="relative w-32 md:w-40 h-10 md:h-12 mb-4">
+          <Image
+            src="/images/powredby/ksum.svg"
+            alt="KSUM Logo"
+            fill
+            className="object-contain object-right brightness-0 invert"
+          />
+        </div>
         <p className="text-sm md:text-lg font-semibold tracking-wide text-white/80 leading-tight max-w-xs md:max-w-md uppercase" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>
           Amal Jyothi College of Engineering
         </p>

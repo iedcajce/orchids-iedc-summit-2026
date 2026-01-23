@@ -1,105 +1,220 @@
 "use client";
 
+import { useState } from "react";
+
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { ArrowUpRight, Linkedin, Youtube, Instagram } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowUpRight, Linkedin, Youtube, Instagram, Cpu, Briefcase, TrendingUp, X } from "lucide-react";
 
 export function FeaturedEvents() {
-  const events = [
+  const [selectedTrack, setSelectedTrack] = useState<typeof tracks[0] | null>(null);
+
+  const tracks = [
     {
-      title: "Idea Pitch",
-      image: "/images/event_idea_pitch.jpg",
-      desc: "Pitch your revolutionary ideas to top-tier investors.",
-      badge: "EXPANDED",
+      id: 1,
+      title: "TECHNOLOGY",
+      subtitle: "From Blueprint to Future-Proof Product",
+      description: "For teams building technology at the cutting edge. Focus on security, scalability, and emerging trends.",
+      classes: {
+        iconBg: "bg-blue-500/10",
+        iconText: "text-blue-600",
+        border: "hover:border-blue-500/20",
+        subtitle: "text-blue-600",
+        gradient: "from-blue-500/10",
+        headerGradient: "to-blue-50/50",
+        blur: "bg-blue-500/5",
+        numberBg: "bg-blue-100",
+        numberText: "text-blue-700"
+      },
+      icon: <Cpu className="w-6 h-6" />,
+      details: [
+        { title: "TechFrontiers", desc: "AI, Generative AI, Robotics, DeepTech." },
+        { title: "Prototype to Product", desc: "Operationalizing your MVP for deployment." },
+        { title: "BuildOps Lab", desc: "Essential cloud architecture and infrastructure for early-stage teams." },
+        { title: "Responsible Tech", desc: "Building secure, ethical, and compliant solutions." },
+      ]
     },
     {
-      title: "Workshops",
-      image: "/images/event_workshops.jpg",
-      desc: "Hands-on sessions with industry leaders.",
-      badge: "NEW",
+      id: 2,
+      title: "BUSINESS",
+      subtitle: "From Problem Solver to Paying Customer",
+      description: "The track dedicated to survival, growth, and sustainable revenue generation.",
+      classes: {
+        iconBg: "bg-emerald-500/10",
+        iconText: "text-emerald-600",
+        border: "hover:border-emerald-500/20",
+        subtitle: "text-emerald-600",
+        gradient: "from-emerald-500/10",
+        headerGradient: "to-emerald-50/50",
+        blur: "bg-emerald-500/5",
+        numberBg: "bg-emerald-100",
+        numberText: "text-emerald-700"
+      },
+      icon: <Briefcase className="w-6 h-6" />,
+      details: [
+        { title: "Zero-to-One Playbook", desc: "The mechanics of finding your first paying customer." },
+        { title: "MarketFit Studio", desc: "Techniques for achieving and validating Product-Market Fit (PMF)." },
+        { title: "Startup Operations 101", desc: "Legal, finance, compliance, and essential team structure." },
+        { title: "Branding & Growth", desc: "Telling your story and leveraging digital platforms for traction." },
+      ]
     },
     {
-      title: "Tech Expo",
-      image: "/images/event_tech_expo.jpg",
-      desc: "Explore the latest innovations from emerging startups.",
-      badge: "EXPANDED",
-    },
-    {
-      title: "Night Meet",
-      image: "/images/event_night_meet.jpg",
-      desc: "Build connections that last a lifetime.",
-      badge: "NEW",
-    },
+      id: 3,
+      title: "INVESTMENT",
+      subtitle: "From Pitch Deck to First Strategic Cheque",
+      description: "Preparation for the financial journey, designed for teams targeting early-stage capital.",
+      classes: {
+        iconBg: "bg-amber-500/10",
+        iconText: "text-amber-600",
+        border: "hover:border-amber-500/20",
+        subtitle: "text-amber-600",
+        gradient: "from-amber-500/10",
+        headerGradient: "to-amber-50/50",
+        blur: "bg-amber-500/5",
+        numberBg: "bg-amber-100",
+        numberText: "text-amber-700"
+      },
+      icon: <TrendingUp className="w-6 h-6" />,
+      details: [
+        { title: "Angel Readiness Room", desc: "Decoding what angel investors prioritize in student-led ventures." },
+        { title: "PitchCraft Arena", desc: "Building the definitive pitch deck and mastering confident delivery." },
+        { title: "Valuation Clarity", desc: "Simple, practical understanding of early-stage valuation, equity, and term sheets." },
+        { title: "Fundability Signals", desc: "Identifying and demonstrating the traction, team, and market size signals that investors value." },
+      ]
+    }
   ];
 
   return (
-    <section id="events" className="py-12 px-6 md:px-12 bg-white text-brand-dark overflow-hidden">
+    <section id="events" className="py-24 px-6 md:px-12 bg-white text-brand-dark overflow-hidden relative">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6"
+          className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6"
         >
-          <div>
-            <span className="text-brand font-black tracking-[0.3em] uppercase text-[10px] mb-2 block">Innovation Hub</span>
-            <h2 className="text-4xl md:text-5xl font-black italic tracking-tighter uppercase leading-none" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
+          <div className="max-w-3xl">
+            <span className="text-brand font-black tracking-[0.3em] uppercase text-[10px] mb-2 block">Navigate Your Growth</span>
+            <h2 className="text-4xl md:text-5xl font-black italic tracking-tighter uppercase leading-none mb-6" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
               NEW & <span className="text-brand">EXPANDED</span> <br />
               <span className="text-brand-dark/20">FOR 2026</span>
             </h2>
+            <p className="text-brand-dark/60 text-sm md:text-base font-medium max-w-xl leading-relaxed">
+              Choose the track that directly addresses your startup&apos;s most critical challenge right now.
+            </p>
           </div>
-          <Button variant="outline" className="border-brand-dark/10 hover:bg-brand-dark hover:text-white rounded-full text-[10px] font-black uppercase tracking-widest px-8 transition-all">
-            View Schedule
+          <Button variant="outline" className="hidden md:flex border-brand-dark/10 hover:bg-brand-dark hover:text-white rounded-full text-[10px] font-black uppercase tracking-widest px-8 transition-all h-12">
+            View Full Schedule
           </Button>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-          {events.map((event, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {tracks.map((track, i) => (
             <motion.div
-              key={i}
+              key={track.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{
-                duration: 0.5,
-                delay: i * 0.1,
-              }}
-              whileHover={{ y: -5 }}
-              className="relative group overflow-hidden rounded-[2rem] aspect-[2.5/1] md:aspect-[10/12] cursor-pointer bg-[#f8faf9] border border-black/5"
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              onClick={() => setSelectedTrack(track)}
+              className={`group relative overflow-hidden rounded-[2rem] bg-[#f8faf9] border border-black/5 ${track.classes.border} p-8 cursor-pointer transition-all duration-500 hover:shadow-xl hover:-translate-y-2`}
             >
-              <Image
-                src={event.image}
-                alt={event.title}
-                fill
-                className="object-cover opacity-80 transition-all duration-700 group-hover:scale-110 group-hover:opacity-100"
-              />
-
-              <div className="absolute top-4 left-4 z-20">
-                <span className={`text-[9px] font-black px-3 py-1 rounded-full tracking-widest uppercase shadow-sm ${event.badge === 'NEW' ? 'bg-brand text-white' : 'bg-brand-dark text-white'
-                  }`}>
-                  {event.badge}
-                </span>
+              <div className={`w-12 h-12 rounded-2xl ${track.classes.iconBg} flex items-center justify-center mb-6 ${track.classes.iconText} group-hover:scale-110 transition-transform duration-500`}>
+                {track.icon}
               </div>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent z-10 p-6 flex flex-col justify-end">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-xl font-black text-white uppercase tracking-tighter leading-none">
-                    {event.title}
-                  </h3>
-                  <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:bg-brand group-hover:border-brand transition-all duration-300">
-                    <ArrowUpRight className="w-4 h-4 text-white group-hover:text-black transition-colors" />
-                  </div>
-                </div>
-                <p className="text-white/70 text-[10px] font-medium leading-tight opacity-0 group-hover:opacity-100 transition-all duration-500 max-h-0 group-hover:max-h-20 overflow-hidden">
-                  {event.desc}
-                </p>
+              <h3 className="text-2xl font-black text-brand-dark uppercase tracking-tighter mb-2 group-hover:text-brand transition-colors">
+                {track.title}
+              </h3>
+              <p className={`${track.classes.subtitle} text-xs font-bold uppercase tracking-widest mb-4`}>
+                {track.subtitle}
+              </p>
+              <p className="text-brand-dark/50 text-sm leading-relaxed mb-8">
+                {track.description}
+              </p>
+
+              <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-brand-dark/30 group-hover:text-brand-dark transition-colors">
+                <span>View Modules</span>
+                <ArrowUpRight className="w-3 h-3" />
               </div>
+
+              <div className={`absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl ${track.classes.gradient} to-transparent rounded-tl-[100%] translate-y-8 translate-x-8 group-hover:translate-y-4 group-hover:translate-x-4 transition-transform duration-500`} />
             </motion.div>
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {selectedTrack && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-brand-dark/40 backdrop-blur-md"
+            onClick={() => setSelectedTrack(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              className="bg-white rounded-[2.5rem] w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header */}
+              <div className={`p-8 md:p-12 bg-gradient-to-br from-white ${selectedTrack.classes.headerGradient} border-b border-black/5 relative overflow-hidden`}>
+                <button
+                  onClick={() => setSelectedTrack(null)}
+                  className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white border border-black/5 flex items-center justify-center hover:bg-black hover:text-white transition-colors z-20"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+
+                <div className="relative z-10">
+                  <div className={`w-14 h-14 rounded-2xl ${selectedTrack.classes.iconBg} flex items-center justify-center mb-6 ${selectedTrack.classes.iconText}`}>
+                    {selectedTrack.icon}
+                  </div>
+                  <h3 className="text-4xl md:text-6xl font-black text-brand-dark uppercase tracking-tighter mb-4 italic" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
+                    {selectedTrack.title}
+                  </h3>
+                  <p className={`${selectedTrack.classes.subtitle} text-sm md:text-base font-bold uppercase tracking-widest mb-2`}>
+                    {selectedTrack.subtitle}
+                  </p>
+                  <p className="text-brand-dark/60 max-w-2xl text-lg">
+                    {selectedTrack.description}
+                  </p>
+                </div>
+
+                <div className={`absolute -bottom-24 -right-24 w-96 h-96 ${selectedTrack.classes.blur} rounded-full blur-3xl`} />
+              </div>
+
+              {/* Body */}
+              <div className="p-8 md:p-12 overflow-y-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {selectedTrack.details.map((detail, idx) => (
+                    <div key={idx} className="group p-6 rounded-3xl bg-gray-50 border border-black/5 hover:border-black/10 hover:bg-white hover:shadow-lg transition-all duration-300">
+                      <div className="flex items-start gap-4">
+                        <div className={`mt-1 w-6 h-6 rounded-full ${selectedTrack.classes.numberBg} flex items-center justify-center flex-shrink-0`}>
+                          <span className={`text-[10px] font-black ${selectedTrack.classes.numberText}`}>{idx + 1}</span>
+                        </div>
+                        <div>
+                          <h4 className="text-lg font-bold text-brand-dark mb-2 group-hover:text-brand transition-colors">
+                            {detail.title}
+                          </h4>
+                          <p className="text-sm text-brand-dark/60 leading-relaxed font-medium">
+                            {detail.desc}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

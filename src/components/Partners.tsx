@@ -84,26 +84,7 @@ export function Partners() {
                         </div>
                     </div>
 
-                    {/* Secondary Tier */}
-                    <div className="max-w-4xl mx-auto w-full">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
-                            {/* Marketing Partner */}
-                            <div className="flex flex-col items-center">
-                                <SectionLabel>Marketing Partner</SectionLabel>
-                                <div className="w-full max-w-[280px]">
-                                    <PartnerCard src="/images/incial_logo.jpg" alt="Incial" delay={0.6} />
-                                </div>
-                            </div>
 
-                            {/* Technical Partner */}
-                            <div className="flex flex-col items-center">
-                                <SectionLabel>Technical Partner</SectionLabel>
-                                <div className="w-full max-w-[280px]">
-                                    <PartnerCard src="/images/agrowtein.png" alt="Agrowtein" delay={0.7} />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
