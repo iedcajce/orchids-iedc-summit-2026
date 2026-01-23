@@ -3,16 +3,16 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const PartnerCard = ({ src, alt, delay = 0 }: { src: string; alt: string; delay?: number }) => (
+const PartnerCard = ({ src, alt, delay = 0, className = "" }: { src: string; alt: string; delay?: number; className?: string }) => (
     <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay }}
         whileHover={{ y: -5 }}
-        className="group relative flex items-center justify-center p-6 bg-white border border-black/5 rounded-2xl shadow-sm hover:shadow-xl hover:border-brand/20 transition-all duration-500 min-h-[100px] md:min-h-[120px]"
+        className="group relative flex items-center justify-center p-6 bg-white border border-black/5 rounded-2xl shadow-sm hover:shadow-xl hover:border-brand/20 transition-all duration-500 h-32 md:h-40"
     >
-        <div className="relative w-full h-12 md:h-16">
+        <div className={`relative w-full h-12 md:h-16 ${className}`}>
             <Image
                 src={src}
                 alt={alt}
@@ -25,6 +25,7 @@ const PartnerCard = ({ src, alt, delay = 0 }: { src: string; alt: string; delay?
 
 const SectionLabel = ({ children }: { children: React.ReactNode }) => (
     <div className="flex items-center gap-4 mb-8 w-full">
+
         <div className="h-px bg-gradient-to-r from-transparent via-brand-dark/10 to-transparent flex-1" />
         <span className="text-[10px] md:text-sm font-bold uppercase tracking-[0.3em] text-brand-dark/40 px-4 py-1.5 border border-brand-dark/5 rounded-full bg-[#f8faf9]">
             {children}
@@ -77,7 +78,7 @@ export function Partners() {
                         <div className="flex flex-col items-center">
                             <SectionLabel>Hosted By</SectionLabel>
                             <div className="grid grid-cols-2 gap-6 w-full">
-                                <PartnerCard src="/images/hosted_by/ajce_logo.png" alt="AJCE" delay={0.4} />
+                                <PartnerCard src="/images/hosted_by/ajce_logo_6.png" alt="AJCE" delay={0.4} className="!h-20 md:!h-24" />
                                 <PartnerCard src="/images/hosted_by/iedc_ajce.png" alt="IEDC AJCE" delay={0.5} />
                             </div>
                         </div>
