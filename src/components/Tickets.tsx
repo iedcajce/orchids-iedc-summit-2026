@@ -2,7 +2,7 @@
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ShieldCheck, Star, QrCode, Wifi, MapPin, Calendar, CreditCard } from "lucide-react";
+import { ArrowRight, ShieldCheck, Star, QrCode, Wifi, MapPin, Calendar, CreditCard, Check } from "lucide-react";
 import React from "react";
 import Image from "next/image";
 import Logo from "@/assets/logo.png";
@@ -82,6 +82,28 @@ export function Tickets() {
               Secure your spot at Kerala&apos;s most influential startup gathering.
               Official delegate status provides full access to all summits, keynote sessions, and exclusive networking arenas.
             </motion.p>
+
+            <motion.ul
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.25 }}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 mb-10 w-full max-w-xl"
+            >
+              {[
+                "Access to all events",
+                "Exhibition stalls",
+                "Food and refreshments",
+                "Goodies & swag",
+              ].map((benefit, i) => (
+                <li key={i} className="flex items-center gap-3 text-[#2D4A35] font-semibold text-sm md:text-base">
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-brand/10 flex items-center justify-center text-brand">
+                    <Check className="w-3.5 h-3.5" strokeWidth={3} />
+                  </div>
+                  {benefit}
+                </li>
+              ))}
+            </motion.ul>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -185,10 +207,21 @@ export function Tickets() {
 
                   {/* Bottom Interactive Section */}
                   <div className="mt-auto flex flex-col items-center gap-5 pb-8 md:pb-12">
-                    <div className="bg-white p-2 md:p-2.5 rounded-xl border border-[#2D4A35]/10 shadow-sm relative group/qr cursor-help">
+                    <a
+                      href="https://iedcsummit-form-aghqgu-d1c8a5-103-66-79-81.traefik.me/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-white p-2 md:p-2.5 rounded-xl border border-[#2D4A35]/10 shadow-sm relative group/qr cursor-pointer block transition-transform hover:scale-105"
+                    >
                       <div className="absolute -inset-3 bg-brand/5 rounded-2xl opacity-0 group-hover/qr:opacity-100 transition-opacity" />
-                      <QrCode className="w-24 h-24 md:w-28 md:h-28 text-[#2D4A35]" />
-                    </div>
+                      <Image
+                        src="/images/ticket-qr.png"
+                        alt="Scan to Register"
+                        width={112}
+                        height={112}
+                        className="w-24 h-24 md:w-28 md:h-28 object-contain"
+                      />
+                    </a>
                     <div className="text-center space-y-1.5">
                       <p className="text-[10px] md:text-xs font-bold tracking-[0.25em] text-[#2D4A35] font-mono">ISS2026-DP0XXX</p>
                       <span className="text-[7px] md:text-[8px] font-bold text-[#4A7C59]/40 uppercase tracking-widest block">Official Delegate ID</span>

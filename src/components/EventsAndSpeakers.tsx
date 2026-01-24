@@ -14,20 +14,13 @@ export function FeaturedEvents() {
     {
       id: 1,
       title: "TECHNOLOGY",
-      subtitle: "From Blueprint to Future-Proof Product",
+      subtitle: "Blueprint to Future-Proof",
       description: "For teams building technology at the cutting edge. Focus on security, scalability, and emerging trends.",
-      classes: {
-        iconBg: "bg-blue-500/10",
-        iconText: "text-blue-600",
-        border: "hover:border-blue-500/20",
-        subtitle: "text-blue-600",
-        gradient: "from-blue-500/10",
-        headerGradient: "to-blue-50/50",
-        blur: "bg-blue-500/5",
-        numberBg: "bg-blue-100",
-        numberText: "text-blue-700"
-      },
       icon: <Cpu className="w-6 h-6" />,
+      gradient: "from-blue-500/20 via-blue-500/5 to-transparent",
+      border: "group-hover:border-blue-500/50",
+      text: "text-blue-500",
+      bg: "bg-blue-500/10",
       details: [
         { title: "TechFrontiers", desc: "AI, Generative AI, Robotics, DeepTech." },
         { title: "Prototype to Product", desc: "Operationalizing your MVP for deployment." },
@@ -38,20 +31,13 @@ export function FeaturedEvents() {
     {
       id: 2,
       title: "BUSINESS",
-      subtitle: "From Problem Solver to Paying Customer",
+      subtitle: "Problem Solver to Paying Customer",
       description: "The track dedicated to survival, growth, and sustainable revenue generation.",
-      classes: {
-        iconBg: "bg-emerald-500/10",
-        iconText: "text-emerald-600",
-        border: "hover:border-emerald-500/20",
-        subtitle: "text-emerald-600",
-        gradient: "from-emerald-500/10",
-        headerGradient: "to-emerald-50/50",
-        blur: "bg-emerald-500/5",
-        numberBg: "bg-emerald-100",
-        numberText: "text-emerald-700"
-      },
       icon: <Briefcase className="w-6 h-6" />,
+      gradient: "from-emerald-500/20 via-emerald-500/5 to-transparent",
+      border: "group-hover:border-emerald-500/50",
+      text: "text-emerald-500",
+      bg: "bg-emerald-500/10",
       details: [
         { title: "Zero-to-One Playbook", desc: "The mechanics of finding your first paying customer." },
         { title: "MarketFit Studio", desc: "Techniques for achieving and validating Product-Market Fit (PMF)." },
@@ -62,20 +48,13 @@ export function FeaturedEvents() {
     {
       id: 3,
       title: "INVESTMENT",
-      subtitle: "From Pitch Deck to First Strategic Cheque",
+      subtitle: "Pitch Deck to Strategic Cheque",
       description: "Preparation for the financial journey, designed for teams targeting early-stage capital.",
-      classes: {
-        iconBg: "bg-amber-500/10",
-        iconText: "text-amber-600",
-        border: "hover:border-amber-500/20",
-        subtitle: "text-amber-600",
-        gradient: "from-amber-500/10",
-        headerGradient: "to-amber-50/50",
-        blur: "bg-amber-500/5",
-        numberBg: "bg-amber-100",
-        numberText: "text-amber-700"
-      },
       icon: <TrendingUp className="w-6 h-6" />,
+      gradient: "from-amber-500/20 via-amber-500/5 to-transparent",
+      border: "group-hover:border-amber-500/50",
+      text: "text-amber-500",
+      bg: "bg-amber-500/10",
       details: [
         { title: "Angel Readiness Room", desc: "Decoding what angel investors prioritize in student-led ventures." },
         { title: "PitchCraft Arena", desc: "Building the definitive pitch deck and mastering confident delivery." },
@@ -86,62 +65,59 @@ export function FeaturedEvents() {
   ];
 
   return (
-    <section id="events" className="py-24 px-6 md:px-12 bg-white text-brand-dark overflow-hidden relative">
+    <section id="events" className="py-24 px-6 md:px-12 bg-[#F8FFF9] overflow-hidden relative">
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6"
-        >
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 relative z-10">
           <div className="max-w-3xl">
-            <span className="text-brand font-black tracking-[0.3em] uppercase text-[10px] mb-2 block">Navigate Your Growth</span>
-            <h2 className="text-4xl md:text-5xl font-black italic tracking-tighter uppercase leading-none mb-6" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
+            <span className="text-brand font-black tracking-[0.3em] uppercase text-[10px] mb-3 block">Track Selection</span>
+            <h2 className="text-4xl md:text-6xl font-black italic tracking-tighter uppercase leading-[0.9] text-brand-dark mb-6">
               NEW & <span className="text-brand">EXPANDED</span> <br />
-              <span className="text-brand-dark/20">FOR 2026</span>
+              <span className="opacity-30">FOR 2026</span>
             </h2>
             <p className="text-brand-dark/60 text-sm md:text-base font-medium max-w-xl leading-relaxed">
-              Choose the track that directly addresses your startup&apos;s most critical challenge right now.
+              Curated tracks designed to address the specific lifecycle challenges of student startups.
             </p>
           </div>
-          <Button variant="outline" className="hidden md:flex border-brand-dark/10 hover:bg-brand-dark hover:text-white rounded-full text-[10px] font-black uppercase tracking-widest px-8 transition-all h-12">
-            View Full Schedule
+          <Button variant="outline" className="hidden md:flex border-brand-dark/10 hover:bg-brand-dark hover:text-white rounded-full text-[10px] font-black uppercase tracking-widest px-8 h-12">
+            Explore All Sessions
           </Button>
-        </motion.div>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
           {tracks.map((track, i) => (
-            <motion.div
+            <div
               key={track.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
               onClick={() => setSelectedTrack(track)}
-              className={`group relative overflow-hidden rounded-[2rem] bg-[#f8faf9] border border-black/5 ${track.classes.border} p-8 cursor-pointer transition-all duration-500 hover:shadow-xl hover:-translate-y-2`}
+              className={`group relative h-full min-h-[420px] rounded-[2.5rem] bg-white border border-black/5 p-8 flex flex-col justify-between cursor-pointer transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl overflow-hidden ${track.border}`}
             >
-              <div className={`w-12 h-12 rounded-2xl ${track.classes.iconBg} flex items-center justify-center mb-6 ${track.classes.iconText} group-hover:scale-110 transition-transform duration-500`}>
-                {track.icon}
+              {/* Magic Gradient Background */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${track.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+
+              {/* Content */}
+              <div className="relative z-10 flex flex-col h-full">
+                <div className="flex justify-between items-start mb-auto">
+                  <div className={`w-14 h-14 rounded-2xl ${track.bg} ${track.text} flex items-center justify-center transition-transform duration-500 group-hover:scale-110`}>
+                    {track.icon}
+                  </div>
+                  <div className={`w-10 h-10 rounded-full border border-black/5 flex items-center justify-center ${track.text} opacity-0 group-hover:opacity-100 -translate-y-4 group-hover:translate-y-0 transition-all duration-500`}>
+                    <ArrowUpRight className="w-5 h-5" />
+                  </div>
+                </div>
+
+                <div className="mt-8">
+                  <h3 className="text-3xl font-black text-brand-dark uppercase tracking-tighter mb-2 leading-[0.9] group-hover:text-black transition-colors">
+                    {track.title}
+                  </h3>
+                  <div className={`h-1 w-12 rounded-full ${track.bg.replace('/10', '')} mb-4 opacity-50 group-hover:w-full transition-all duration-500`} />
+                  <p className={`text-xs font-bold uppercase tracking-widest mb-4 ${track.text}`}>
+                    {track.subtitle}
+                  </p>
+                  <p className="text-brand-dark/50 text-sm leading-relaxed font-medium group-hover:text-brand-dark/80 transition-colors">
+                    {track.description}
+                  </p>
+                </div>
               </div>
-
-              <h3 className="text-2xl font-black text-brand-dark uppercase tracking-tighter mb-2 group-hover:text-brand transition-colors">
-                {track.title}
-              </h3>
-              <p className={`${track.classes.subtitle} text-xs font-bold uppercase tracking-widest mb-4`}>
-                {track.subtitle}
-              </p>
-              <p className="text-brand-dark/50 text-sm leading-relaxed mb-8">
-                {track.description}
-              </p>
-
-              <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-brand-dark/30 group-hover:text-brand-dark transition-colors">
-                <span>View Modules</span>
-                <ArrowUpRight className="w-3 h-3" />
-              </div>
-
-              <div className={`absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl ${track.classes.gradient} to-transparent rounded-tl-[100%] translate-y-8 translate-x-8 group-hover:translate-y-4 group-hover:translate-x-4 transition-transform duration-500`} />
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
@@ -152,57 +128,58 @@ export function FeaturedEvents() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-brand-dark/40 backdrop-blur-md"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black/60 backdrop-blur-md"
             onClick={() => setSelectedTrack(null)}
           >
             <motion.div
-              initial={{ scale: 0.9, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 20 }}
-              className="bg-white rounded-[2.5rem] w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl"
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              className="bg-white rounded-[2rem] w-full max-w-4xl max-h-[85vh] overflow-hidden flex flex-col shadow-2xl relative"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Header */}
-              <div className={`p-8 md:p-12 bg-gradient-to-br from-white ${selectedTrack.classes.headerGradient} border-b border-black/5 relative overflow-hidden`}>
+              {/* Modal Header */}
+              <div className="relative p-8 md:p-12 overflow-hidden bg-[#F8FFF9] border-b border-black/5">
+                <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl ${selectedTrack.gradient} opacity-50 blur-3xl`} />
+
                 <button
                   onClick={() => setSelectedTrack(null)}
-                  className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white border border-black/5 flex items-center justify-center hover:bg-black hover:text-white transition-colors z-20"
+                  className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white border border-black/5 flex items-center justify-center hover:bg-black hover:text-white transition-all z-20 shadow-sm"
                 >
                   <X className="w-5 h-5" />
                 </button>
 
                 <div className="relative z-10">
-                  <div className={`w-14 h-14 rounded-2xl ${selectedTrack.classes.iconBg} flex items-center justify-center mb-6 ${selectedTrack.classes.iconText}`}>
-                    {selectedTrack.icon}
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className={`p-3 rounded-xl ${selectedTrack.bg} ${selectedTrack.text}`}>
+                      {selectedTrack.icon}
+                    </div>
+                    <span className={`text-xs font-black tracking-widest uppercase ${selectedTrack.text}`}>Track Deep Dive</span>
                   </div>
-                  <h3 className="text-4xl md:text-6xl font-black text-brand-dark uppercase tracking-tighter mb-4 italic" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
+
+                  <h3 className="text-4xl md:text-5xl font-black text-brand-dark uppercase tracking-tighter mb-3 leading-none italic">
                     {selectedTrack.title}
                   </h3>
-                  <p className={`${selectedTrack.classes.subtitle} text-sm md:text-base font-bold uppercase tracking-widest mb-2`}>
-                    {selectedTrack.subtitle}
-                  </p>
-                  <p className="text-brand-dark/60 max-w-2xl text-lg">
+                  <p className="text-brand-dark/60 text-lg max-w-2xl font-medium">
                     {selectedTrack.description}
                   </p>
                 </div>
-
-                <div className={`absolute -bottom-24 -right-24 w-96 h-96 ${selectedTrack.classes.blur} rounded-full blur-3xl`} />
               </div>
 
-              {/* Body */}
-              <div className="p-8 md:p-12 overflow-y-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Modal Body */}
+              <div className="p-8 md:p-12 overflow-y-auto bg-white">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {selectedTrack.details.map((detail, idx) => (
-                    <div key={idx} className="group p-6 rounded-3xl bg-gray-50 border border-black/5 hover:border-black/10 hover:bg-white hover:shadow-lg transition-all duration-300">
-                      <div className="flex items-start gap-4">
-                        <div className={`mt-1 w-6 h-6 rounded-full ${selectedTrack.classes.numberBg} flex items-center justify-center flex-shrink-0`}>
-                          <span className={`text-[10px] font-black ${selectedTrack.classes.numberText}`}>{idx + 1}</span>
-                        </div>
+                    <div key={idx} className="group p-6 rounded-2xl border border-black/5 hover:border-black/10 hover:shadow-lg hover:bg-[#F8FFF9] transition-all duration-300">
+                      <div className="flex gap-4">
+                        <span className={`flex-shrink-0 w-8 h-8 rounded-lg ${selectedTrack.bg} ${selectedTrack.text} flex items-center justify-center text-xs font-black`}>
+                          {(idx + 1).toString().padStart(2, '0')}
+                        </span>
                         <div>
-                          <h4 className="text-lg font-bold text-brand-dark mb-2 group-hover:text-brand transition-colors">
+                          <h4 className="text-lg font-bold text-brand-dark mb-2 leading-tight group-hover:text-black">
                             {detail.title}
                           </h4>
-                          <p className="text-sm text-brand-dark/60 leading-relaxed font-medium">
+                          <p className="text-sm text-brand-dark/50 leading-relaxed group-hover:text-brand-dark/70">
                             {detail.desc}
                           </p>
                         </div>
