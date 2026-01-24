@@ -13,11 +13,11 @@ export function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "#" },
+    { name: "About", href: "#about" },
+    { name: "Tracks", href: "#events" },
     { name: "Speakers", href: "#speakers" },
-    { name: "Events", href: "#events" },
-    { name: "Schedule", href: "#schedule" },
-    { name: "Pre-Events", href: "#pre-events" },
-    { name: "EOIs", href: "#eois" },
+    { name: "Highlights", href: "#highlights" },
+    { name: "Contact", href: "#footer" },
   ];
 
   return (

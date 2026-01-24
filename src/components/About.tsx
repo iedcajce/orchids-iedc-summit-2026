@@ -48,7 +48,7 @@ export function About() {
     ];
 
     return (
-        <section ref={containerRef} className="relative h-[250vh] bg-white">
+        <section id="about" ref={containerRef} className="relative h-[250vh] bg-white">
             <div className="sticky top-0 h-[100dvh] w-full overflow-hidden flex flex-col">
                 {/* Background Elements */}
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
