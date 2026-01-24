@@ -81,7 +81,7 @@ export function Hero() {
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h1 className="text-[42px] md:text-[64px] lg:text-[80px] leading-[1.1] tracking-tight font-black text-white drop-shadow-lg uppercase">
+              <h1 className="text-[32px] md:text-[52px] lg:text-[64px] leading-[1.1] tracking-tight font-black text-white drop-shadow-lg uppercase">
                 <motion.span
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -109,13 +109,13 @@ export function Hero() {
             >
               <div className="flex items-center gap-3 text-white">
                 <Calendar className="w-6 h-6 md:w-8 md:h-8" />
-                <span className="text-lg md:text-2xl font-bold tracking-wide">07 MARCH 2026</span>
+                <span className="text-base md:text-xl font-bold tracking-wide">07 MARCH 2026</span>
               </div>
               <div className="flex items-start gap-3 text-white">
                 <MapPin className="w-6 h-6 md:w-8 md:h-8 mt-1 shrink-0" />
                 <div className="flex flex-col">
-                  <span className="text-lg md:text-xl font-bold uppercase leading-tight">AMAL JYOTHI COLLEGE OF ENGINEERING(AUTONOMOUS)</span>
-                  <span className="text-base md:text-lg text-white/80">Kanjirappally</span>
+                  <span className="text-base md:text-lg font-bold uppercase leading-tight">AMAL JYOTHI COLLEGE OF ENGINEERING(AUTONOMOUS)</span>
+                  <span className="text-sm md:text-base text-white/80">Kanjirappally</span>
                 </div>
               </div>
             </motion.div>
@@ -132,7 +132,7 @@ export function Hero() {
                 { label: "Min", value: timeLeft.minutes },
                 { label: "Sec", value: timeLeft.seconds }
               ].map((item, index) => (
-                <div key={index} className="flex flex-col items-center justify-center bg-black/30 backdrop-blur-md rounded-2xl border border-white/10 w-20 h-24 md:w-28 md:h-32 shadow-xl">
+                <div key={index} className="flex flex-col items-center justify-center bg-black/30 backdrop-blur-md rounded-2xl border border-white/10 w-12 h-16 md:w-24 md:h-28 shadow-xl">
                   <AnimatePresence mode="popLayout">
                     <motion.span
                       key={`${index}-${item.value}`}
@@ -140,12 +140,12 @@ export function Hero() {
                       animate={{ y: 0, opacity: 1 }}
                       exit={{ y: -10, opacity: 0 }}
                       transition={{ duration: 0.35 }}
-                      className="text-3xl md:text-5xl font-bold text-white tabular-nums"
+                      className="text-2xl md:text-4xl font-bold text-white tabular-nums leading-none"
                     >
                       {String(item.value).padStart(2, '0')}
                     </motion.span>
                   </AnimatePresence>
-                  <span className="text-xs md:text-sm uppercase tracking-wider text-white/70 font-medium mt-1">{item.label}</span>
+                  <span className="text-[10px] md:text-sm uppercase tracking-wider text-white/70 font-medium">{item.label}</span>
                 </div>
               ))}
             </motion.div>
@@ -159,7 +159,7 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 1 }}
               className="text-right"
             >
-              <p className="text-xl md:text-3xl font-light text-white/90 leading-snug">
+              <p className="text-lg md:text-2xl font-light text-white/90 leading-snug">
                 Your Nomination.<br />
                 Your Innovation Passport.<br />
                 Your One-Year Journey.
