@@ -49,10 +49,10 @@ export function Hero() {
           {/* Desktop Image */}
           <div className="hidden md:block absolute inset-0">
             <Image
-              src="/images/hero-bg-2026.jpg"/*hero image*/
+              src="/images/hero-bg-final.jpg"/*hero image*/
               alt="IEDC Startup Summit Innovation"
               fill
-              className="object-cover object-center"
+              className="object-cover object-[left_50%_bottom_50%] scale-110"
               priority
             />
           </div>
@@ -60,10 +60,10 @@ export function Hero() {
           {/* Mobile Image */}
           <div className="block md:hidden absolute inset-0">
             <Image
-              src="/images/hero-bg-2026.jpg"
+              src="/images/hero-bg-mobile.jpg"
               alt="IEDC Startup Summit Innovation"
               fill
-              className="object-cover object-center"
+              className="object-cover object-[50%_100%] scale-110"
               priority
             />
           </div>
