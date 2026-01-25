@@ -77,7 +77,7 @@ export function PrecursorEvents() {
     ];
 
     return (
-        <section className="py-24 px-6 md:px-12 bg-white overflow-hidden relative">
+        <section id="precursor-events" className="py-24 px-6 md:px-12 bg-white overflow-hidden relative">
             <div className="max-w-7xl mx-auto">
                 <div className="mb-20">
                     <motion.div

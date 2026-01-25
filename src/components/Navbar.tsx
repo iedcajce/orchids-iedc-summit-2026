@@ -14,10 +14,11 @@ export function Navbar() {
   const navLinks = [
     { name: "Home", href: "#" },
     { name: "About", href: "#about" },
-    { name: "Road to Summit", href: "#precursor-events" },
     { name: "Tracks", href: "#events" },
     { name: "Speakers", href: "#speakers" },
     { name: "Highlights", href: "#highlights" },
+    { name: "Tickets", href: "#tickets" },
+    { name: "Road to Summit", href: "#precursor-events" },
     { name: "Contact", href: "#footer" },
   ];
 
