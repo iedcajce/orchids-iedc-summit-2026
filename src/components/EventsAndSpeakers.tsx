@@ -100,10 +100,10 @@ export function FeaturedEvents() {
           </Link>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-          {events.map((event, i) => (
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-8">
+          <div className="w-full">
             <motion.div
-              key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -115,19 +115,21 @@ export function FeaturedEvents() {
               onClick={() => setSelectedEvent(i)}
               className="relative group overflow-hidden rounded-[2rem] aspect-[2.5/1] md:aspect-[10/12] cursor-pointer bg-[#f8faf9] border border-black/5"
             >
-              <Image
-                src={event.image}
-                alt={event.title}
-                fill
-                className="object-cover opacity-80 transition-all duration-700 group-hover:scale-110 group-hover:opacity-100"
-              />
-
-              <div className="absolute top-4 left-4 z-20">
-                <span className={`text-[9px] font-black px-3 py-1 rounded-full tracking-widest uppercase shadow-sm ${event.badge === 'NEW' ? 'bg-brand text-white' : 'bg-brand-dark text-white'
-                  }`}>
-                  {event.badge}
-                </span>
+              <span className="text-brand font-black tracking-[0.4em] uppercase text-[10px] mb-4 block">Event Tracks</span>
+              <h2 className="text-[12vw] sm:text-[8vw] md:text-6xl lg:text-[72px] font-black italic tracking-tight uppercase leading-[0.8] text-brand-dark mb-8">
+                CURATED <span className="text-brand">LEARNING</span> <span className="opacity-10">EXPERIENCES</span>
+              </h2>
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <p className="text-brand-dark/60 text-base md:text-lg font-medium max-w-2xl leading-relaxed">
+                  Deep-dive into specialized tracks crafted to empower every stage of your startup journey, from ideation to scale.
+                </p>
+                <Button variant="outline" className="w-fit whitespace-nowrap border-brand-dark/10 hover:bg-brand-dark hover:text-white rounded-full text-[10px] font-black uppercase tracking-widest px-8 h-12 transition-all duration-300">
+                  Download Full Schedule
+                </Button>
               </div>
+            </motion.div>
+          </div>
+        </div>
 
               <div className="absolute inset-0 z-10 flex flex-col justify-end p-6">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />

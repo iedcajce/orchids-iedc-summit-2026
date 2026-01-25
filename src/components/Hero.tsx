@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Calendar, MapPin } from "lucide-react";
 
 function useCountdown(targetDate: string) {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -48,10 +49,10 @@ export function Hero() {
           {/* Desktop Image */}
           <div className="hidden md:block absolute inset-0">
             <Image
-              src="/images/hero_desk.jpg"
+              src="/images/hero-bg-final.jpg"/*hero image*/
               alt="IEDC Startup Summit Innovation"
               fill
-              className="object-cover object-center"
+              className="object-cover object-[left_50%_bottom_50%] scale-110"
               priority
             />
           </div>
@@ -59,10 +60,10 @@ export function Hero() {
           {/* Mobile Image */}
           <div className="block md:hidden absolute inset-0">
             <Image
-              src="/images/hero_mob.jpg"
+              src="/images/hero-bg-mobile.jpg"
               alt="IEDC Startup Summit Innovation"
               fill
-              className="object-cover object-center"
+              className="object-cover object-[50%_100%] scale-110"
               priority
             />
           </div>
@@ -139,10 +140,56 @@ export function Hero() {
                   </div>
                   <span className="text-[9px] md:text-[11px] uppercase tracking-wider text-white/50 font-semibold mt-1.5">{item.label}</span>
                 </div>
-                {index < 3 && <span className="text-white/30 text-xl md:text-2xl font-light mb-5">:</span>}
               </div>
-            ))}
-          </motion.div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.5 }}
+              className="mt-4 flex flex-wrap gap-4"
+            >
+              {[
+                { label: "Days", value: timeLeft.days },
+                { label: "Hrs", value: timeLeft.hours },
+                { label: "Min", value: timeLeft.minutes },
+                { label: "Sec", value: timeLeft.seconds }
+              ].map((item, index) => (
+                <div key={index} className="flex flex-col items-center justify-center bg-black/30 backdrop-blur-md rounded-2xl border border-white/10 w-12 h-16 md:w-24 md:h-28 shadow-xl">
+                  <AnimatePresence mode="popLayout">
+                    <motion.span
+                      key={`${index}-${item.value}`}
+                      initial={{ y: 10, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: -10, opacity: 0 }}
+                      transition={{ duration: 0.35 }}
+                      className="text-2xl md:text-4xl font-bold text-white tabular-nums leading-none"
+                    >
+                      {String(item.value).padStart(2, '0')}
+                    </motion.span>
+                  </AnimatePresence>
+                  <span className="text-[10px] md:text-sm uppercase tracking-wider text-white/70 font-medium">{item.label}</span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Right Content */}
+          <div className="md:col-span-5 flex flex-col justify-end items-end h-full pb-4">
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1 }}
+              className="text-right"
+            >
+              <p className="text-lg md:text-2xl font-light text-white/90 leading-snug">
+                Your Nomination.<br />
+                Your Innovation Passport.<br />
+                Your One-Year Journey.
+              </p>
+            </motion.div>
+          </div>
+
         </div>
       </div>
 

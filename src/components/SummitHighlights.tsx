@@ -146,6 +146,7 @@ export function SummitHighlights() {
 
     return (
         <section
+            id="highlights"
             ref={containerRef}
             className="min-h-screen h-auto md:h-screen w-full bg-[#f8faf9] overflow-y-auto md:overflow-hidden flex flex-col justify-center snap-start relative py-8 md:py-2 lg:py-4"
         >

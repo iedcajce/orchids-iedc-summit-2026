@@ -5,6 +5,7 @@ import { Play, ArrowRight, Instagram, Twitter, Linkedin } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import logo from "../assets/logo-1.png";
 
 export function Location() {
   return (
