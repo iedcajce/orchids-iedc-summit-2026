@@ -7,6 +7,7 @@ import { Hero } from "@/components/Hero";
 import { CountdownSection } from "@/components/CountdownSection";
 import { Ticker } from "@/components/Ticker";
 import { FeaturedEvents, Speakers } from "@/components/EventsAndSpeakers";
+import { PrecursorEvents } from "@/components/PrecursorEvents";
 import { Eligibility } from "@/components/Eligibility";
 import { SummitHighlights } from "@/components/SummitHighlights";
 import { About } from "@/components/About";
@@ -35,16 +36,17 @@ export default function Home() {
               <Hero />
               <Ticker />
             </div>
-            <div id="about" className="snap-start"><About /></div>
+            <div className="snap-start"><About /></div>
             {/* <div className="snap-start"><CountdownSection /></div> */}
-            <div id="events" className="snap-start"><FeaturedEvents /></div>
-            <div id="speakers" className="snap-start"><Speakers /></div>
-            <div id="tickets" className="snap-start"><Tickets /></div>
-            <div id="highlights" className="snap-start"><SummitHighlights /></div>
+            <div className="snap-start"><PrecursorEvents /></div>
+            <div className="snap-start"><FeaturedEvents /></div>
+            <div className="snap-start"><Speakers /></div>
+            <div className="snap-start"><SummitHighlights /></div>
+            <div className="snap-start"><Tickets /></div>
 
             {/* <div className="snap-start"><Eligibility /></div> */}
-            <div id="partners" className="snap-start"><Partners /></div>
-            <div id="location" className="snap-start"><Location /></div>
+            <div className="snap-start"><Partners /></div>
+            <div className="snap-start"><Location /></div>
             {/* <div className="snap-start"><PreviousSummits /></div> */}
             <div className="snap-start"><Footer /></div>
           </motion.div>

@@ -240,7 +240,12 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col md:flex-row items-center gap-6 relative z-10">
-
+            <motion.div
+              whileHover={{ rotate: -5, scale: 1.05 }}
+              className="w-14 h-14 bg-white rounded-[1rem] flex items-center justify-center p-2 shadow-xl transition-all duration-500 overflow-hidden"
+            >
+              <Image src={logo} alt="IEDC Logo" className="w-full h-full object-contain" />
+            </motion.div>
             <div className="text-center md:text-left">
               <p className="font-black text-2xl md:text-4xl text-white uppercase tracking-tighter leading-tight mb-2 italic">
                 IEDC Startup <span className="text-brand">Summit '26</span>
@@ -254,8 +259,8 @@ export function Footer() {
           <div className="flex flex-col items-center md:items-end gap-3 relative z-10">
             <div className="text-center md:text-right">
               <p className="text-[7px] uppercase font-black text-white/30 tracking-[0.4em] mb-1">Inquiries</p>
-              <a href="mailto:makerhubiedc@amaljyothi.ac.in" className="text-lg md:text-xl font-black text-white hover:text-brand transition-all duration-300">
-                makerhubiedc@amaljyothi.ac.in
+              <a href="mailto:iedcsummit@ajce.ac.in" className="text-lg md:text-xl font-black text-white hover:text-brand transition-all duration-300">
+                iedcsummit@ajce.ac.in
               </a>
             </div>
 
