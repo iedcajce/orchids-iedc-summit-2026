@@ -118,7 +118,7 @@ export function About() {
                             </div>
 
                             {/* Integrated "Who Can Join" Section */}
-                            <div className="mt-auto pt-6 border-t border-brand/5">
+                            <div className="hidden md:block mt-auto pt-6 border-t border-brand/5">
                                 <span className="text-brand font-black tracking-[0.4em] text-[8px] uppercase mb-4 block">Who Can Join?</span>
                                 <div className="flex flex-wrap gap-x-6 gap-y-2">
                                     {[
@@ -168,6 +168,36 @@ export function About() {
                                     </motion.div>
                                 );
                             })}
+                        </div>
+
+                        {/* Who Can Join Section (Mobile Only - After Stats) */}
+                        <div className="block md:hidden p-6 border-t border-brand/5">
+                            <span className="text-brand font-black tracking-[0.4em] text-[8px] uppercase mb-4 block">Who Can Join?</span>
+                            <div className="flex flex-wrap gap-x-6 gap-y-2">
+                                {[
+                                    "Entrepreneurship Enthusiasts",
+                                    "Innovative Project Creators",
+                                    "Funding & Mentorship Seekers",
+                                    "Student Startup Founders",
+                                    "Executive Committee Leaders",
+                                    "IEDC Members & Supporters",
+                                    "Nodal Officers & Enablers"
+                                ].map((tag, i) => (
+                                    <motion.div
+                                        key={`mobile-${tag}`}
+                                        initial={{ opacity: 0 }}
+                                        whileInView={{ opacity: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: 0.1 + i * 0.05 }}
+                                        className="flex items-center gap-2 group cursor-default"
+                                    >
+                                        <div className="w-1 h-1 rounded-full bg-brand/30 group-hover:bg-brand transition-all duration-300" />
+                                        <span className="text-[9px] md:text-[10px] font-black italic uppercase tracking-[0.1em] text-brand-dark/40 group-hover:text-brand-dark transition-colors duration-300">
+                                            {tag}
+                                        </span>
+                                    </motion.div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>

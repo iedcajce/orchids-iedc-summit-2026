@@ -14,10 +14,10 @@ export function Navbar() {
   const navLinks = [
     { name: "Home", href: "#" },
     { name: "About", href: "#about" },
-    { name: "Tracks", href: "#events" },
+    { name: "Events", href: "#events" },
     { name: "Speakers", href: "#speakers" },
     { name: "Highlights", href: "#highlights" },
-    { name: "Contact", href: "#footer" },
+    { name: "Partners", href: "#partners" },
   ];
 
   return (
@@ -79,7 +79,7 @@ export function Navbar() {
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               onClick={() => setIsOpen(false)}
-              className="absolute top-6 right-6 w-14 h-14 flex items-center justify-center bg-[#CCFFF9] rounded-2xl shadow-lg shadow-black/5 text-[#4A7C59]"
+              className="absolute top-6 right-6 w-14 h-14 flex items-center justify-center bg-[#CCFFF9] rounded-2xl shadow-lg shadow-black/5 text-brand-dark"
             >
               <X className="w-8 h-8" />
             </motion.button>
