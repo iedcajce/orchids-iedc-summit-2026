@@ -16,8 +16,9 @@ export function FeaturedEvents() {
       title: "TECHNOLOGY",
       subtitle: "Blueprint to Future-Proof",
       description: "For teams building technology at the cutting edge. Focus on security, scalability, and emerging trends.",
+      image: "/images/track_tech.png", // Technology/Robotics themed
       icon: <Cpu className="w-6 h-6" />,
-      gradient: "from-blue-500/20 via-blue-500/5 to-transparent",
+      gradient: "from-blue-600/40 via-blue-600/10 to-transparent",
       border: "group-hover:border-blue-500/50",
       text: "text-blue-500",
       bg: "bg-blue-500/10",
@@ -33,8 +34,9 @@ export function FeaturedEvents() {
       title: "BUSINESS",
       subtitle: "Problem Solver to Paying Customer",
       description: "The track dedicated to survival, growth, and sustainable revenue generation.",
+      image: "/images/track_business.png", // Business/Startup themed
       icon: <Briefcase className="w-6 h-6" />,
-      gradient: "from-emerald-500/20 via-emerald-500/5 to-transparent",
+      gradient: "from-emerald-600/40 via-emerald-600/10 to-transparent",
       border: "group-hover:border-emerald-500/50",
       text: "text-emerald-500",
       bg: "bg-emerald-500/10",
@@ -50,8 +52,9 @@ export function FeaturedEvents() {
       title: "INVESTMENT",
       subtitle: "Pitch Deck to Strategic Cheque",
       description: "Preparation for the financial journey, designed for teams targeting early-stage capital.",
+      image: "/images/track_investment.png", // Pitching/Investment themed
       icon: <TrendingUp className="w-6 h-6" />,
-      gradient: "from-amber-500/20 via-amber-500/5 to-transparent",
+      gradient: "from-amber-600/40 via-amber-600/10 to-transparent",
       border: "group-hover:border-amber-500/50",
       text: "text-amber-500",
       bg: "bg-amber-500/10",
@@ -66,58 +69,85 @@ export function FeaturedEvents() {
 
   return (
     <section id="events" className="py-24 px-6 md:px-12 bg-[#F8FFF9] overflow-hidden relative">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 relative z-10">
-          <div className="max-w-3xl">
-            <span className="text-brand font-black tracking-[0.3em] uppercase text-[10px] mb-3 block">Track Selection</span>
-            <h2 className="text-4xl md:text-6xl font-black italic tracking-tighter uppercase leading-[0.9] text-brand-dark mb-6">
-              NEW & <span className="text-brand">EXPANDED</span> <br />
-              <span className="opacity-30">FOR 2026</span>
-            </h2>
-            <p className="text-brand-dark/60 text-sm md:text-base font-medium max-w-xl leading-relaxed">
-              Curated tracks designed to address the specific lifecycle challenges of student startups.
-            </p>
+      {/* Background patterns */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-8">
+          <div className="w-full">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <span className="text-brand font-black tracking-[0.4em] uppercase text-[10px] mb-4 block">Event Tracks</span>
+              <h2 className="text-[12vw] sm:text-[8vw] md:text-6xl lg:text-[72px] font-black italic tracking-tight uppercase leading-[0.8] text-brand-dark mb-8">
+                CURATED <span className="text-brand">LEARNING</span> <span className="opacity-10">EXPERIENCES</span>
+              </h2>
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <p className="text-brand-dark/60 text-base md:text-lg font-medium max-w-2xl leading-relaxed">
+                  Deep-dive into specialized tracks crafted to empower every stage of your startup journey, from ideation to scale.
+                </p>
+                <Button variant="outline" className="w-fit whitespace-nowrap border-brand-dark/10 hover:bg-brand-dark hover:text-white rounded-full text-[10px] font-black uppercase tracking-widest px-8 h-12 transition-all duration-300">
+                  Download Full Schedule
+                </Button>
+              </div>
+            </motion.div>
           </div>
-          <Button variant="outline" className="hidden md:flex border-brand-dark/10 hover:bg-brand-dark hover:text-white rounded-full text-[10px] font-black uppercase tracking-widest px-8 h-12">
-            Explore All Sessions
-          </Button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {tracks.map((track, i) => (
-            <div
+            <motion.div
               key={track.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
               onClick={() => setSelectedTrack(track)}
-              className={`group relative h-full min-h-[420px] rounded-[2.5rem] bg-white border border-black/5 p-8 flex flex-col justify-between cursor-pointer transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl overflow-hidden ${track.border}`}
+              className={`group relative h-[480px] rounded-[3rem] bg-white border border-black/5 overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.2)] ${track.border}`}
             >
-              {/* Magic Gradient Background */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${track.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+              {/* Cover Image */}
+              <div className="absolute inset-0">
+                <Image
+                  src={track.image}
+                  alt={track.title}
+                  fill
+                  className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent" />
+                <div className={`absolute inset-0 bg-gradient-to-br ${track.gradient} mix-blend-overlay opacity-40`} />
+              </div>
 
-              {/* Content */}
-              <div className="relative z-10 flex flex-col h-full">
-                <div className="flex justify-between items-start mb-auto">
-                  <div className={`w-14 h-14 rounded-2xl ${track.bg} ${track.text} flex items-center justify-center transition-transform duration-500 group-hover:scale-110`}>
-                    {track.icon}
-                  </div>
-                  <div className={`w-10 h-10 rounded-full border border-black/5 flex items-center justify-center ${track.text} opacity-0 group-hover:opacity-100 -translate-y-4 group-hover:translate-y-0 transition-all duration-500`}>
-                    <ArrowUpRight className="w-5 h-5" />
-                  </div>
+              {/* Top Icons */}
+              <div className="absolute top-8 left-8 right-8 flex justify-between items-start z-10">
+                <div className={`w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition-transform duration-500 group-hover:scale-110`}>
+                  {track.icon}
                 </div>
-
-                <div className="mt-8">
-                  <h3 className="text-3xl font-black text-brand-dark uppercase tracking-tighter mb-2 leading-[0.9] group-hover:text-black transition-colors">
-                    {track.title}
-                  </h3>
-                  <div className={`h-1 w-12 rounded-full ${track.bg.replace('/10', '')} mb-4 opacity-50 group-hover:w-full transition-all duration-500`} />
-                  <p className={`text-xs font-bold uppercase tracking-widest mb-4 ${track.text}`}>
-                    {track.subtitle}
-                  </p>
-                  <p className="text-brand-dark/50 text-sm leading-relaxed font-medium group-hover:text-brand-dark/80 transition-colors">
-                    {track.description}
-                  </p>
+                <div className={`w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 -translate-y-2 group-hover:translate-y-0 transition-all duration-500`}>
+                  <ArrowUpRight className="w-5 h-5" />
                 </div>
               </div>
-            </div>
+
+              {/* Bottom Content Area */}
+              <div className="absolute inset-x-0 bottom-0 p-8 pt-24 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-transparent z-10 text-white">
+                <span className="text-[10px] font-black tracking-[0.25em] uppercase text-[#4ADE80] mb-2 block drop-shadow-sm">
+                  {track.subtitle}
+                </span>
+                <h3 className="text-3xl font-black uppercase tracking-tighter leading-none mb-4 drop-shadow-md">
+                  {track.title}
+                </h3>
+                <p className="text-white/80 text-sm leading-relaxed font-medium line-clamp-2 group-hover:text-white transition-colors duration-300">
+                  {track.description}
+                </p>
+                <div className="mt-8 flex items-center gap-3 group/btn">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#4ADE80]">Explore Track</span>
+                  <div className="h-[1px] flex-grow bg-white/20" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-brand shadow-[0_0_10px_rgba(74,222,128,0.5)] group-hover:scale-150 transition-transform duration-300" />
+                </div>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -128,64 +158,84 @@ export function FeaturedEvents() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black/60 backdrop-blur-md"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black/80 backdrop-blur-xl"
             onClick={() => setSelectedTrack(null)}
           >
             <motion.div
               initial={{ scale: 0.95, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
-              className="bg-white rounded-[2rem] w-full max-w-4xl max-h-[85vh] overflow-hidden flex flex-col shadow-2xl relative"
+              className="bg-white rounded-[3rem] w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col md:flex-row shadow-2xl relative"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Modal Header */}
-              <div className="relative p-8 md:p-12 overflow-hidden bg-[#F8FFF9] border-b border-black/5">
-                <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl ${selectedTrack.gradient} opacity-50 blur-3xl`} />
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedTrack(null)}
+                className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-white hover:text-brand-dark transition-all z-30 text-white"
+              >
+                <X className="w-6 h-6" />
+              </button>
 
-                <button
-                  onClick={() => setSelectedTrack(null)}
-                  className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white border border-black/5 flex items-center justify-center hover:bg-black hover:text-white transition-all z-20 shadow-sm"
-                >
-                  <X className="w-5 h-5" />
-                </button>
+              {/* Modal Left - Image & Basic Info */}
+              <div className="w-full md:w-[40%] relative min-h-[300px] md:min-h-full">
+                <Image
+                  src={selectedTrack.image}
+                  alt={selectedTrack.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className={`absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent opacity-90`} />
 
-                <div className="relative z-10">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className={`p-3 rounded-xl ${selectedTrack.bg} ${selectedTrack.text}`}>
-                      {selectedTrack.icon}
-                    </div>
-                    <span className={`text-xs font-black tracking-widest uppercase ${selectedTrack.text}`}>Track Deep Dive</span>
+                <div className="absolute bottom-0 left-0 p-8 md:p-12 z-10 w-full">
+                  <div className={`p-4 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 text-white inline-flex mb-6`}>
+                    {selectedTrack.icon}
                   </div>
-
-                  <h3 className="text-4xl md:text-5xl font-black text-brand-dark uppercase tracking-tighter mb-3 leading-none italic">
+                  <h3 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter mb-4 leading-none italic">
                     {selectedTrack.title}
                   </h3>
-                  <p className="text-brand-dark/60 text-lg max-w-2xl font-medium">
+                  <p className="text-white/70 text-base font-medium">
                     {selectedTrack.description}
                   </p>
                 </div>
               </div>
 
-              {/* Modal Body */}
-              <div className="p-8 md:p-12 overflow-y-auto bg-white">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Modal Right - Details List */}
+              <div className="w-full md:w-[60%] p-8 md:p-16 overflow-y-auto bg-white custom-scrollbar">
+                <div className="mb-12">
+                  <span className="text-brand font-black tracking-[0.3em] uppercase text-[11px] mb-2 block">Track Highlights</span>
+                  <h4 className="text-2xl font-black text-brand-dark uppercase tracking-tight italic">Key Sessions & Topics</h4>
+                </div>
+
+                <div className="space-y-6">
                   {selectedTrack.details.map((detail, idx) => (
-                    <div key={idx} className="group p-6 rounded-2xl border border-black/5 hover:border-black/10 hover:shadow-lg hover:bg-[#F8FFF9] transition-all duration-300">
-                      <div className="flex gap-4">
-                        <span className={`flex-shrink-0 w-8 h-8 rounded-lg ${selectedTrack.bg} ${selectedTrack.text} flex items-center justify-center text-xs font-black`}>
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 * idx }}
+                      className="group p-8 rounded-[2rem] border border-black/5 hover:border-brand/20 hover:bg-brand/5 transition-all duration-300"
+                    >
+                      <div className="flex gap-6">
+                        <span className={`flex-shrink-0 w-10 h-10 rounded-xl ${selectedTrack.bg} ${selectedTrack.text} flex items-center justify-center text-xs font-black border border-black/5`}>
                           {(idx + 1).toString().padStart(2, '0')}
                         </span>
                         <div>
-                          <h4 className="text-lg font-bold text-brand-dark mb-2 leading-tight group-hover:text-black">
+                          <h5 className="text-xl font-bold text-brand-dark mb-2 leading-tight group-hover:text-brand transition-colors">
                             {detail.title}
-                          </h4>
-                          <p className="text-sm text-brand-dark/50 leading-relaxed group-hover:text-brand-dark/70">
+                          </h5>
+                          <p className="text-[15px] text-brand-dark/60 leading-relaxed">
                             {detail.desc}
                           </p>
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
+                </div>
+
+                <div className="mt-12 pt-12 border-t border-black/5">
+                  <Button className="w-full h-14 rounded-2xl bg-brand-dark text-white font-black uppercase tracking-widest hover:bg-brand transition-all duration-300">
+                    View Schedule
+                  </Button>
                 </div>
               </div>
             </motion.div>

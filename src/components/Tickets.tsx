@@ -196,11 +196,18 @@ export function Tickets() {
                         <p className="text-xs md:text-sm font-bold text-[#2D4A35]">AJCE, KERALA</p>
                       </div>
                     </div>
-                    <div className="col-span-2 space-y-1">
-                      <span className="text-[8px] md:text-[9px] font-bold text-[#4A7C59]/50 uppercase tracking-widest block">Authorization Status</span>
-                      <div className="flex items-center gap-2 bg-brand/5 p-2 rounded-xl border border-brand/10">
-                        <ShieldCheck className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand" />
-                        <p className="text-[9px] md:text-[11px] font-bold text-[#2D4A35] uppercase tracking-tight">Full Access Granted</p>
+                    <div className="col-span-2 grid grid-cols-2 gap-4 mt-2">
+                      <div className="space-y-2">
+                        <span className="text-[8px] md:text-[9px] font-bold text-[#4A7C59]/50 uppercase tracking-widest block">Powered By</span>
+                        <div className="relative h-7 w-full">
+                          <Image src="/images/powredby/ksum.svg" alt="KSUM" fill className="object-contain object-left" />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <span className="text-[8px] md:text-[9px] font-bold text-[#4A7C59]/50 uppercase tracking-widest block">Hosted By</span>
+                        <div className="relative h-7 w-full">
+                          <Image src="/images/hosted_by/ajce_logo_6.png" alt="AJCE" fill className="object-contain object-left" />
+                        </div>
                       </div>
                     </div>
                   </div>
