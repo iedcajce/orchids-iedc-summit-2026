@@ -5,6 +5,7 @@ import { Play, ArrowRight, Instagram, Twitter, Linkedin } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import logo from "../assets/logo-1.png";
 
 export function Location() {
   return (
@@ -241,9 +242,9 @@ export function Footer() {
           <div className="flex flex-col md:flex-row items-center gap-6 relative z-10">
             <motion.div
               whileHover={{ rotate: -5, scale: 1.05 }}
-              className="w-14 h-14 bg-white rounded-[1rem] flex items-center justify-center text-brand font-black text-2xl shadow-xl transition-all duration-500"
+              className="w-14 h-14 bg-white rounded-[1rem] flex items-center justify-center p-2 shadow-xl transition-all duration-500 overflow-hidden"
             >
-              S
+              <Image src={logo} alt="IEDC Logo" className="w-full h-full object-contain" />
             </motion.div>
             <div className="text-center md:text-left">
               <p className="font-black text-2xl md:text-4xl text-white uppercase tracking-tighter leading-tight mb-2 italic">

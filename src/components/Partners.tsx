@@ -3,25 +3,37 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const PartnerCard = ({ src, alt, delay = 0, className = "" }: { src: string; alt: string; delay?: number; className?: string }) => (
-    <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay }}
-        whileHover={{ y: -5 }}
-        className="group relative flex items-center justify-center p-6 bg-white border border-black/5 rounded-2xl shadow-sm hover:shadow-xl hover:border-brand/20 transition-all duration-500 h-32 md:h-40"
-    >
-        <div className={`relative w-full h-12 md:h-16 ${className}`}>
-            <Image
-                src={src}
-                alt={alt}
-                fill
-                className="object-contain transition-all duration-500"
-            />
-        </div>
-    </motion.div>
-);
+const PartnerCard = ({ src, alt, href, delay = 0, className = "" }: { src: string; alt: string; href?: string; delay?: number; className?: string }) => {
+    const content = (
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay }}
+            whileHover={{ y: -5 }}
+            className="group relative flex items-center justify-center p-6 bg-white border border-black/5 rounded-2xl shadow-sm hover:shadow-xl hover:border-brand/20 transition-all duration-500 h-32 md:h-40"
+        >
+            <div className={`relative w-full h-12 md:h-16 ${className}`}>
+                <Image
+                    src={src}
+                    alt={alt}
+                    fill
+                    className="object-contain transition-all duration-500"
+                />
+            </div>
+        </motion.div>
+    );
+
+    if (href) {
+        return (
+            <a href={href} target="_blank" rel="noopener noreferrer" className="block h-full">
+                {content}
+            </a>
+        );
+    }
+
+    return content;
+};
 
 const SectionLabel = ({ children }: { children: React.ReactNode }) => (
     <div className="flex items-center gap-4 mb-8 w-full">
@@ -68,9 +80,24 @@ export function Partners() {
                         <div className="flex flex-col items-center">
                             <SectionLabel>Powered By</SectionLabel>
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full">
-                                <PartnerCard src="/images/powredby/ksum.svg" alt="KSUM" delay={0.1} />
-                                <PartnerCard src="/images/powredby/iedc_kerala.png" alt="IEDC Kerala" delay={0.2} />
-                                <PartnerCard src="/images/powredby/startupvally.png" alt="Startup Valley" delay={0.3} />
+                                <PartnerCard
+                                    src="/images/powredby/ksum.svg"
+                                    alt="KSUM"
+                                    href="https://startupmission.kerala.gov.in/"
+                                    delay={0.1}
+                                />
+                                <PartnerCard
+                                    src="/images/powredby/iedc_kerala.png"
+                                    alt="IEDC Kerala"
+                                    href="https://iedc.startupmission.in/"
+                                    delay={0.2}
+                                />
+                                <PartnerCard
+                                    src="/images/powredby/startupvally.png"
+                                    alt="Startup Valley"
+                                    href="https://startupsvalley.in/"
+                                    delay={0.3}
+                                />
                             </div>
                         </div>
 
@@ -78,13 +105,22 @@ export function Partners() {
                         <div className="flex flex-col items-center">
                             <SectionLabel>Hosted By</SectionLabel>
                             <div className="grid grid-cols-2 gap-6 w-full">
-                                <PartnerCard src="/images/hosted_by/ajce_logo_6.png" alt="AJCE" delay={0.4} className="!h-20 md:!h-24" />
-                                <PartnerCard src="/images/hosted_by/iedc_ajce.png" alt="IEDC AJCE" delay={0.5} />
+                                <PartnerCard
+                                    src="/images/hosted_by/ajce_logo_6.png"
+                                    alt="AJCE"
+                                    href="https://www.ajce.in/"
+                                    delay={0.4}
+                                    className="!h-20 md:!h-24"
+                                />
+                                <PartnerCard
+                                    src="/images/hosted_by/iedc_ajce.png"
+                                    alt="IEDC AJCE"
+                                    href="https://iedcajce.in/"
+                                    delay={0.5}
+                                />
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </section>
