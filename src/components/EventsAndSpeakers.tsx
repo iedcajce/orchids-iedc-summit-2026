@@ -76,29 +76,10 @@ export function FeaturedEvents() {
   ];
 
   return (
-    <section id="events" className="py-12 px-6 md:px-12 bg-white text-brand-dark overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6"
-        >
-          <div>
-            <span className="text-brand font-black tracking-[0.3em] uppercase text-[10px] mb-2 block">Innovation Hub</span>
-            <h2 className="text-4xl md:text-5xl font-black italic tracking-tighter uppercase leading-none" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
-              NEW & <span className="text-brand">EXPANDED</span> <br />
-              <span className="text-brand-dark/20">FOR 2026</span>
-            </h2>
-          </div>
-
-          <Link href="/schedules">
-            <Button variant="outline" className="border-brand-dark/10 hover:bg-brand-dark hover:text-white rounded-full text-[10px] font-black uppercase tracking-widest px-8 transition-all">
-              View Schedule
-            </Button>
-          </Link>
-        </motion.div>
+    <section id="events" className="py-24 px-6 md:px-12 bg-white text-brand-dark overflow-hidden relative">
+      {/* Background patterns */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-8">
@@ -107,13 +88,6 @@ export function FeaturedEvents() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{
-                duration: 0.5,
-                delay: i * 0.1,
-              }}
-              whileHover={{ y: -5 }}
-              onClick={() => setSelectedEvent(i)}
-              className="relative group overflow-hidden rounded-[2rem] aspect-[2.5/1] md:aspect-[10/12] cursor-pointer bg-[#f8faf9] border border-black/5"
             >
               <span className="text-brand font-black tracking-[0.4em] uppercase text-[10px] mb-4 block">Event Tracks</span>
               <h2 className="text-[12vw] sm:text-[8vw] md:text-6xl lg:text-[72px] font-black italic tracking-tight uppercase leading-[0.8] text-brand-dark mb-8">
@@ -123,16 +97,40 @@ export function FeaturedEvents() {
                 <p className="text-brand-dark/60 text-base md:text-lg font-medium max-w-2xl leading-relaxed">
                   Deep-dive into specialized tracks crafted to empower every stage of your startup journey, from ideation to scale.
                 </p>
-                <Button variant="outline" className="w-fit whitespace-nowrap border-brand-dark/10 hover:bg-brand-dark hover:text-white rounded-full text-[10px] font-black uppercase tracking-widest px-8 h-12 transition-all duration-300">
-                  Download Full Schedule
-                </Button>
+                <Link href="/schedules">
+                  <Button variant="outline" className="w-fit whitespace-nowrap border-brand-dark/10 hover:bg-brand-dark hover:text-white rounded-full text-[10px] font-black uppercase tracking-widest px-8 h-12 transition-all duration-300">
+                    View Schedule
+                  </Button>
+                </Link>
               </div>
             </motion.div>
           </div>
         </div>
 
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {events.map((event, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.5,
+                delay: i * 0.1,
+              }}
+              whileHover={{ y: -5 }}
+              onClick={() => setSelectedEvent(i)}
+              className="relative group overflow-hidden rounded-[2rem] aspect-[4/5] cursor-pointer bg-[#f8faf9] border border-black/5"
+            >
+              <Image
+                src={event.image}
+                alt={event.title}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+
               <div className="absolute inset-0 z-10 flex flex-col justify-end p-6">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <div className="relative z-10 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                   <div className="flex items-center justify-between mb-3">
@@ -156,7 +154,7 @@ export function FeaturedEvents() {
             </motion.div>
           ))}
         </div>
-      </div >
+      </div>
 
       {/* Event Details Modal */}
       <AnimatePresence>

@@ -141,6 +141,7 @@ export function Hero() {
                   <span className="text-[9px] md:text-[11px] uppercase tracking-wider text-white/50 font-semibold mt-1.5">{item.label}</span>
                 </div>
               </div>
+            ))}
             </motion.div>
 
             <motion.div
@@ -206,6 +207,6 @@ export function Hero() {
           Kanjirappally • 07 March 2026
         </p>
       </motion.div>
-    </section>
+    </section >
   );
 }
