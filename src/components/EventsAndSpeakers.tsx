@@ -68,29 +68,10 @@ export function FeaturedEvents() {
   ];
 
   return (
-    <section id="events" className="py-12 px-6 md:px-12 bg-white text-brand-dark overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6"
-        >
-          <div>
-            <span className="text-brand font-black tracking-[0.3em] uppercase text-[10px] mb-2 block">Innovation Hub</span>
-            <h2 className="text-4xl md:text-5xl font-black italic tracking-tighter uppercase leading-none" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
-              NEW & <span className="text-brand">EXPANDED</span> <br />
-              <span className="text-brand-dark/20">FOR 2026</span>
-            </h2>
-          </div>
-
-          <Link href="/schedules">
-            <Button variant="outline" className="border-brand-dark/10 hover:bg-brand-dark hover:text-white rounded-full text-[10px] font-black uppercase tracking-widest px-8 transition-all">
-              View Schedule
-            </Button>
-          </Link>
-        </motion.div>
+    <section id="events" className="py-24 px-6 md:px-12 bg-[#F8FFF9] overflow-hidden relative">
+      {/* Background patterns */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-8">
@@ -108,50 +89,46 @@ export function FeaturedEvents() {
                 <p className="text-brand-dark/60 text-base md:text-lg font-medium max-w-2xl leading-relaxed">
                   Deep-dive into specialized tracks crafted to empower every stage of your startup journey, from ideation to scale.
                 </p>
-                <Link href="/schedules">
-                  <Button variant="outline" className="w-fit whitespace-nowrap border-brand-dark/10 hover:bg-brand-dark hover:text-white rounded-full text-[10px] font-black uppercase tracking-widest px-8 h-12 transition-all duration-300">
-                    View Schedule
-                  </Button>
-                </Link>
+                <Button variant="outline" className="w-fit whitespace-nowrap border-brand-dark/10 hover:bg-brand-dark hover:text-white rounded-full text-[10px] font-black uppercase tracking-widest px-8 h-12 transition-all duration-300">
+                  Download Full Schedule
+                </Button>
               </div>
             </motion.div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {events.map((event, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {tracks.map((track, i) => (
             <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
+              key={track.id}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{
-                duration: 0.5,
-                delay: i * 0.1,
-              }}
-              whileHover={{ y: -5 }}
-              onClick={() => setSelectedEvent(i)}
-              className="relative group overflow-hidden rounded-[2rem] aspect-[4/5] cursor-pointer bg-[#f8faf9] border border-black/5"
+              transition={{ delay: i * 0.1 }}
+              onClick={() => setSelectedTrack(track)}
+              className={`group relative h-[480px] rounded-[3rem] bg-white border border-black/5 overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.2)] ${track.border}`}
             >
-              <Image
-                src={event.image}
-                alt={event.title}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
-              />
+              {/* Cover Image */}
+              <div className="absolute inset-0">
+                <Image
+                  src={track.image}
+                  alt={track.title}
+                  fill
+                  className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent" />
+                <div className={`absolute inset-0 bg-gradient-to-br ${track.gradient} mix-blend-overlay opacity-40`} />
+              </div>
 
-              <div className="absolute inset-0 z-10 flex flex-col justify-end p-6">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
-
-                <div className="relative z-10 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-xl font-black text-white uppercase tracking-tighter leading-none">
-                      {event.title}
-                    </h3>
-                    <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:bg-brand group-hover:border-brand transition-all duration-300">
-                      <ArrowUpRight className="w-4 h-4 text-white group-hover:text-black transition-colors" />
-                    </div>
-                  </div>
+              {/* Top Icons */}
+              <div className="absolute top-8 left-8 right-8 flex justify-between items-start z-10">
+                <div className={`w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center transition-transform duration-500 group-hover:scale-110`}>
+                  {track.icon}
+                </div>
+                <div className={`w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 -translate-y-2 group-hover:translate-y-0 transition-all duration-500`}>
+                  <ArrowUpRight className="w-5 h-5" />
+                </div>
+              </div>
 
               {/* Bottom Content Area */}
               <div className="absolute inset-x-0 bottom-0 p-8 pt-24 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-transparent z-10 text-white">
@@ -268,7 +245,6 @@ export function FeaturedEvents() {
     </section>
   );
 }
-
 export function Speakers() {
   const speakers = [
     {

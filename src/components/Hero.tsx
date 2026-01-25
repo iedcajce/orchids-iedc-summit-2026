@@ -49,10 +49,10 @@ export function Hero() {
           {/* Desktop Image */}
           <div className="hidden md:block absolute inset-0">
             <Image
-              src="/images/hero-bg-2026.jpg"/*hero image*/
+              src="/images/hero-bg-final.jpg"/*hero image*/
               alt="IEDC Startup Summit Innovation"
               fill
-              className="object-cover object-center"
+              className="object-cover object-[left_50%_bottom_50%] scale-110"
               priority
             />
           </div>
@@ -60,10 +60,10 @@ export function Hero() {
           {/* Mobile Image */}
           <div className="block md:hidden absolute inset-0">
             <Image
-              src="/images/hero-bg-2026.jpg"
+              src="/images/hero-bg-mobile.jpg"
               alt="IEDC Startup Summit Innovation"
               fill
-              className="object-cover object-center"
+              className="object-cover object-[50%_100%] scale-110"
               priority
             />
           </div>
@@ -118,7 +118,6 @@ export function Hero() {
                   <span className="text-sm md:text-base text-white/80">Kanjirappally</span>
                 </div>
               </div>
-            ))}
             </motion.div>
 
             <motion.div
@@ -170,24 +169,6 @@ export function Hero() {
 
         </div>
       </div>
-<<<<<<< HEAD
-
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1 }}
-        className="absolute bottom-6 md:bottom-10 right-6 md:right-16 z-20 flex flex-col items-end text-right"
-      >
-        <p className="text-sm md:text-lg font-semibold tracking-wide text-white/80 leading-tight max-w-xs md:max-w-md uppercase" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>
-          Amal Jyothi College of Engineering(Autonomous)
-        </p>
-        <p className="text-xs md:text-sm font-medium text-white/60 mt-1 uppercase tracking-widest" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>
-          Kanjirappally • 07 March 2026
-        </p>
-      </motion.div>
-    </section >
-=======
     </section>
->>>>>>> parent of b39c9ad (Merge branch 'main' into njo)
   );
 }
