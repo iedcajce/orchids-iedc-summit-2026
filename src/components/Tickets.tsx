@@ -220,35 +220,18 @@ export function Tickets() {
                       rel="noopener noreferrer"
                       className="bg-white p-2 md:p-2.5 rounded-xl border border-[#2D4A35]/10 shadow-sm relative group/qr cursor-pointer block transition-transform hover:scale-105"
                     >
-                      ₹749
-                    </motion.span>
-                  </div>
-                </div>
-
-                <div className="w-full space-y-6 z-10">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button className="w-full bg-[#4A7C59] hover:bg-[#386144] text-white rounded-full py-6 h-auto text-sm font-bold uppercase tracking-widest shadow-xl shadow-[#4A7C59]/20 transition-all hover:-translate-y-0.5 active:scale-95">
-                      Get Your Ticket
-                      <ArrowRight className="ml-2 w-5 h-5" />
-                    </Button>
-                  </motion.div>
-
-                  <div className="space-y-2 w-full">
-                    <div className="flex flex-col gap-1.5 items-center justify-center bg-[#E8F3ED]/50 rounded-xl p-3 w-full">
-                      {[
-                        "All Access Pass",
-                        "Buffet Lunch",
-                        "Certificates",
-                        "Goodie Bag"
-                      ].map((benefit, i) => (
-                        <div key={i} className="flex items-center gap-2 text-[10px] md:text-[11px] font-bold text-[#4A7C59]/70 uppercase tracking-wider">
-                          <span className="w-1 h-1 rounded-full bg-[#4A7C59]" />
-                          {benefit}
-                        </div>
-                      ))}
+                      <div className="absolute -inset-3 bg-brand/5 rounded-2xl opacity-0 group-hover/qr:opacity-100 transition-opacity" />
+                      <Image
+                        src="/images/ticket-qr.png"
+                        alt="Scan to Register"
+                        width={112}
+                        height={112}
+                        className="w-24 h-24 md:w-28 md:h-28 object-contain"
+                      />
+                    </a>
+                    <div className="text-center space-y-1.5">
+                      <p className="text-[10px] md:text-xs font-bold tracking-[0.25em] text-[#2D4A35] font-mono">ISS2026-DP0XXX</p>
+                      <span className="text-[7px] md:text-[8px] font-bold text-[#4A7C59]/40 uppercase tracking-widest block">Official Delegate ID</span>
                     </div>
                   </div>
                 </div>
