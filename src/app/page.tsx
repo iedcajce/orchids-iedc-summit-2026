@@ -45,6 +45,7 @@ export default function Home() {
             <div className="snap-start"><Tickets /></div>
 
             {/* <div className="snap-start"><Eligibility /></div> */}
+            <div className="snap-start"><PrecursorEvents /></div>
             <div className="snap-start"><Partners /></div>
             <div className="snap-start"><Location /></div>
             {/* <div className="snap-start"><PreviousSummits /></div> */}
