@@ -7,6 +7,7 @@ import { Hero } from "@/components/Hero";
 import { CountdownSection } from "@/components/CountdownSection";
 import { Ticker } from "@/components/Ticker";
 import { FeaturedEvents, Speakers } from "@/components/EventsAndSpeakers";
+import { PrecursorEvents } from "@/components/PrecursorEvents";
 import { Eligibility } from "@/components/Eligibility";
 import { SummitHighlights } from "@/components/SummitHighlights";
 import { About } from "@/components/About";
@@ -37,6 +38,7 @@ export default function Home() {
             </div>
             <div className="snap-start"><About /></div>
             {/* <div className="snap-start"><CountdownSection /></div> */}
+            <div className="snap-start"><PrecursorEvents /></div>
             <div className="snap-start"><FeaturedEvents /></div>
             <div className="snap-start"><Speakers /></div>
             <div className="snap-start"><SummitHighlights /></div>
