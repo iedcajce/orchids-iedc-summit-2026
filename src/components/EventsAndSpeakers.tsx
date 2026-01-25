@@ -226,6 +226,51 @@ export function Speakers() {
       image: "/images/speaker_ashok_kurian_panjikkaran.jpeg",
       linkedin: "https://www.linkedin.com/in/ashok-kurian-panjikaran-akp-50b8b526?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
     },
+    {
+      name: "Dr. J. Deny",
+      role: "Dy-Director-IEDC",
+      company: "Kalasalingam University",
+      image: "/images/speaker_dr_j_deny.jpg",
+      linkedin: "#"
+    },
+    {
+      name: "Jaison Thomas",
+      role: "Co-Founder",
+      company: "Blusteak",
+      image: "/images/speaker_jaison_thomas.jpg",
+      linkedin: "#"
+    },
+
+    {
+      name: "Jijo Paul",
+      role: "CEO",
+      company: "Resnova Technologies",
+      image: "/images/speaker_jijo_paul.jpg",
+      linkedin: "#"
+    },
+
+    {
+      name: "Abidh Habib",
+      role: "CEO",
+      company: "INCIAL",
+      image: "/images/speaker_abidh_habib.jpg",
+      linkedin: "#"
+    },
+    {
+      name: "Anson P Sam",
+      role: "Keynote Speaker",
+      company: "Tata Consultancy Services",
+      image: "/images/speaker_anson_p_sam.jpg",
+      linkedin: "#"
+    },
+    {
+      name: "Akhil Hakkim",
+      role: "Keynote Speaker",
+      company: "Armada",
+      image: "/images/speaker_akhil_hakkim.jpg",
+      linkedin: "#"
+    },
+
   ];
 
   return (
@@ -244,7 +289,7 @@ export function Speakers() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="flex flex-wrap justify-center gap-6">
           {speakers.map((speaker, i) => (
             <motion.div
               key={i}
@@ -255,7 +300,7 @@ export function Speakers() {
                 duration: 0.5,
                 delay: i * 0.05,
               }}
-              className="group cursor-pointer"
+              className="group cursor-pointer w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
             >
               <div className="relative aspect-[4/5] overflow-hidden mb-4 bg-[#f8faf9] rounded-[2rem]">
                 <Image
