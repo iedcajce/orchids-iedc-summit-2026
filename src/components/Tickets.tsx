@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, ShieldCheck, Star, QrCode, Wifi, MapPin, Calendar, CreditCard, Check } from "lucide-react";
 import React from "react";
 import Image from "next/image";
-import Logo from "@/assets/logo.png";
 
 export function Tickets() {
   const x = useMotionValue(0);
@@ -155,8 +154,10 @@ export function Tickets() {
                 <div className="pt-8 px-8 md:px-12 pb-2 flex justify-between items-start">
                   <div className="w-[90px] md:w-[120px]">
                     <Image
-                      src={Logo}
+                      src="/images/iedc_summit_logo_2026.png"
                       alt="IEDC Logo"
+                      width={120}
+                      height={80}
                       className="w-full h-auto opacity-90 contrast-125"
                     />
                   </div>

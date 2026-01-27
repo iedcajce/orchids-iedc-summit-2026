@@ -6,7 +6,6 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "../assets/logo-1.png";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,12 +39,11 @@ export function Navbar() {
         {/* Logo Card */}
         <div className="max-w-[120px] md:max-w-[160px] pointer-events-auto">
           <Image
-            src={logo}
+            src={isHero ? "/images/iedc_summit_logo_2026_hero.png" : "/images/iedc_summit_logo_2026.png"}
             alt="IEDC Startup Summit 2026 Logo"
             width={160}
             height={100}
-            className={`w-full h-auto object-contain drop-shadow-lg transition-all duration-500 ${isHero ? "grayscale-[1] brightness-[2] contrast-[15]" : ""
-              }`}
+            className="w-full h-auto object-contain drop-shadow-lg transition-all duration-500"
           />
         </div>
 
