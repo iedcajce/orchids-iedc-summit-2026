@@ -4,12 +4,24 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "../assets/logo-1.png";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isHero, setIsHero] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Assuming Hero is 100vh or roughly the top of the page
+      setIsHero(window.scrollY < window.innerHeight - 100);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
     { name: "Home", href: "#" },
@@ -32,7 +44,8 @@ export function Navbar() {
             alt="IEDC Startup Summit 2026 Logo"
             width={160}
             height={100}
-            className="w-full h-auto object-contain drop-shadow-lg"
+            className={`w-full h-auto object-contain drop-shadow-lg transition-all duration-500 ${isHero ? "grayscale-[1] brightness-[2] contrast-[15]" : ""
+              }`}
           />
         </div>
 
