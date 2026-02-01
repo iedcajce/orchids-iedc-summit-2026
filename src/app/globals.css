@@ -153,6 +153,38 @@
 }
 
 html {
-  scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
+  scroll-behavior: auto; /* Managed by Lenis */
+}
+
+.scroll-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1000px;
+}
+
+.gpu-layer {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Custom Scrollbar for premium feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #439162;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2d6644;
 }

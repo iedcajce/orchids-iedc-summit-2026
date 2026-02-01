@@ -213,7 +213,7 @@ export function PreviousSummits() {
 
 export function Footer() {
   return (
-    <footer className="relative pt-16 pb-8 px-6 md:px-12 overflow-hidden">
+    <footer id="footer" className="relative pt-16 pb-8 px-6 md:px-12 overflow-hidden">
       {/* Cinematic Background */}
       <div className="absolute inset-0 z-0">
         <Image

@@ -48,7 +48,7 @@ export function About() {
     ];
 
     return (
-        <section id="about" ref={containerRef} className="relative h-[250vh] bg-white">
+        <section id="about" ref={containerRef} className="relative h-[250vh] bg-white scroll-section gpu-layer">
             <div className="sticky top-0 h-[100dvh] w-full overflow-hidden flex flex-col">
                 {/* Background Elements */}
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
@@ -77,7 +77,7 @@ export function About() {
                                 className="mb-4 md:mb-6"
                             >
                                 <span className="text-brand font-black tracking-[0.5em] text-[8px] md:text-[10px] uppercase mb-2 block">Our Vision</span>
-                                <h2 className="text-4xl md:text-7xl lg:text-8xl font-black text-brand-dark italic tracking-tighter leading-none">
+                                <h2 className="text-4xl md:text-7xl lg:text-8xl font-black text-brand-dark tracking-tighter leading-none">
                                     About
                                 </h2>
                             </motion.div>
@@ -95,7 +95,7 @@ export function About() {
                                 <div className="flex-1 relative">
                                     {/* Ghost element to reserve height based on the longest paragraph */}
                                     <div className="invisible pointer-events-none select-none" aria-hidden="true">
-                                        <p className="text-sm md:text-lg lg:text-xl italic font-medium leading-relaxed text-justify">
+                                        <p className="text-sm md:text-lg lg:text-xl font-medium leading-relaxed text-justify">
                                             The summit provides a structured platform combining networking, mentoring, technology enablement, and investment access, enabling participants to validate ideas, build scalable products, and connect with industry experts, investors, and the broader startup ecosystem.
                                         </p>
                                     </div>
@@ -109,7 +109,7 @@ export function About() {
                                             transition={{ duration: 0.4, ease: "easeOut" }}
                                             className="absolute top-0 left-0 w-full h-full"
                                         >
-                                            <p className="text-brand-dark/80 text-sm md:text-lg lg:text-xl italic font-medium leading-relaxed text-justify">
+                                            <p className="text-brand-dark/80 text-sm md:text-lg lg:text-xl font-medium leading-relaxed text-justify">
                                                 {content[activeTab].text}
                                             </p>
                                         </motion.div>
@@ -139,7 +139,7 @@ export function About() {
                                             className="flex items-center gap-2 group cursor-default"
                                         >
                                             <div className="w-1 h-1 rounded-full bg-brand/30 group-hover:bg-brand transition-all duration-300" />
-                                            <span className="text-[9px] md:text-[10px] font-black italic uppercase tracking-[0.1em] text-brand-dark/40 group-hover:text-brand-dark transition-colors duration-300">
+                                            <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.1em] text-brand-dark/40 group-hover:text-brand-dark transition-colors duration-300">
                                                 {tag}
                                             </span>
                                         </motion.div>

@@ -91,6 +91,7 @@ export function Tickets() {
             >
               {[
                 "Access to all events",
+                "1-Year Innovation Passport",
                 "Exhibition stalls",
                 "Food and refreshments",
                 "Goodies & swag",
@@ -122,137 +123,138 @@ export function Tickets() {
             </motion.div>
           </div>
 
-          {/* Right Side: Access Card */}
           <div className="flex justify-center lg:justify-end perspective-2000">
-            <motion.div
-              style={{
-                rotateX,
-                rotateY,
-                transformStyle: "preserve-3d",
-              }}
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-              className="relative w-full max-w-[340px] md:max-w-[420px] h-[540px] md:h-[640px] cursor-grab active:cursor-grabbing group"
+            <a
+              href="https://iedcsummit-form-aghqgu-d1c8a5-103-66-79-81.traefik.me/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
             >
-              {/* Holographic Glow */}
-              <div className="absolute -inset-4 bg-gradient-to-tr from-brand/20 via-blue-400/10 to-purple-400/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-              {/* Access Card Outer Frame */}
-              <div className="relative h-full w-full bg-[#FCFFFD] border-[1px] border-[#E0E7E1] rounded-[24px] md:rounded-[32px] overflow-hidden shadow-[0_40px_80px_-15px_rgba(45,74,53,0.12)] flex flex-col group-hover:shadow-[0_50px_100px_-20px_rgba(45,74,53,0.2)] transition-shadow duration-500">
-
-                {/* Lanyard Attachment Hole */}
-                <div className="absolute top-4 md:top-6 left-1/2 -translate-x-1/2 flex items-center justify-center">
-                  <div className="w-12 md:w-16 h-2 md:h-3 bg-gradient-to-b from-[#E0E7E1] to-[#D1D9D2] rounded-full shadow-inner relative overflow-hidden">
-                    <div className="absolute inset-0 bg-black/5" />
-                  </div>
-                </div>
-
-                {/* Security Hologram Strip (Top) */}
-                <div className="absolute top-0 left-0 w-full h-1 md:h-1.5 bg-gradient-to-r from-brand/40 via-blue-400/30 to-brand/40 animate-shimmer" style={{ backgroundSize: '200% 100%' }} />
-
-                {/* Header Content */}
-                <div className="pt-8 px-8 md:px-12 pb-2 flex justify-between items-start">
-                  <div className="w-[90px] md:w-[120px]">
-                    <Image
-                      src="/images/iedc_summit_logo_2026.png"
-                      alt="IEDC Logo"
-                      width={120}
-                      height={80}
-                      className="w-full h-auto opacity-90 contrast-125"
-                    />
-                  </div>
-                  <div className="flex flex-col items-end gap-1">
-                    <div className="p-1.5 md:p-2 bg-[#4A7C59]/5 border border-[#4A7C59]/10 rounded-lg">
-                      <Wifi className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#4A7C59]" />
-                    </div>
-                    <span className="text-[7px] md:text-[8px] font-bold text-[#4A7C59]/40 tracking-tighter uppercase">NFC Enabled</span>
-                  </div>
-                </div>
-
-                {/* Main Identity Section */}
-                <div className="px-8 md:px-12 py-2 flex-1 flex flex-col justify-start">
-                  <div className="mb-4">
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <div className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse" />
-                      <span className="text-[9px] md:text-[10px] font-black tracking-[0.2em] text-[#4A7C59]/70 uppercase">DELEGATE ACCESS</span>
-                    </div>
-                    <h3 className="text-[2rem] md:text-[2.6rem] font-black text-[#2D4A35] leading-[0.9] italic uppercase tracking-tighter" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
-                      IEDC STARTUP <br /> <span className="text-brand">SUMMIT</span> 2026
-                    </h3>
-                  </div>
-
-                  {/* Card Info Grid */}
-                  <div className="grid grid-cols-2 gap-y-3 md:gap-y-5 mb-4 border-t border-b border-dashed border-[#E0E7E1] py-3 md:py-5">
-                    <div className="space-y-1">
-                      <span className="text-[8px] md:text-[9px] font-bold text-[#4A7C59]/50 uppercase tracking-widest block">Event Date</span>
-                      <div className="flex items-center gap-1.5">
-                        <Calendar className="w-3 h-3 md:w-3.5 md:h-3.5 text-brand/60" />
-                        <p className="text-xs md:text-sm font-bold text-[#2D4A35]">MAR 07, 2026</p>
-                      </div>
-                    </div>
-                    <div className="space-y-1">
-                      <span className="text-[8px] md:text-[9px] font-bold text-[#4A7C59]/50 uppercase tracking-widest block">Location</span>
-                      <div className="flex items-center gap-1.5">
-                        <MapPin className="w-3 h-3 md:w-3.5 md:h-3.5 text-brand/60" />
-                        <p className="text-xs md:text-sm font-bold text-[#2D4A35]">AJCE, KERALA</p>
-                      </div>
-                    </div>
-                    <div className="col-span-2 grid grid-cols-2 gap-4 mt-2">
-                      <div className="space-y-2">
-                        <span className="text-[8px] md:text-[9px] font-bold text-[#4A7C59]/50 uppercase tracking-widest block">Powered By</span>
-                        <div className="relative h-7 w-full">
-                          <Image src="/images/powredby/ksum.svg" alt="KSUM" fill className="object-contain object-left" />
-                        </div>
-                      </div>
-                      <div className="space-y-2">
-                        <span className="text-[8px] md:text-[9px] font-bold text-[#4A7C59]/50 uppercase tracking-widest block">Hosted By</span>
-                        <div className="relative h-7 w-full">
-                          <Image src="/images/hosted_by/ajce_logo_6.png" alt="AJCE" fill className="object-contain object-left" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Bottom Interactive Section */}
-                  <div className="mt-auto flex flex-col items-center gap-5 pb-8 md:pb-12">
-                    <a
-                      href="https://iedcsummit-form-aghqgu-d1c8a5-103-66-79-81.traefik.me/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-white p-2 md:p-2.5 rounded-xl border border-[#2D4A35]/10 shadow-sm relative group/qr cursor-pointer block transition-transform hover:scale-105"
-                    >
-                      <div className="absolute -inset-3 bg-brand/5 rounded-2xl opacity-0 group-hover/qr:opacity-100 transition-opacity" />
-                      <Image
-                        src="/images/ticket-qr.png"
-                        alt="Scan to Register"
-                        width={112}
-                        height={112}
-                        className="w-24 h-24 md:w-28 md:h-28 object-contain"
-                      />
-                    </a>
-                    <div className="text-center space-y-1.5">
-                      <p className="text-[10px] md:text-xs font-bold tracking-[0.25em] text-[#2D4A35] font-mono">ISS2026-DP0XXX</p>
-                      <span className="text-[7px] md:text-[8px] font-bold text-[#4A7C59]/40 uppercase tracking-widest block">Official Delegate ID</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Design Elements */}
-                <div className="absolute bottom-10 left-[-20%] w-[140%] h-[1px] bg-brand/5 -rotate-12 pointer-events-none" />
-                <div className="absolute bottom-16 left-[-20%] w-[140%] h-[1px] bg-brand/5 -rotate-12 pointer-events-none" />
-              </div>
-
-              {/* Reflection Overlay */}
-              <div className="absolute inset-0 rounded-[24px] md:rounded-[32px] pointer-events-none bg-gradient-to-tr from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              {/* Scan Line Effect */}
               <motion.div
-                initial={{ top: "-10%" }}
-                animate={{ top: "110%" }}
-                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                className="absolute left-0 right-0 h-[80px] md:h-[100px] bg-gradient-to-b from-transparent via-brand/5 to-transparent pointer-events-none z-20"
-              />
-            </motion.div>
+                style={{
+                  rotateX,
+                  rotateY,
+                  transformStyle: "preserve-3d",
+                }}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                className="relative w-full max-w-[340px] md:max-w-[420px] h-[540px] md:h-[640px] cursor-pointer active:cursor-grabbing group"
+              >
+                {/* Holographic Glow */}
+                <div className="absolute -inset-4 bg-gradient-to-tr from-brand/20 via-blue-400/10 to-purple-400/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+                {/* Access Card Outer Frame */}
+                <div className="relative h-full w-full bg-[#FCFFFD] border-[1px] border-[#E0E7E1] rounded-[24px] md:rounded-[32px] overflow-hidden shadow-[0_40px_80px_-15px_rgba(45,74,53,0.12)] flex flex-col group-hover:shadow-[0_50px_100px_-20px_rgba(45,74,53,0.2)] transition-shadow duration-500">
+
+                  {/* Lanyard Attachment Hole */}
+                  <div className="absolute top-4 md:top-6 left-1/2 -translate-x-1/2 flex items-center justify-center">
+                    <div className="w-12 md:w-16 h-2 md:h-3 bg-gradient-to-b from-[#E0E7E1] to-[#D1D9D2] rounded-full shadow-inner relative overflow-hidden">
+                      <div className="absolute inset-0 bg-black/5" />
+                    </div>
+                  </div>
+
+                  {/* Security Hologram Strip (Top) */}
+                  <div className="absolute top-0 left-0 w-full h-1 md:h-1.5 bg-gradient-to-r from-brand/40 via-blue-400/30 to-brand/40 animate-shimmer" style={{ backgroundSize: '200% 100%' }} />
+
+                  {/* Header Content */}
+                  <div className="pt-8 px-8 md:px-12 pb-2 flex justify-between items-start">
+                    <div className="w-[90px] md:w-[120px]">
+                      <Image
+                        src="/images/iedc_summit_logo_2026.png"
+                        alt="IEDC Logo"
+                        width={120}
+                        height={80}
+                        className="w-full h-auto opacity-90 contrast-125"
+                      />
+                    </div>
+                    <div className="flex flex-col items-end gap-1">
+                      <div className="p-1.5 md:p-2 bg-[#4A7C59]/5 border border-[#4A7C59]/10 rounded-lg">
+                        <Wifi className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#4A7C59]" />
+                      </div>
+                      <span className="text-[7px] md:text-[8px] font-bold text-[#4A7C59]/40 tracking-tighter uppercase">NFC Enabled</span>
+                    </div>
+                  </div>
+
+                  {/* Main Identity Section */}
+                  <div className="px-8 md:px-12 py-2 flex-1 flex flex-col justify-start">
+                    <div className="mb-4">
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse" />
+                        <span className="text-[9px] md:text-[10px] font-black tracking-[0.2em] text-[#4A7C59]/70 uppercase">DELEGATE ACCESS</span>
+                      </div>
+                      <h3 className="text-[2rem] md:text-[2.6rem] font-black text-[#2D4A35] leading-[0.9] italic uppercase tracking-tighter" style={{ fontFamily: '"Cooper Hewitt", sans-serif' }}>
+                        IEDC STARTUP <br /> <span className="text-brand">SUMMIT</span> 2026
+                      </h3>
+                    </div>
+
+                    {/* Card Info Grid */}
+                    <div className="grid grid-cols-2 gap-y-3 md:gap-y-5 mb-4 border-t border-b border-dashed border-[#E0E7E1] py-3 md:py-5">
+                      <div className="space-y-1">
+                        <span className="text-[8px] md:text-[9px] font-bold text-[#4A7C59]/50 uppercase tracking-widest block">Event Date</span>
+                        <div className="flex items-center gap-1.5">
+                          <Calendar className="w-3 h-3 md:w-3.5 md:h-3.5 text-brand/60" />
+                          <p className="text-xs md:text-sm font-bold text-[#2D4A35]">MAR 07, 2026</p>
+                        </div>
+                      </div>
+                      <div className="space-y-1">
+                        <span className="text-[8px] md:text-[9px] font-bold text-[#4A7C59]/50 uppercase tracking-widest block">Location</span>
+                        <div className="flex items-center gap-1.5">
+                          <MapPin className="w-3 h-3 md:w-3.5 md:h-3.5 text-brand/60" />
+                          <p className="text-xs md:text-sm font-bold text-[#2D4A35]">AJCE, KERALA</p>
+                        </div>
+                      </div>
+                      <div className="col-span-2 grid grid-cols-2 gap-4 mt-2">
+                        <div className="space-y-2">
+                          <span className="text-[8px] md:text-[9px] font-bold text-[#4A7C59]/50 uppercase tracking-widest block">Powered By</span>
+                          <div className="relative h-7 w-full">
+                            <Image src="/images/powredby/ksum.svg" alt="KSUM" fill className="object-contain object-left" />
+                          </div>
+                        </div>
+                        <div className="space-y-2">
+                          <span className="text-[8px] md:text-[9px] font-bold text-[#4A7C59]/50 uppercase tracking-widest block">Hosted By</span>
+                          <div className="relative h-7 w-full">
+                            <Image src="/images/hosted_by/ajce_logo_6.png" alt="AJCE" fill className="object-contain object-left" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Bottom Interactive Section */}
+                    <div className="mt-auto flex flex-col items-center gap-5 pb-8 md:pb-12">
+                      <div className="bg-white p-2 md:p-2.5 rounded-xl border border-[#2D4A35]/10 shadow-sm relative group/qr cursor-pointer block transition-transform hover:scale-105">
+                        <div className="absolute -inset-3 bg-brand/5 rounded-2xl opacity-0 group-hover/qr:opacity-100 transition-opacity" />
+                        <Image
+                          src="/images/ticket-qr.png"
+                          alt="Scan to Register"
+                          width={112}
+                          height={112}
+                          className="w-24 h-24 md:w-28 md:h-28 object-contain"
+                        />
+                      </div>
+                      <div className="text-center space-y-1.5">
+                        <p className="text-[10px] md:text-xs font-bold tracking-[0.25em] text-[#2D4A35] font-mono">ISS2026-DP0XXX</p>
+                        <span className="text-[7px] md:text-[8px] font-bold text-[#4A7C59]/40 uppercase tracking-widest block">Official Delegate ID</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Design Elements */}
+                  <div className="absolute bottom-10 left-[-20%] w-[140%] h-[1px] bg-brand/5 -rotate-12 pointer-events-none" />
+                  <div className="absolute bottom-16 left-[-20%] w-[140%] h-[1px] bg-brand/5 -rotate-12 pointer-events-none" />
+                </div>
+
+                {/* Reflection Overlay */}
+                <div className="absolute inset-0 rounded-[24px] md:rounded-[32px] pointer-events-none bg-gradient-to-tr from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {/* Scan Line Effect */}
+                <motion.div
+                  initial={{ top: "-10%" }}
+                  animate={{ top: "110%" }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                  className="absolute left-0 right-0 h-[80px] md:h-[100px] bg-gradient-to-b from-transparent via-brand/5 to-transparent pointer-events-none z-20"
+                />
+              </motion.div>
+            </a>
           </div>
         </div>
       </div>

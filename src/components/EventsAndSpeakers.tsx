@@ -68,7 +68,7 @@ export function FeaturedEvents() {
   ];
 
   return (
-    <section id="events" className="py-24 px-6 md:px-12 bg-[#F8FFF9] overflow-hidden relative">
+    <section id="events" className="py-24 px-6 md:px-12 bg-[#F8FFF9] overflow-hidden relative scroll-section">
       {/* Background patterns */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2" />
@@ -106,7 +106,7 @@ export function FeaturedEvents() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               onClick={() => setSelectedTrack(track)}
-              className={`group relative h-[480px] rounded-[3rem] bg-white border border-black/5 overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.2)] ${track.border}`}
+              className={`group relative h-[420px] md:h-[480px] rounded-[2.5rem] md:rounded-[3rem] bg-white border border-black/5 overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.2)] ${track.border}`}
             >
               {/* Cover Image */}
               <div className="absolute inset-0">
@@ -165,7 +165,7 @@ export function FeaturedEvents() {
               initial={{ scale: 0.95, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
-              className="bg-white rounded-[3rem] w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col md:flex-row shadow-2xl relative"
+              className="bg-white rounded-[2rem] md:rounded-[3rem] w-full max-w-5xl max-h-[95vh] md:max-h-[90vh] overflow-hidden flex flex-col md:flex-row shadow-2xl relative"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
@@ -177,7 +177,7 @@ export function FeaturedEvents() {
               </button>
 
               {/* Modal Left - Image & Basic Info */}
-              <div className="w-full md:w-[40%] relative min-h-[300px] md:min-h-full">
+              <div className="w-full md:w-[40%] relative min-h-[250px] md:min-h-full">
                 <Image
                   src={selectedTrack.image}
                   alt={selectedTrack.title}
@@ -186,24 +186,24 @@ export function FeaturedEvents() {
                 />
                 <div className={`absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent opacity-90`} />
 
-                <div className="absolute bottom-0 left-0 p-8 md:p-12 z-10 w-full">
-                  <div className={`p-4 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 text-white inline-flex mb-6`}>
+                <div className="absolute bottom-0 left-0 p-6 md:p-12 z-10 w-full">
+                  <div className={`p-3 md:p-4 rounded-xl md:rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 text-white inline-flex mb-4 md:mb-6`}>
                     {selectedTrack.icon}
                   </div>
-                  <h3 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter mb-4 leading-none italic">
+                  <h3 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-2 md:mb-4 leading-none italic">
                     {selectedTrack.title}
                   </h3>
-                  <p className="text-white/70 text-base font-medium">
+                  <p className="text-white/70 text-sm md:text-base font-medium">
                     {selectedTrack.description}
                   </p>
                 </div>
               </div>
 
               {/* Modal Right - Details List */}
-              <div className="w-full md:w-[60%] p-8 md:p-16 overflow-y-auto bg-white custom-scrollbar">
-                <div className="mb-12">
-                  <span className="text-brand font-black tracking-[0.3em] uppercase text-[11px] mb-2 block">Track Highlights</span>
-                  <h4 className="text-2xl font-black text-brand-dark uppercase tracking-tight italic">Key Sessions & Topics</h4>
+              <div className="w-full md:w-[60%] p-6 md:p-16 overflow-y-auto bg-white custom-scrollbar">
+                <div className="mb-8 md:mb-12">
+                  <span className="text-brand font-black tracking-[0.3em] uppercase text-[10px] md:text-[11px] mb-2 block">Track Highlights</span>
+                  <h4 className="text-xl md:text-2xl font-black text-brand-dark uppercase tracking-tight italic">Key Sessions & Topics</h4>
                 </div>
 
                 <div className="space-y-6">
@@ -213,17 +213,17 @@ export function FeaturedEvents() {
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.1 * idx }}
-                      className="group p-8 rounded-[2rem] border border-black/5 hover:border-brand/20 hover:bg-brand/5 transition-all duration-300"
+                      className="group p-5 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border border-black/5 hover:border-brand/20 hover:bg-brand/5 transition-all duration-300"
                     >
-                      <div className="flex gap-6">
-                        <span className={`flex-shrink-0 w-10 h-10 rounded-xl ${selectedTrack.bg} ${selectedTrack.text} flex items-center justify-center text-xs font-black border border-black/5`}>
+                      <div className="flex gap-4 md:gap-6">
+                        <span className={`flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl ${selectedTrack.bg} ${selectedTrack.text} flex items-center justify-center text-[10px] md:text-xs font-black border border-black/5`}>
                           {(idx + 1).toString().padStart(2, '0')}
                         </span>
                         <div>
-                          <h5 className="text-xl font-bold text-brand-dark mb-2 leading-tight group-hover:text-brand transition-colors">
+                          <h5 className="text-lg md:text-xl font-bold text-brand-dark mb-1 md:mb-2 leading-tight group-hover:text-brand transition-colors">
                             {detail.title}
                           </h5>
-                          <p className="text-[15px] text-brand-dark/60 leading-relaxed">
+                          <p className="text-sm md:text-[15px] text-brand-dark/60 leading-relaxed">
                             {detail.desc}
                           </p>
                         </div>
@@ -279,14 +279,14 @@ export function Speakers() {
       name: "Dr. J. Deny",
       role: "Dy-Director-IEDC",
       company: "Kalasalingam University",
-      image: "/images/speaker_dr_j_deny.jpg",
+      image: "/images/speaker_dr_j_deny.png",
       linkedin: "#"
     },
     {
       name: "Jaison Thomas",
       role: "Co-Founder",
       company: "Blusteak",
-      image: "/images/speaker_jaison_thomas.jpg",
+      image: "/images/speaker_jaison_thomas.png",
       linkedin: "#"
     },
 
@@ -294,7 +294,7 @@ export function Speakers() {
       name: "Jijo Paul",
       role: "CEO",
       company: "Resnova Technologies",
-      image: "/images/speaker_jijo_paul.jpg",
+      image: "/images/speaker_jijo_paul.png",
       linkedin: "#"
     },
 
@@ -302,28 +302,28 @@ export function Speakers() {
       name: "Abidh Habib",
       role: "CEO",
       company: "INCIAL",
-      image: "/images/speaker_abidh_habib.jpg",
+      image: "/images/speaker_abidh_habib.png",
       linkedin: "#"
     },
     {
       name: "Anson P Sam",
       role: "Keynote Speaker",
       company: "Tata Consultancy Services",
-      image: "/images/speaker_anson_p_sam.jpg",
+      image: "/images/speaker_anson_p_sam.png",
       linkedin: "#"
     },
     {
       name: "Akhil Hakkim",
       role: "Keynote Speaker",
       company: "Armada",
-      image: "/images/speaker_akhil_hakkim.jpg",
+      image: "/images/speaker_akhil_hakkim.png",
       linkedin: "#"
     },
 
   ];
 
   return (
-    <section id="speakers" className="py-24 px-6 md:px-12 bg-white">
+    <section id="speakers" className="py-24 px-6 md:px-12 bg-white scroll-section gpu-layer">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -162,7 +162,7 @@ export function Hero() {
               <p className="text-lg md:text-2xl font-light text-white/90 leading-snug">
                 Your Nomination.<br />
                 Your Innovation Passport.<br />
-                Your One-Year Journey.
+                Your One-Year Entrepreneurship Journey.
               </p>
             </motion.div>
           </div>
