@@ -63,11 +63,11 @@ export function Navbar() {
         {/* Mobile Hamburger / Desktop Register Button */}
         <div className="flex items-center gap-4 pointer-events-auto h-fit">
           <div className="hidden md:block">
-            <Link href="#tickets">
+            <a href="https://register.iedcstartupsummit.in/" target="_blank" rel="noopener noreferrer">
               <Button className="bg-[#4A7C59] hover:bg-[#386144] text-white rounded-full px-8 py-6 h-auto text-xs font-bold uppercase tracking-widest shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 active:scale-95">
                 Buy Ticket
               </Button>
-            </Link>
+            </a>
           </div>
 
           <button
@@ -124,11 +124,11 @@ export function Navbar() {
               transition={{ delay: 0.2 }}
               className="mt-8"
             >
-              <Link href="#tickets" onClick={() => setIsOpen(false)}>
+              <a href="https://register.iedcstartupsummit.in/" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
                 <Button className="bg-[#4A7C59] hover:bg-[#386144] text-white rounded-full px-12 py-6 h-auto text-sm font-bold uppercase tracking-widest shadow-xl active:scale-95 transition-all">
                   Buy Ticket
                 </Button>
-              </Link>
+              </a>
             </motion.div>
           </motion.div>
         )}
