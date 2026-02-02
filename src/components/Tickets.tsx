@@ -125,7 +125,7 @@ export function Tickets() {
 
           <div className="flex justify-center lg:justify-end perspective-2000">
             <a
-              href="https://iedcsummit-form-aghqgu-d1c8a5-103-66-79-81.traefik.me/"
+              href="https://register.iedcstartupsummit.in/"
               target="_blank"
               rel="noopener noreferrer"
               className="block"
